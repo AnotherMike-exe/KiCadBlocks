@@ -1,0 +1,18 @@
+(footprint "Box"
+	(layer "F.Cu")
+	(fp_rect
+		(start -2 -1)
+		(end 2 1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+	)
+	(fp_line
+		(start -9 -9)
+		(end 9 9)
+		(layer "F.SilkS")
+	)
+)

@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "Stock") (type "Table") (uri "${KIPRJMOD}/stock-fp-lib-table") (options "") (descr ""))
+	(lib (name "PlumLib") (type "KiCad") (uri "${PLUM_SOLUTIONS}/Footprints/PlumLib.pretty") (options "") (descr ""))
+)

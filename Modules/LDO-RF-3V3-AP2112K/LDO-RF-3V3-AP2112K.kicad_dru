@@ -1,16 +1,10 @@
 (version 1)
 # ============================================================================
-#  Ethernet-W5500-Magjack - module reference board design rules
-#  FAB: PCBWay, 4-layer 1.6mm.  Derived from Plum-RFBridge.kicad_dru.
+#  LDO-RF-3V3-AP2112K - module reference board design rules
+#  FAB: PCBWay, 4-layer 1.6mm.  The fab section is shared with every Plum
+#  module board and comes from Ethernet-W5500-Magjack.kicad_dru.
 #
-#  WHAT CHANGED FROM THE PARENT FILE, AND WHY
-#  - The J1 (USB-C), J3 (SMA) and SW1/SW2 exceptions are GONE.  None of those
-#    parts exist on this module.
-#  - The fine-pitch fanout rule is scoped to U3 alone.  U1, U4, U5 and U10 are
-#    not on this board.
-#  - The 2.5 mm isolation barrier is GONE.  There is no PoE converter here and
-#    no isolated primary domain.  Section "J2 line side" below replaces it,
-#    and it is NOT the same rule.  Read it.
+#  No module rule.
 #
 #  !! A SYNTAX ERROR ANYWHERE HERE SILENTLY DISABLES THE WHOLE FILE !!
 #  KiCad reports no error.  It falls back to built-in defaults and DRC returns
@@ -64,8 +58,7 @@
 (constraint hole_size (min 0.5mm))
 (condition "(A.Hole_Size_X != A.Hole_Size_Y) && A.isPlated()"))
 
-# The isolation slot is NPTH and must clear this.  PCBWay's minimum NPTH slot
-# is 0.8mm at +/-0.2mm tolerance, so the module draws the slot at 1.0mm.
+# PCBWay's minimum NPTH slot is 0.8mm at +/-0.2mm tolerance.
 (rule "Min. Non-Plated Slot Width"
 (constraint hole_size (min 0.8mm))
 (condition "(A.Hole_Size_X != A.Hole_Size_Y) && !A.isPlated()"))
@@ -126,61 +119,4 @@
 #  MODULE RULES
 # ============================================================================
 
-# --- Fine-pitch fanout clearance, U3 only -----------------------------------
-# The W5500 is an LQFP-48 on 0.5 mm pitch.  At the Default netclass clearance
-# a via placed in line with a pin does not fit beside its neighbours, and an
-# autorouter answers that by escalating to "advanced" fab vias.  On the parent
-# board that happened silently, to 23 pads.  Relaxing to 0.10 mm INSIDE U3's
-# courtyard alone lets a 0.45 mm via fit and keeps the module on STANDARD fab.
-# General routing keeps the full Default clearance.
-(rule "Fine-pitch fanout clearance"
-(constraint clearance (min 0.1mm))
-# hole_clearance too.  A 0.3 mm drill in the gap between two pads leaves less
-# copper to hole than the board's 0.254 mm min_hole_clearance allows.  0.20 mm
-# is the figure this file already accepts for copper around a hole.
-(constraint hole_clearance (min 0.20mm))
-(condition "A.insideCourtyard('U3')"))
-
-# --- J2 line side -----------------------------------------------------------
-# !! THESE PADS CARRY 48 V WHEN THE CABLE COMES FROM A PoE SWITCH. !!
-#
-# This board has no PoE converter, so it is tempting to read J2's VC1 and VC2
-# taps as dead copper.  They are not.  They are LINE SIDE conductors of the
-# magjack, and a PSE puts its voltage on them whether or not this board uses
-# it.  The Abracon jack's own 1500 Vrms construction protects the CHIP side.
-# It does not protect the board from what sits beside the VC pads.
-#
-# So the VC nets keep their own net class and their own clearance.  0.4 mm is
-# not the 2.5 mm isolation barrier of the PoE module, and it does not claim to
-# be: nothing on this board is an isolated domain, and there is no second cable
-# to hipot against.  It is a working-voltage figure for 48 V on an inner
-# creepage path, and it exists so a router cannot place a 3V3 track 0.15 mm
-# from a 48 V pad.
-#
-# IF YOU ADD A PoE CONVERTER TO THIS BOARD, THIS RULE IS NOT ENOUGH.
-# Use PoE-Ethernet-Si3402-W5500 instead.  It carries the full 2.5 mm barrier,
-# the slot, the inner plane void and the four bridge components.
-#
-# The J2 self exception is the same one the PoE module needs, and for the same
-# reason.  Abracon interleaves the line side and chip side pins in one pad
-# field, and the tightest pair is about 1.3 mm copper to copper.  Layout cannot
-# improve it.
-(rule "J2 line side clearance"
-(constraint clearance (min 0.4mm))
-(condition "A.NetClass == 'Line_Side' && B.NetClass != 'Line_Side' && (A.Type != 'Pad' || B.Type != 'Pad' || A.Reference != B.Reference)"))
-
-# --- MDI pairs --------------------------------------------------------------
-# The W5500 is 10/100 only.  A 100BASE-TX edge is about 4 ns, so the critical
-# length is 4 ns x 150 mm/ns / 6 = 100 mm.  Every MDI run here is under 40 mm,
-# so controlled impedance is not required and this file does not claim it.
-# Length match inside each pair and a continuous return path are what matter.
-(rule "MDI pair length match"
-(constraint skew (max 0.5mm))
-(condition "A.NetClass == 'MDI'"))
-
-# --- Chassis ground ---------------------------------------------------------
-# CGND carries J2's shield, tied to GND only through C67, a 1nF 2kV capacitor.
-# It is not a ground.  Keep it clear of everything else.
-(rule "Chassis clearance"
-(constraint clearance (min 0.4mm))
-(condition "A.NetClass == 'Chassis' && B.NetClass != 'Chassis'"))
+# None.  The netclasses in the .kicad_pro govern this board.
