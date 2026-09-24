@@ -1,8 +1,8 @@
 # Layout Spec — LDO-RF-3V3-AP2112K
 
 The geometry of the module reference board. Every number is a decision, and each
-one carries its reason. **Draft.** No board exists yet. Nothing here is checked
-by DRC.
+one carries its reason. The board is laid out. Section 10 records the changes
+from the draft and section 11 the state DRC measured.
 
 Board: 10 x 12 mm, 4 layers, 1.6 mm. Written 2026-09-24.
 
@@ -76,24 +76,30 @@ output capacitors C103 and C104, at 4 mm. The module has no such neighbour.
 
 ### 3.2 The module
 
+As laid out. Read from the saved board.
+
 | Ref | X | Y | Rot | Side | Reason |
 |---|---|---|---|---|---|
 | U9 | 105.000 | 104.500 | 0 | F | — |
-| C105 | 101.900 | 104.000 | 270 | F | pad 1 (V5_SYS) level with U9.1, pad 2 (GND) level with U9.2 |
-| C106 | 108.100 | 104.000 | 270 | F | pad 1 (+3V3_RF) level with U9.5 |
+| C105 | 101.300 | 104.000 | 270 | F | pad 1 (V5_SYS) at 101.30, 103.225; pad 2 (GND) at 101.30, 104.775. Moved 0.6 mm west of the draft; see §10 |
+| C106 | 108.100 | 104.000 | 270 | F | pad 1 (+3V3_RF) at 108.10, 103.225; pad 2 (GND) at 108.10, 104.775 |
 
 U9 pins at this position:
 
 | Pin | Net | At |
 |---|---|---|
-| 1 VIN | `/V5_SYS` | 103.86, 103.55 |
-| 2 GND | `GND` | 103.86, 104.50 |
-| 3 EN | `/V5_SYS` | 103.86, 105.45 |
-| 4 NC | — | 106.14, 105.45 |
-| 5 VOUT | `/+3V3_RF` | 106.14, 103.55 |
+| 1 VIN | `/V5_SYS` | 103.862, 103.550 |
+| 2 GND | `GND` | 103.862, 104.500 |
+| 3 EN | `/V5_SYS` | 103.862, 105.450 |
+| 4 NC | — | 106.138, 105.450 |
+| 5 VOUT | `/+3V3_RF` | 106.138, 103.550 |
 
-The capacitor pads sit 0.8 mm from the pin ends. Courtyards: C105 ends at
-x 102.63, U9 starts at 102.95. C106 starts at 107.37, U9 ends at 107.05.
+A 0603 pad pitch of 1.55 mm cannot match the SOT-23-5 pitch of 0.95 mm, so no
+capacitor pad is exactly level with a U9 pin. Each capacitor pad 1 sits 0.325 mm
+above its pin and joins it with a 45° jog.
+
+Gap from the capacitor pad to the U9 pad end: C105 1.33 mm, C106 0.83 mm.
+Courtyard check: no overlaps.
 
 ## 4. Copper on the parent board
 
@@ -133,9 +139,12 @@ at (103.9, 106.8) drops EN to the In2 plane instead.
 
 | Location | Count | Net |
 |---|---|---|
-| (103.9, 106.8), below EN | 1 | `/V5_SYS` |
-| Beside C105.1 | 1 | `/V5_SYS` |
-| Beside C105.2, C106.2, U9.2 | 1 each | GND |
+| (103.862, 106.8), below EN | 1 | `/V5_SYS` |
+| (101.3, 102.1), above C105.1 | 1 | `/V5_SYS` |
+| (101.3, 105.9), below C105.2 | 1 | GND |
+| (108.1, 105.9), below C106.2 | 1 | GND |
+
+All vias 0.6 mm pad on 0.3 mm drill. U9.2 has no via of its own; see §10.
 
 One via carries 30 mA with a margin of 25 times. No thermal via is needed; see
 §1.
@@ -156,8 +165,8 @@ arrival, ending at y 110.5. Via 0.6 mm pad on 0.3 mm drill.
 GND pitch is 3.0 mm between 104.4 and 107.4. Signal pitch to each neighbour is
 1.6 mm. One via per power net carries this load.
 
-`/+3V3_RF` leaves C106.1 on F.Cu, runs east of C106 at x 109.3, and drops to
-the row. It never passes over the input side.
+`/+3V3_RF` leaves C106.1 on F.Cu, runs east of C106 at x 109.0, and drops to
+the row. It never passes over the input side. GND vias carry no stub.
 
 ## 9. Checks before you believe a number
 
@@ -168,3 +177,52 @@ the row. It never passes over the input side.
    the count explodes, restore, diff.
 4. Count segments on every interface net to its breakout via.
 5. Render the board and look at it.
+
+## 10. Changes from the draft
+
+| Item | Draft | Laid out | Why |
+|---|---|---|---|
+| C105 X | 101.900 | 101.300 | At 101.9 the gap from C105.2 to U9.2 was 0.83 mm. Both GND pads need a 0.5 mm thermal gap, so the F.Cu pour could not fill between them. U9.2 got one spoke against a minimum of 2, and DRC gave `starved_thermal`. At 101.3 the pour fills between them and DRC is clean. The cost is 0.6 mm more loop, against the §2 aim of 1 mm |
+| U9.2 to C105.2 | draft implied a direct path | F.Cu pour only | A direct 0.3048 mm track was tried first. KiCad does not count a track as a spoke, and the track took the west spoke position. It was deleted |
+| GND via beside U9.2 | 1 | 0 | No 0.6 mm via fits between the SOT-23-5 pad rows or between C105 and U9 with 0.2 mm clearance. U9.2 reaches GND through the F.Cu pour and the C105.2 via |
+| EN via | 103.9, 106.8 | 103.862, 106.8 | On the pin centre line, so the track is straight |
+| `/+3V3_RF` drop | x 109.3 | x 109.0 | Straight down to the breakout via at x 109.0. Track edge 0.85 mm from the board edge |
+| Breakout stubs | "both" on GND | signal vias only | The procedure puts a stub on signal vias only, so `track_dangling` counts the signal stubs |
+
+## 11. Closing state
+
+Measured 2026-09-24 with `kicad-cli pcb drc --severity-all --schematic-parity
+--refill-zones`.
+
+| Item | Count |
+|---|---|
+| Errors | 0 |
+| Unconnected | 0 |
+| Schematic parity | 0 |
+| `track_dangling` | 2, the two signal stubs |
+| Silkscreen warnings | 5, left for the GUI silk pass: C106 reference clipped by the edge, C105 reference over U9 pads (3) and over the U9 outline |
+| Canary (`check_import.py`) | 7 to 61, PASS |
+
+Copper: 12 segments, 9 vias.
+
+| Net | F.Cu segments | B.Cu segments | Vias |
+|---|---|---|---|
+| `/V5_SYS` | 5 (3 C105 to U9.1, 1 EN, 1 stub) | 0 | 3 |
+| `/+3V3_RF` | 4 (U9.5 to the breakout via) | 1 (stub) | 1 |
+| `GND` | 2 (capacitor to via) | 0 | 5 |
+
+Breakout row, y 109.5. F.Fab labels at y 108.3, size 0.7, rotation 90.
+
+| x | Net | Arrives on | Stub | Stub end |
+|---|---|---|---|---|
+| 101.2 | `GND` | pours, In1 | — | — |
+| 102.8 | `/V5_SYS` | In2.Cu plane | F.Cu, 1.0 mm | 102.8, 110.5 |
+| 104.4 | `GND` | pours, In1 | — | — |
+| 107.4 | `GND` | pours, In1 | — | — |
+| 109.0 | `/+3V3_RF` | F.Cu track, 4 segments from U9.5 | B.Cu, 1.0 mm | 109.0, 110.5 |
+
+Open:
+
+1. Silkscreen pass in the GUI.
+2. The F.Fab value fields of U9 and C105 overlap the breakout labels, and C105's
+   value field sits off the board edge. F.Fab only.
