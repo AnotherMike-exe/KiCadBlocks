@@ -1,0 +1,315 @@
+(version 1)
+# ============================================================================
+#  PoE-Ethernet-Si3402-W5500 - module reference board design rules
+#  FAB: PCBWay, 4-layer 1.6mm.  Derived from Plum-RFBridge.kicad_dru.
+#
+#  WHAT CHANGED FROM THE PARENT FILE, AND WHY
+#  - The J1 (USB-C), J3 (SMA) and SW1/SW2 exceptions are GONE.  None of those
+#    parts exist on this module.  A rule that excuses nothing is latent
+#    permission to ship a relaxed figure.  See the parent file's "J1 Amphenol
+#    exceptions: REMOVED" note for the same reasoning.
+#  - The fine-pitch fanout rule covers U1 (Si3402-B) and U4 (W5500).
+#    Every other host-board part is gone.
+#  - The barrier rule KEEPS its J2 exception.  The magjack is on this board,
+#    and its land pattern is the reason.  See the rule for the measurement.
+#
+#  !! EVERY REFERENCE BELOW IS TIED TO ONE PLACEMENT OF THE DESIGN BLOCKS. !!
+#  The Design Blocks panel renumbers on placement.  This file was written for
+#  the placement of 2026-09-22:
+#      U1 Si3402-B    U2 optocoupler   U3 TLV431   U4 W5500
+#      J1 magjack     T1 transformer   Y1 crystal
+#      C16, C17 Y2 safety caps         C39 shield cap      L1 output inductor
+#  A re-placement moves these.  The last one turned the W5500 from U3 into U4,
+#  while U3 became the TLV431, so a stale `insideCourtyard('U3')` would have
+#  scoped a fine-pitch relaxation onto a SOT-23.  Re-read the netlist after any
+#  re-placement, and re-check every reference in this file.
+#
+#  !! A SYNTAX ERROR ANYWHERE HERE SILENTLY DISABLES THE WHOLE FILE !!
+#  KiCad reports no error.  It falls back to built-in defaults and DRC returns
+#  FEWER violations, which looks like progress.  A CONDITION STRING MUST BE ON
+#  ONE LINE.  After any edit run `kicad-cli pcb drc --refill-zones` and confirm
+#  the violation count did not collapse.
+# ============================================================================
+
+# ----------------------------- PCBWay 4-layer, 1oz / 0.5oz copper -----------
+# track_width is a fab CAPABILITY check.  The clearance constraint is
+# deliberately absent: a .kicad_dru clearance constraint OVERRIDES the netclass,
+# so a board-wide floor here would silently replace PoE_Primary's 0.2mm with
+# the floor value.  Measured on the parent board 2026-08-28.  The netclasses
+# govern clearance.  The lowest netclass figure on this module is 0.1524mm,
+# already above PCBWay's 0.09mm capability.
+(rule "Minimum Trace Width (outer layer)"
+(constraint track_width (min 0.09mm))
+(layer outer)
+(condition "A.Type == 'track'"))
+
+(rule "Minimum Trace Width (inner layer)"
+(constraint track_width (min 0.1mm))
+(layer inner)
+(condition "A.Type == 'track'"))
+
+(rule "drill hole size (mechanical)"
+(constraint hole_size (min 0.15mm) (max 6.3mm)))
+
+(rule "Minimum Via Diameter and Hole Size"
+(constraint hole_size (min 0.3mm))
+(constraint via_diameter (min 0.45mm))
+(condition "A.Type == 'via'"))
+
+(rule "PTH Hole Size"
+(constraint hole_size (min 0.2mm) (max 6.35mm))
+(condition "A.Type != 'Via' && A.isPlated()"))
+
+(rule "Minimum Non-plated Hole Size"
+(constraint hole_size (min 0.5mm))
+(condition "A.Type == 'pad' && !A.isPlated()"))
+
+# Scoped to COMPONENT holes only (drill >= 0.3mm).  Below that a plated hole is
+# a via-class feature and "PTH Hole Size" above governs it.  Unscoped this rule
+# fires on every thermal-via pad in a footprint that carries its own array.
+(rule "Pad Size"
+(constraint hole_size (min 0.5mm))
+(constraint annular_width (min 0.25mm))
+(condition "A.Type == 'Pad' && A.isPlated() && A.Hole_Size_X >= 0.3mm"))
+
+(rule "Min. Plated Slot Width"
+(constraint hole_size (min 0.5mm))
+(condition "(A.Hole_Size_X != A.Hole_Size_Y) && A.isPlated()"))
+
+# The isolation slot is NPTH and must clear this.  PCBWay's minimum NPTH slot
+# is 0.8mm at +/-0.2mm tolerance, so the module draws the slot at 1.0mm.
+(rule "Min. Non-Plated Slot Width"
+(constraint hole_size (min 0.8mm))
+(condition "(A.Hole_Size_X != A.Hole_Size_Y) && !A.isPlated()"))
+
+# ----------------------------- Minimum clearance ----------------------------
+(rule "hole to hole clearance (different nets)"
+(constraint hole_to_hole (min 0.5mm))
+(condition "A.Net != B.Net"))
+
+(rule "via to track clearance"
+(constraint hole_clearance (min 0.254mm))
+(condition "A.Type == 'via' && B.Type == 'track'"))
+
+(rule "via to via clearance (same nets)"
+(constraint hole_to_hole (min 0.254mm))
+(condition "A.Type == 'via' && B.Type == A.Type && A.Net == B.Net"))
+
+(rule "pad to pad clearance (with hole, different nets)"
+(constraint hole_to_hole (min 0.5mm))
+(condition "A.Type == 'pad' && B.Type == A.Type && A.Net != B.Net"))
+
+(rule "pad to pad clearance (without hole, different nets)"
+(constraint clearance (min 0.127mm))
+(condition "A.Type == 'Pad' && B.Type == 'Pad'"))
+
+(rule "NPTH to Track clearance"
+(constraint hole_clearance (min 0.254mm))
+(condition "A.Pad_Type == 'NPTH, mechanical' && B.Type == 'track'"))
+
+(rule "NPTH with copper around"
+(constraint hole_clearance (min 0.20mm))
+(condition "A.Pad_Type == 'NPTH, mechanical' && B.Type != 'track'"))
+
+(rule "PTH to Track clearance"
+(constraint hole_clearance (min 0.33mm))
+(condition "A.isPlated() && A.Type != 'Via' && B.Type == 'track'"))
+
+(rule "Pad to Track clearance"
+(constraint clearance (min 0.2mm))
+(condition "A.isPlated() && A.Type != 'Via' && B.Type == 'track'"))
+
+(rule "Trace to Outline"
+(constraint edge_clearance (min 0.3mm))
+(condition "A.Type == 'track'"))
+
+# ----------------------------- silkscreen -----------------------------------
+(rule "Minimum Text"
+(constraint text_thickness (min 0.15mm))
+(constraint text_height (min 0.8mm))
+(layer "?.Silkscreen"))
+
+(rule "Pad to Silkscreen"
+(constraint silk_clearance (min 0.15mm))
+(layer outer)
+(condition "A.Type == 'pad' && (B.Type == 'text' || B.Type == 'graphic')"))
+
+# ============================================================================
+#  MODULE RULES
+# ============================================================================
+
+# --- Fine-pitch fanout clearance, U1 and U4 only -----------------------------------
+# The Si3402-B is a 0.8mm-pitch QFN-20.  A via placed in line with a pin must
+# clear the pads either side of it.  At the Default netclass clearance of
+# 0.1524mm the largest legal via is smaller than this file's own 0.45mm
+# minimum, so there is no legal via at those pins.  On the parent board an
+# autorouter answered that by silently escalating 23 pads to 0.25mm "advanced"
+# vias.  Relaxing to 0.10mm INSIDE U5's courtyard alone lets a 0.45mm via fit
+# with margin and keeps the module on STANDARD fab.  General routing keeps
+# 0.1524mm.  Verified by DRC, not assumed.
+#
+# This rule sits BEFORE the isolation barrier so the barrier still wins inside
+# U1, which is entirely on the primary side.
+(rule "Fine-pitch fanout clearance"
+(constraint clearance (min 0.1mm))
+# hole_clearance too.  A 0.3mm drill in the 0.750mm gap between two pads leaves
+# 0.225mm copper-to-hole, under the board's 0.254mm min_hole_clearance.  0.20mm
+# is the figure this file already accepts for copper around a hole, see "NPTH
+# with copper around" above.  Without this the 0.45mm via still fails, on the
+# DRILL.
+(constraint hole_clearance (min 0.20mm))
+(condition "A.insideCourtyard('U1') || A.insideCourtyard('U4')"))
+
+# --- PoE isolation barrier --------------------------------------------------
+# 2.5mm primary to secondary.  Practice-derived and explicitly NOT
+# vendor-sourced: no document we hold gives a PCB spacing figure.  Skyworks and
+# Coilcraft state only the requirement - IEEE 802.3, 1500 Vrms for 60s, primary
+# to secondary.
+#
+# Do NOT relax this by citing AN956 s8.2 ("no particular spacing requirements
+# other than those of high-yield board manufacture").  That scopes the
+# Si3402-B's own SELV WORKING voltage.  The governing constraint is the 802.3
+# hipot between the MDI and any conductor of any OTHER cable.  T1 (1500 Vrms),
+# U7 (SMDIP-4_W9.53mm_Clearance8mm, chosen for 8mm creepage) and C89/C90
+# (Y2 3kV) all exist to hold that barrier.  A barrier is worth its smallest gap.
+#
+# THE FOUR BRIDGES AND THEIR PAD ROWS, measured from the footprints:
+#   T1  FA2924-AL   pads 1-5 primary row, pads 6-10 secondary row, 17.02mm apart
+#                   Pad 6 is a MECH_NC on the SECONDARY row.  Coilcraft Doc 608
+#                   rev 2021-12-22 labels pins 1-2 "Pri" and 7-10 "Sec".
+#   U2  SMDIP-4     pins 3,4 primary; pins 1,2 secondary; rows 9.53mm apart
+#   C16 disc P10.00 pin 1 VPOS (primary), pin 2 POE_5V (secondary)
+#   C17 disc P10.00 pin 1 VNEG (primary), pin 2 GND (secondary)
+#
+# !! CONDITION MUST STAY ON ONE LINE - see the warning in the header. !!
+#
+# !! TRAP: A BARE `.Reference` ACCESS DISABLES THE WHOLE RULE. !!
+# A track, a via and a zone have no parent footprint.  Reading `.Reference` on
+# one does not yield an empty string.  It makes the ENTIRE condition evaluate
+# false, silently.  Measured by bisection on the parent board: the netclass
+# clauses alone gave 452 hits, and adding an unguarded `A.Reference !=
+# B.Reference` gave 0.  Every `.Reference` test must sit behind an
+# `A.Type != 'Pad' ||` guard.  The guard is also the correct semantics: only a
+# pad can belong to a footprint at all.  Do not "simplify" these guards away.
+#
+# The `A.Reference != B.Reference` clause excuses a component's OWN pads.  On
+# the parent board it removed 33 hits inside U5, where the primary pads sit
+# 0.5mm from the unconnected NC pins.  A package's internal spacing is the
+# manufacturer's problem, not the barrier's.  The four BRIDGES are NOT excepted
+# against OTHER components - that gap is exactly what this rule polices.
+#
+# FLOATING PADS.  A floating pad lands in netclass Default, and this rule reads
+# Default as secondary, so a genuinely-primary pad within 2.5mm of one trips.
+# Fixed in the netclass patterns, not here.  See docs/Board-Setup.md.
+(rule "PoE isolation barrier"
+(constraint clearance (min 2.5mm))
+(condition "(A.NetClass == 'PoE_Primary' || A.NetClass == 'GND_PRI') && (B.NetClass != 'PoE_Primary' && B.NetClass != 'GND_PRI') && (A.Type != 'Pad' || B.Type != 'Pad' || A.Reference != B.Reference) && !A.insideCourtyard('J1') && !B.insideCourtyard('J1')"))
+
+# --- Si3402-B thermal via array ---------------------------------------------
+# The 3x3 array under U1's exposed pad is on net VNEG, the same net as the pad,
+# so no clearance rule applies between them.  The array is listed here so the
+# next reader knows it is deliberate and not stray copper.  Geometry and the
+# reason for the 0.9mm pitch are in docs/Layout-Spec.md.
+
+# --- J1 land pattern, the barrier exception --------------------------------
+# The exception inside "PoE isolation barrier" above is REQUIRED, not a
+# shortcut.  J1 is an Abracon ARJM11C7 integrated-magnetics jack.  Its line
+# side PoE taps interleave with its chip side data pins across ONE pad field:
+#     line side  pins 1, 2, 6, 7   VC2-, VC1-, VC2+, VC1+
+#     chip side  pins 3, 4, 5, 8, 9, 10   RD-, RCT, RD+, TD-, TCT, TD+
+# The tightest primary to secondary pair is 2 against 3, at 2.84 mm centre to
+# centre and about 1.3 mm copper to copper.  Abracon's land pattern fixes that.
+# Layout cannot improve it, and Abracon's own 1500 Vrms construction is the
+# isolation there.  Without the exception J2 produces violations that can never
+# be cleared.
+#
+# THE EXCEPTION COVERS J1's COURTYARD, NOT ONLY ITS PADS.  MEASURED 2026-09-23.
+#
+# An earlier version excepted `A.Reference != 'J1'`, which excuses J1's pads
+# alone.  DRC then reported three barrier errors, and all three were
+# structural rather than layout mistakes:
+#
+#     POE_VC2N track vs MDI_RDN track     2.29 mm
+#     MDI_RDP track vs POE_VC1P track     2.29 mm
+#     MDI_RDP track vs POE_VC1P track     0.96 mm
+#
+# Two adjacent same-row pads sit 2.54 mm apart.  A track leaves each one.  Even
+# at zero width the two tracks are 2.54 mm apart, and two 0.2 mm tracks leave
+# 2.29 mm.  NO LAYOUT REACHES 2.5 mm INSIDE THAT PAD FIELD, on any layer,
+# because every track must start at its own pad.  The same argument that
+# excuses the pads excuses the tracks between them.
+#
+# The physical barrier inside the jack body is Abracon's 1500 Vrms
+# construction, exactly as it is for the pads.  The designer's 2.5 mm barrier
+# starts where the fanout leaves the body, at y 68.0.
+#
+# J1's courtyard is x 115.475 to 134.525 and y 50.04 to 66.05.  The barrier
+# band starts at y 68.0, so 1.95 mm of board separates the exception from the
+# band.  Every tap reaches x < 127 and every MDI escape reaches x > 129.5
+# before y 68.  `Layout-Spec.md` section 4 lists each escape.
+#
+# J1 against any other component still gets the full 2.5 mm, because no other
+# footprint sits inside J1's courtyard.  `check_courtyards.py` proves that.
+
+# --- MDI pairs -------------------------------------------------------------
+# The four MDI pairs run from J1 to U4.  The W5500 is 10/100 only, so the
+# fastest edge on this board is 100BASE-TX.  MEASURED REASONING, not a rule of
+# thumb: a 100BASE-TX edge is about 4 ns, and the critical length is
+#     rise_time x propagation_velocity / 6 = 4 ns x 150 mm/ns / 6 = 100 mm.
+# Every MDI run on this module is under 40 mm, so controlled impedance is not
+# required and this file does not claim it.  What DOES matter is length match
+# inside each pair, and a continuous return path.
+#
+# The stackup makes the point concrete.  F.Cu sits 0.1 mm above In1.Cu.  A
+# 100 ohm differential pair on a 0.1 mm dielectric needs about 0.15 mm traces,
+# which is under the 0.2 mm min_track_width in board setup.  Do not chase
+# 100 ohms by lowering that figure.  Raise the F.Cu to In1.Cu prepreg to
+# 0.2 mm first, and only if a future part needs gigabit.
+# THE SKEW RULE IS REMOVED.  IT COULD NEVER PASS, AND HERE IS WHY.
+#
+# It read `(constraint skew (max 0.5mm))` on `A.NetClass == 'MDI'`.  A skew
+# constraint compares every net the condition selects against every other one.
+# The MDI class holds ten nets, and each pair is cut into three nets by its
+# series parts:
+#     J1.3 -> MDI_RDN -> C32 -> RXN_T -> R15 -> RXN_CHIP -> U4.5
+# So the rule compared a 19 mm segment against an 8 mm one and against the
+# other pair.  It reported failure whatever the layout did.
+#
+# KiCad does not follow a net through a series component, so **DRC cannot
+# check this requirement at all**.  One requirement, one mechanism: the
+# mechanism is the design record, not DRC.  Measured end to end, 2026-09-23:
+#
+#     RX   J1.3 -> U4.5   35.68 mm      J1.5 -> U4.6    35.44 mm    skew 0.24 mm
+#     TX   J1.8 -> U4.1   29.26 mm      J1.10 -> U4.2   28.27 mm    skew 0.99 mm
+#
+# Both are far inside the 0.5 inch (12.7 mm) convention for 100BASE-TX.  At
+# 150 mm/ns, 0.99 mm is 6.6 ps against a budget measured in hundreds of ps.
+#
+# Re-measure with `Modules/analysis/check_plan.py` after any reroute.  The
+# numbers above exclude the bias stubs to R19, R21, R18, R20 and R22, which
+# are not part of the signal path.
+
+# --- Chassis ground --------------------------------------------------------
+# CGND carries J1's shield, tied to GND only through C39, a 1nF 2kV capacitor.
+# It is not a ground.  Keep it clear of both domains.
+(rule "Chassis clearance"
+(constraint clearance (min 0.4mm))
+(condition "A.NetClass == 'Chassis' && B.NetClass != 'Chassis'"))
+
+# ---------------------------------------------------------------------------
+# Fine-pitch fanout under U4 (W5500, LQFP-48, 0.5 mm pitch).
+#
+# The five SPI nets escape pads 32..36 into a via row at y 82.3 under the
+# package body. The row uses 0.50 mm pads on 0.30 mm drills at 0.70 mm pitch,
+# which gives 0.40 mm hole to hole. The board rule asks for 0.50 mm.
+#
+# The relaxation is scoped to U4's courtyard. It applies to nothing else.
+# Raise it with the fab before you order. PCBWay and JLCPCB both accept
+# 0.35 mm hole to hole on a 4-layer board at the time of writing.
+#
+# Annular ring is 0.10 mm, which clears the board minimum.
+# ---------------------------------------------------------------------------
+
+(rule "Hole to hole - fine-pitch fanout under U4 only"
+    (constraint hole_to_hole (min 0.35mm))
+    (condition "A.insideCourtyard('U4') && B.insideCourtyard('U4')"))

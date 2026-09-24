@@ -1,0 +1,21 @@
+# Development references, never committed
+_resources/
+
+# KiCad working files
+*-backups/
+*.kicad_prl
+~*.lck
+fp-info-cache
+_autosave-*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+
+# Generated output
+_exports/
+
+# macOS
+.DS_Store
+._*
+
+# Editor local history
+.history/
