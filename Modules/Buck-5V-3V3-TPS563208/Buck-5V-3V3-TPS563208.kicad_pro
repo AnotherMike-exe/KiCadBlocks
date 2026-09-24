@@ -488,7 +488,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Ethernet-W5500-Magjack.kicad_pro",
+    "filename": "Buck-5V-3V3-TPS563208.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -513,14 +513,6 @@
         "wire_width": 6
       },
       {
-        "clearance": 0.4,
-        "name": "Chassis",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 7,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "tuning_profile": ""
-      },
-      {
         "clearance": 0.1524,
         "name": "GND_SYS",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
@@ -529,43 +521,16 @@
         "tuning_profile": ""
       },
       {
-        "clearance": 0.4,
-        "name": "Line_Side",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 8,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "tuning_profile": ""
-      },
-      {
-        "bus_width": 12,
-        "clearance": 0.2,
-        "diff_pair_gap": 0.2,
-        "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.2,
-        "line_style": 0,
-        "microvia_diameter": 0.4572,
-        "microvia_drill": 0.254,
-        "name": "MDI",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 6,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.2,
-        "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
-        "wire_width": 6
-      },
-      {
         "bus_width": 12,
         "clearance": 0.1524,
         "line_style": 0,
         "microvia_diameter": 0.4572,
         "microvia_drill": 0.254,
-        "name": "Power_1",
+        "name": "Power_2",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 5,
+        "priority": 4,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.3048,
+        "track_width": 0.508,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -583,72 +548,16 @@
         "pattern": "GND"
       },
       {
-        "netclass": "Power_1",
+        "netclass": "Power_2",
+        "pattern": "/V5_SYS"
+      },
+      {
+        "netclass": "Power_2",
         "pattern": "+3V3"
       },
       {
-        "netclass": "Power_1",
-        "pattern": "/3V3A"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/TXP_MDI"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/TXN_MDI"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/RXP_T"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/RXN_T"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/TXP_CHIP"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/TXN_CHIP"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/RXP_CHIP"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/RXN_CHIP"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/MDI_RDP"
-      },
-      {
-        "netclass": "MDI",
-        "pattern": "/MDI_RDN"
-      },
-      {
-        "netclass": "Chassis",
-        "pattern": "/CGND"
-      },
-      {
-        "netclass": "Line_Side",
-        "pattern": "/POE_VC1P"
-      },
-      {
-        "netclass": "Line_Side",
-        "pattern": "/POE_VC1N"
-      },
-      {
-        "netclass": "Line_Side",
-        "pattern": "/POE_VC2P"
-      },
-      {
-        "netclass": "Line_Side",
-        "pattern": "/POE_VC2N"
+        "netclass": "Power_2",
+        "pattern": "/SW_NODE"
       }
     ]
   },
@@ -788,9 +697,9 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "Ethernet-W5500-Magjack.kicad_sch",
-        "name": "Ethernet-W5500-Magjack",
-        "uuid": "b6492045-238b-4693-bcfa-2126c49c69c6"
+        "filename": "Buck-5V-3V3-TPS563208.kicad_sch",
+        "name": "Buck-5V-3V3-TPS563208",
+        "uuid": "bfc24bce-c952-482e-b01e-f499cca0cf8b"
       }
     ],
     "used_designators": "",
@@ -798,8 +707,8 @@
   },
   "sheets": [
     [
-      "b6492045-238b-4693-bcfa-2126c49c69c6",
-      "Ethernet-W5500-Magjack"
+      "bfc24bce-c952-482e-b01e-f499cca0cf8b",
+      "Buck-5V-3V3-TPS563208"
     ]
   ],
   "text_variables": {},

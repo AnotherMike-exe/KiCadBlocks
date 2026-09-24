@@ -1,5 +1,3 @@
 (sym_lib_table
   (version 7)
-
-  (lib (name "PlumRFBridge") (type "KiCad") (uri "/Users/michaelprice/Library/Application Support/Mountain Duck/Volumes.noindex/SyncIn.localized/personal/Plum Solutions/KiCAD/Symbols/PlumRFBridge.kicad_sym") (options "") (descr ""))
 )
