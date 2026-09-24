@@ -165,18 +165,26 @@
 # reason.  Abracon interleaves the line side and chip side pins in one pad
 # field, and the tightest pair is about 1.3 mm copper to copper.  Layout cannot
 # improve it.
+#
+# So the rule stops at J2's courtyard, as the PoE barrier stops at J1's.  The
+# carried-over MDI_RDP escape passes pad 7 (/POE_VC1P) at 0.26 mm inside the
+# pad field, measured 2026-09-24.  IPC-2221 B4 (external, under solder mask)
+# asks 0.13 mm for 31-150 V, so 0.26 mm holds.  Outside the courtyard the full
+# 0.4 mm applies.
 (rule "J2 line side clearance"
 (constraint clearance (min 0.4mm))
-(condition "A.NetClass == 'Line_Side' && B.NetClass != 'Line_Side' && (A.Type != 'Pad' || B.Type != 'Pad' || A.Reference != B.Reference)"))
+(condition "A.NetClass == 'Line_Side' && B.NetClass != 'Line_Side' && (A.Type != 'Pad' || B.Type != 'Pad' || A.Reference != B.Reference) && !A.insideCourtyard('J2') && !B.insideCourtyard('J2')"))
 
 # --- MDI pairs --------------------------------------------------------------
-# The W5500 is 10/100 only.  A 100BASE-TX edge is about 4 ns, so the critical
-# length is 4 ns x 150 mm/ns / 6 = 100 mm.  Every MDI run here is under 40 mm,
-# so controlled impedance is not required and this file does not claim it.
-# Length match inside each pair and a continuous return path are what matter.
-(rule "MDI pair length match"
-(constraint skew (max 0.5mm))
-(condition "A.NetClass == 'MDI'"))
+# NO SKEW RULE.  A skew constraint compares every net its condition selects.
+# Each MDI pair is cut into three nets by its series parts, for example
+#     J2.3 -> MDI_RDN -> C65 -> RXN_T -> R47 -> RXN_CHIP -> U3.5
+# so a rule on the MDI class compares unlike segments and always fails.  KiCad
+# does not follow a net through a series part, so DRC cannot check this.  The
+# design record holds the end to end lengths instead: PoE-Ethernet-Si3402-W5500
+# Layout-Spec.md, the same copper, skew 0.24 mm RX and 0.99 mm TX.
+# The W5500 is 10/100 only.  Every MDI run is under 40 mm against a 100 mm
+# critical length, so controlled impedance is not required.
 
 # --- Chassis ground ---------------------------------------------------------
 # CGND carries J2's shield, tied to GND only through C67, a 1nF 2kV capacitor.
@@ -184,3 +192,12 @@
 (rule "Chassis clearance"
 (constraint clearance (min 0.4mm))
 (condition "A.NetClass == 'Chassis' && B.NetClass != 'Chassis'"))
+
+# --- Fine-pitch fanout under U3 --------------------------------------------
+# The five SPI nets escape into a via row at y 82.3 under the W5500 body:
+# 0.50 mm pads on 0.30 mm drills at 0.70 mm pitch, 0.40 mm hole to hole.
+# The board rule asks 0.50 mm.  Scoped to U3's courtyard alone.  PCBWay
+# accepts 0.35 mm hole to hole on 4 layers.  Same rule as the PoE module.
+(rule "Hole to hole - fine-pitch fanout under U3 only"
+(constraint hole_to_hole (min 0.35mm))
+(condition "A.insideCourtyard('U3') && B.insideCourtyard('U3')"))
