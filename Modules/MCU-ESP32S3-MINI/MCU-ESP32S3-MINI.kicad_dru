@@ -139,3 +139,11 @@
 (rule "SW own pads to own pegs"
 (constraint hole_clearance (min 0.09mm))
 (condition "A.Pad_Type == 'NPTH, mechanical' && ((A.Parent == 'SW1' && B.Parent == 'SW1') || (A.Parent == 'SW2' && B.Parent == 'SW2'))"))
+
+# --- C2 at U1 pin 3 (review R1-9, HDG 4.3.2) -------------------------------
+# The 2.0 mm feed-side strip is narrower than an 0805 courtyard. C2's pads sit
+# 0.525 mm from U1's pads and its body 0.33 mm from the module body. Only the
+# C2-to-U1 courtyard pair is relaxed.
+(rule "C2 beside U1 pin 3"
+(constraint courtyard_clearance (min -1mm))
+(condition "(A.Reference == 'C2' && B.Reference == 'U1') || (A.Reference == 'U1' && B.Reference == 'C2')"))

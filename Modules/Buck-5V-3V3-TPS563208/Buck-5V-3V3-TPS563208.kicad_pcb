@@ -153,7 +153,7 @@
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "F.Cu")
 		(uuid "1cf6f059-120c-419f-9a7f-f51f452f843b")
-		(at 114.775 105.1)
+		(at 114.775 105.95)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
 		(property "Reference" "TP3"
@@ -702,6 +702,7 @@
 		(path "/e0c2df81-771c-4269-ac65-a409a1c6d7e7")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -880,6 +881,7 @@
 		(path "/043b9129-dd27-4bec-99da-5f90603073ac")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1058,6 +1060,7 @@
 		(path "/cc855d01-704b-480a-8fcb-8c768c39721d")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1236,6 +1239,7 @@
 		(path "/13c6acfd-106c-4c9a-abba-46a1bae66da4")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1938,6 +1942,7 @@
 		(path "/c5fe51a5-226c-4854-8a65-5b721e554db4")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2116,6 +2121,7 @@
 		(path "/62bdc600-2efc-4f19-9f30-902bf1adf7a6")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2490,6 +2496,7 @@
 		(path "/f29172e3-91a1-4d1d-8e06-94ad2adaa2e2")
 		(sheetname "/")
 		(sheetfile "Buck-5V-3V3-TPS563208.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2737,11 +2744,11 @@
 	)
 	(segment
 		(start 114.775 106.95)
-		(end 114.775 105.1)
+		(end 114.775 105.95)
 		(width 0.2)
 		(layer "F.Cu")
 		(net "/VFB_33")
-		(uuid "0ce6f0a1-7048-4809-a6e2-3d3e46ed73ef")
+		(uuid "29bf5273-0419-4739-9222-2d8a2c0a650f")
 	)
 	(segment
 		(start 112.1375 106.95)
@@ -2750,6 +2757,14 @@
 		(layer "F.Cu")
 		(net "/VFB_33")
 		(uuid "7be6f7b5-4419-4096-8805-899c36110cb7")
+	)
+	(segment
+		(start 109.8625 104.1)
+		(end 109 104.1)
+		(width 0.508)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "3f56f080-6c0c-406b-b935-6fb9217e8902")
 	)
 	(segment
 		(start 105.15 110.8)
@@ -2766,6 +2781,14 @@
 		(layer "F.Cu")
 		(net "GND")
 		(uuid "53f27e71-b71a-4796-abaa-ab10f6a87722")
+	)
+	(segment
+		(start 109.8625 104.1)
+		(end 110.75 104.1)
+		(width 0.508)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "63d9e59f-0c5e-4ed6-8b3a-b3181b7cedc1")
 	)
 	(segment
 		(start 105.15 113.4)
@@ -2800,6 +2823,22 @@
 		(uuid "7f02bdc5-361a-49f0-8116-2bacf394ac05")
 	)
 	(segment
+		(start 111.9 112.8)
+		(end 111.2 112.8)
+		(width 0.508)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "81eb2278-0d61-45ea-af02-e1426bb5c40b")
+	)
+	(segment
+		(start 109.8625 110.175)
+		(end 108.95 110.175)
+		(width 0.508)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "8d68aa34-a2b6-4b82-a879-e483f04a6e75")
+	)
+	(segment
 		(start 105.15 110.8)
 		(end 106.25 111.25)
 		(width 0.508)
@@ -2814,6 +2853,22 @@
 		(layer "F.Cu")
 		(net "GND")
 		(uuid "a4a8a962-92ec-4364-a6f5-a3f7b9ec4c78")
+	)
+	(segment
+		(start 111.9 112.8)
+		(end 112.6 112.8)
+		(width 0.508)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "baeeb879-b006-4961-bc48-de04d926d6d6")
+	)
+	(segment
+		(start 108.95 110.175)
+		(end 108.85 109.25)
+		(width 0.508)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "c642a166-77b8-409c-85cc-ae143e38c9d2")
 	)
 	(segment
 		(start 105.15 113.4)
@@ -2840,12 +2895,28 @@
 		(uuid "39bed3f4-83aa-4f7c-bdf6-8f1afca6eb8d")
 	)
 	(via
+		(at 109 104.1)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "3d7df98e-99d5-407b-a120-0fca71436980")
+	)
+	(via
 		(at 116 117.5)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
 		(net "GND")
 		(uuid "5905ba44-1b9b-442b-aa30-0565229714b8")
+	)
+	(via
+		(at 112.6 112.8)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "62bb186b-0e7d-4573-9ee6-4be583f87296")
 	)
 	(via
 		(at 109.8625 104.1)
@@ -2896,6 +2967,22 @@
 		(uuid "b64b435c-05d3-4386-ac37-e7470635f00f")
 	)
 	(via
+		(at 108.95 110.175)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "bdd5f0dd-fea6-46c0-999d-171e3825b57d")
+	)
+	(via
+		(at 110.75 104.1)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "c1456cf9-221e-42bd-b912-1a5ea0eddd1b")
+	)
+	(via
 		(at 106.25 113.85)
 		(size 0.6)
 		(drill 0.3)
@@ -2912,12 +2999,28 @@
 		(uuid "cb654886-50d0-40ae-9478-6c86ca25b001")
 	)
 	(via
+		(at 108.85 109.25)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "e044708b-266a-44d2-a97d-625a405b3989")
+	)
+	(via
 		(at 116.425 105.9)
 		(size 0.6)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
 		(net "GND")
 		(uuid "e13e35c0-ffae-45ee-880e-0ada5e0efdde")
+	)
+	(via
+		(at 111.2 112.8)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "ed954fd6-a151-4b30-8b26-8d4cc45bbdf2")
 	)
 	(via
 		(at 106.25 112.95)

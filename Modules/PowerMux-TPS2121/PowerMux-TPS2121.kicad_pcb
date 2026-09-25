@@ -242,6 +242,7 @@
 		(path "/4d08361c-348a-42a9-8c2f-f55ed15554c2")
 		(sheetname "/")
 		(sheetfile "PowerMux-TPS2121.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1132,6 +1133,7 @@
 		(path "/fbf932bd-c4e3-425b-bcba-9db74606e676")
 		(sheetname "/")
 		(sheetfile "PowerMux-TPS2121.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1488,6 +1490,7 @@
 		(path "/9c8bfa4e-b0f9-495a-b3f9-e7462a6aced6")
 		(sheetname "/")
 		(sheetfile "PowerMux-TPS2121.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1666,6 +1669,7 @@
 		(path "/11a00c05-06e6-45bb-822b-2ce6b2a190ce")
 		(sheetname "/")
 		(sheetfile "PowerMux-TPS2121.kicad_sch")
+		(zone_connect 2)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line

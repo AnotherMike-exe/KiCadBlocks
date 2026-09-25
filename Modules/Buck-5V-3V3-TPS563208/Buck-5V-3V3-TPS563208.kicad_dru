@@ -120,3 +120,10 @@
 # ============================================================================
 
 # None.  The netclasses in the .kicad_pro govern this board.
+
+# --- TP3 on the VFB node (review R2-5, DS 7.4.1 item 9) --------------------
+# TP3's 1.0 mm pad sits against R61.1, so the VFB node carries no stub. The
+# test pad's 2.1 mm courtyard overlaps R61's. Only that pair is relaxed.
+(rule "TP3 on the VFB node"
+(constraint courtyard_clearance (min -2mm))
+(condition "(A.Reference == 'TP3' && B.Reference == 'R61') || (A.Reference == 'R61' && B.Reference == 'TP3')"))
