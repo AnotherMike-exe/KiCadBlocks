@@ -3,9 +3,10 @@
 The geometry of the module reference board. Every number is a decision, and each
 one carries its reason.
 
-Board: 25 x 30 mm, 4 layers, 1.6 mm, PCBWay. Written 2026-09-24. **Draft.** No
-board file exists yet. The placement is checked on courtyards by script only. It
-has not been rendered and has not been through DRC.
+Board: 25 x 30 mm, 4 layers, 1.6 mm, PCBWay. Written 2026-09-24. Placed and
+routed 2026-09-24 over IPC. Sections 3, 6, 7, 8 and 12 describe the board file as it
+is now. Where they differ from the draft, the change and its reason are listed
+under each table. KiCad is right where this page and the board disagree.
 
 ---
 
@@ -38,11 +39,11 @@ All coordinates are KiCad board millimetres.
 | J3 edge (top) | 105.8 → 117.0 | 100.0 |
 | RF chain band | 108.5 → 114.5 | 105.1 → 115.2 |
 | Chip and decoupling | 106.3 → 122.0 | 113.7 → 123.1 |
-| Breakout row | 101.5 → 122.0 | 128.5 |
+| Breakout row | 101.5 → 121.5 | 127.5 |
 
 J3 sits on the top edge and the breakout row on the bottom edge, as the brief
 requires. The RF chain runs straight from U4 to J3, the way TI runs it. The
-straight line makes a short feed possible: 1.2 mm of trace from C35 to J3.
+straight line makes a short feed possible: about 1.0 mm of bare trace from C35 to J3 as built.
 `Plum-RFBridge` uses a feed of about 8 mm with a diagonal jog.
 
 Board size comes from the part extents. The courtyards span x 105.8 → 121.9 and
@@ -133,80 +134,77 @@ copy them. Section 3 gives KiCad rotations derived from the nets.
 ## 3. Placement table
 
 Rotation follows KiCad. A pad at local (x, y) lands at
-`(fx + x cos t + y sin t, fy - x sin t + y cos t)`.
+`(fx + x cos t + y sin t, fy - x sin t + y cos t)`. Pad positions were read back
+from the saved board with `pads.py`. `check_courtyards.py`: no overlap. The
+smallest gaps are 0.02 mm (C28/R20, C31/L21, C33/L22, C33/L23).
 
-The plan starts from TI's positions and moves parts only where KiCad's IPC
-courtyards overlap. The TI parts are closer together than those courtyards
-allow. Every change from TI is listed below the table.
+U4 is at (111.00, 117.50), rotation 90.
 
-U4 is at (111.00, 117.50). This table comes from `_resources/Research/CC1101/plan.py`
-and `adj.py`. Run that script again after any move.
+| Ref | X | Y | Rot | Pad 1 side, net |
+|---|---|---|---|---|
+| U4 | 111.00 | 117.50 | 90 | pin 1 bottom-left |
+| C31 | 110.11 | 114.09 | 180 | right, RF_N (GND left) |
+| L20 | 112.65 | 114.10 | 180 | right, RF_P_SHUNT (RF_P left) |
+| C30 | 112.14 | 112.68 | 90 | bottom, RF_P |
+| L21 | 110.62 | 112.68 | 90 | bottom, RF_N |
+| C36 | 113.24 | 112.67 | 270 | top, GND |
+| L22 | 111.38 | 110.78 | 90 | bottom, BALUN_OUT |
+| C33 | 109.98 | 110.22 | 0 | left, GND |
+| L23 | 110.51 | 108.81 | 90 | bottom, LC_A |
+| C34 | 111.93 | 108.26 | 180 | right, GND |
+| C35 | 111.38 | 106.84 | 90 | bottom, LC_B (ANT_433 top) |
+| J3 | 111.38 | 102.56 | 90 | pad 1 x 110.63 → 112.13, y 100.02 → 105.10 |
+| C25 | 114.60 | 115.20 | 180 | right, GND |
+| C24 | 115.30 | 116.75 | 180 | right, GND |
+| C26 | 107.30 | 114.65 | 0 | left, GND |
+| C27 | 107.30 | 115.60 | 0 | left, GND |
+| R20 | 107.30 | 117.05 | 180 | right, RBIAS |
+| C28 | 107.30 | 118.00 | 0 | left, GND |
+| C22 | 111.30 | 121.75 | 90 | bottom, GND |
+| C23 | 112.25 | 121.75 | 270 | top, DCOUPL |
+| C21 | 116.84 | 116.03 | 270 | top, XTAL2 |
+| C20 | 116.84 | 118.87 | 270 | top, XTAL1 |
+| Y2 | 119.81 | 117.55 | 180 | pin 1 XTAL2 top-right, pin 3 XTAL1 bottom-left |
+| C29 | 116.00 | 122.10 | 0 | left, GND |
+| FB1 | 119.10 | 122.10 | 180 | right, +3V3_RF |
 
-| Ref | X | Y | Rot | dx | dy | Pad 1 side, net |
-|---|---|---|---|---|---|---|
-| U4 | 111.00 | 117.50 | 90 | 0.00 | 0.00 | pin 1 bottom-left |
-| C31 | 110.11 | 114.34 | 180 | −0.89 | −3.16 | right, RF_N (GND left) |
-| L20 | 112.65 | 114.35 | 180 | +1.65 | −3.15 | right, RF_P_SHUNT (RF_P left) |
-| C30 | 112.14 | 112.93 | 90 | +1.14 | −4.57 | bottom, RF_P |
-| L21 | 110.62 | 112.93 | 90 | −0.38 | −4.57 | bottom, RF_N |
-| C36 | 113.24 | 112.92 | 270 | +2.24 | −4.58 | top, GND |
-| L22 | 111.38 | 111.03 | 90 | +0.38 | −6.47 | bottom, BALUN_OUT |
-| C33 | 109.98 | 110.47 | 0 | −1.02 | −7.03 | left, GND |
-| L23 | 110.51 | 109.06 | 90 | −0.49 | −8.44 | bottom, LC_A |
-| C34 | 111.93 | 108.51 | 180 | +0.93 | −8.99 | right, GND |
-| C35 | 111.38 | 107.09 | 90 | +0.38 | −10.41 | bottom, LC_B (ANT_433 top) |
-| J3 | 111.38 | 102.54 | 90 | +0.38 | −14.96 | pad 1 y 100.00 → 105.08 |
-| C25 | 114.60 | 115.20 | 180 | +3.60 | −2.30 | right, GND |
-| C24 | 114.76 | 117.15 | 180 | +3.76 | −0.35 | right, GND |
-| C26 | 107.30 | 114.65 | 0 | −3.70 | −2.85 | left, GND |
-| C27 | 107.30 | 115.60 | 0 | −3.70 | −1.90 | left, GND |
-| R20 | 107.30 | 117.05 | 180 | −3.70 | −0.45 | right, RBIAS |
-| C28 | 107.30 | 118.00 | 0 | −3.70 | +0.50 | left, GND |
-| C22 | 111.30 | 121.45 | 90 | +0.30 | +3.95 | bottom, GND |
-| C23 | 112.25 | 121.45 | 270 | +1.25 | +3.95 | top, DCOUPL |
-| C21 | 116.84 | 116.03 | 270 | +5.84 | −1.47 | top, XTAL2 |
-| C20 | 116.84 | 118.87 | 270 | +5.84 | +1.37 | top, XTAL1 |
-| Y2 | 119.81 | 117.55 | 180 | +8.81 | +0.05 | pin 1 XTAL2 top-right, pin 3 XTAL1 bottom-left |
-| C29 | 116.00 | 122.10 | 0 | +5.00 | +4.60 | left, GND |
-| FB1 | 119.10 | 122.10 | 180 | +8.10 | +4.60 | right, +3V3_RF |
+Rotated with `rotate_component` (20): U4, C31, L20, C30, L21, C36, L22, L23, C34,
+C35, J3, C25, C24, R20, C22, C23, C21, C20, Y2, FB1. DRC reports
+`lib_footprint_mismatch` on U4 only.
 
-**Changes from TI, and why:**
+**Changes from the draft table, and why:**
 
-- **The chain moves up 0.15 mm, and L22 onward moves up another 0.2 mm.** At TI's
-  positions, C31 and L20 overlap the U4 courtyard by 0.08 to 0.10 mm, and L22
-  overlaps C30 and L21 by 0.14 to 0.16 mm.
-- **C25 moves from (+3.10, −3.40) vertical to (+3.60, −2.30) horizontal.** At TI's
-  position it overlaps C36. Pin 11 is the top-right corner pin, so the AVDD trace
-  now leaves the corner at y −2.3 and does not pass under L20 beside RF_P.
-- **C24 moves up 0.17 mm to dy −0.35.** Its VDD pad then lines up with pin 9
-  (dy −0.5). This leaves room for XOSC_Q1 (pin 8) to escape below it and
-  XOSC_Q2 (pin 10) above it.
-- **The left column (C26, C27, R20, C28) moves to 0.95 mm pitch at dx −3.70.** At
-  TI's 0.76–0.83 mm pitch the courtyards overlap.
-- **C22 and C23 move to 0.95 mm pitch.**
-- **Y2 moves up 1.14 mm to dy +0.05.** Y2.3 (XTAL1) is then at y 118.40, level
-  with the C20 XTAL1 pad at 118.39. The Q1 track becomes one straight 1.4 mm
-  segment. XTAL2 goes over the top of Y2 at y ≈ 115.3 to Y2.1 at (120.91, 116.70).
-  It clears the GND pad Y2.2, whose top edge is at 116.10.
-- **FB1 and C29 move from the right of Y2 to below it.** Power enters from the
-  bottom breakout, not from TI's right-hand connector. C29 stays on the chip side
-  of the bead, as TI's C1 does and as the schematic note says.
+- **The whole RF chain (C31 … C35) moved up 0.25 mm.** At the draft positions,
+  the pin 14 VDD track has no room between the pin 14/15 pad ends (y 115.125) and
+  the C31 pad bottom (y 114.65). With the chain 0.25 mm higher, the track runs at
+  y 114.80 with 0.30 mm to C31 and 0.225 mm to the pin 15 pad. The C35-to-J3 gap
+  becomes about 1.0 mm of bare trace.
+- **C24 moved from (114.76, 117.15) to (115.30, 116.75).** At the draft position
+  the C24 pads (y 116.84 → 117.46) block XOSC_Q1. Q1 cannot drop below them
+  because the CSn pad sits 0.5 mm under pin 8. C24 now sits between XOSC_Q2
+  (y 116.0) and XOSC_Q1 (y 117.5), with at least 0.34 mm to each.
+- **C22 and C23 moved down 0.30 mm to y 121.75.** SCLK, SO and GDO2 fan out left
+  under the chip. GDO2 needs the extra 0.3 mm to clear C22's VDD pad, and the C22
+  feed via needs it too.
+- **J3 moved down 0.02 mm, to y 102.56.** With the pads ending exactly on the
+  edge, DRC reports 5 `copper_edge_clearance` errors even with the J3
+  `edge_clearance min 0` rule, because touching counts as a collision. A scratch
+  copy showed 0 errors at 0.02 mm inboard. The rule was not changed. Pad 1 still
+  sits inside the In1 notch (x 110.38 → 112.38, y ≤ 105.33).
 
-`plan.py` finds no courtyard overlap. Several pairs have a gap of only 0.02 to
-0.09 mm, the same as TI's layout. Run `Modules/analysis/check_courtyards.py` on
-the real board. Render the board and look at it before you believe this table.
+### 3.1 Node lengths as routed
 
-### 3.1 Node lengths after placement
-
-| Node | Path | Length |
-|---|---|---|
-| RF_N | U4.13 (111.00, 115.61) → C31.1 (110.59, 114.34) → L21.1 (110.62, 113.41) | ≈ 2.3 mm |
-| RF_P | U4.12 (111.50, 115.61) → L20.2 (112.17, 114.35) → C30.1 (112.14, 113.41) | ≈ 2.4 mm |
-| RF_P_SHUNT | L20.1 (113.14, 114.35) → C36.2 (113.24, 113.40) | 0.95 mm |
-| BALUN_OUT | C30.2 (112.14, 112.45), L21.2 (110.62, 112.45) → L22.1 (111.38, 111.51) | ≈ 1.2 mm each |
-| LC_A | L22.2 (111.38, 110.55) → C33.2 (110.46, 110.47), L23.1 (110.51, 109.54) | ≈ 1.0 mm each |
-| LC_B | L23.2 (110.51, 108.58) → C34.2 (111.45, 108.51), C35.1 (111.38, 107.57) | ≈ 1.0 mm each |
-| ANT_433 | C35.2 (111.38, 106.61) → J3.1 inner end (111.38, 105.08) | 1.2 mm of trace |
+| Node | Routed copper |
+|---|---|
+| RF_N | 2.57 mm (U4.13 → C31.1 → L21.1) |
+| RF_P | 2.75 mm (U4.12 → L20.2 → C30.1) |
+| RF_P_SHUNT | 0.96 mm |
+| BALUN_OUT | 2.41 mm (two legs into L22.1) |
+| LC_A | 1.85 mm |
+| LC_B | 1.88 mm |
+| ANT_433 | 0.17 mm track, C35.2 → J3.1 centre. About 1.0 mm is bare, between the C35 pad and the J3 pad end |
+| XOSC_Q1 | 6.19 mm, U4.8 → C20.1 → Y2.3 |
+| XOSC_Q2 | 10.79 mm, U4.10 → C21.1 → over Y2 at y 114.7 → Y2.1 |
 
 ## 4. The 50 Ω feed, C35 to J3
 
@@ -271,7 +269,7 @@ reach 4.45 mm onto the board, to local x −1.91.
 **The board edge sits at local x = +2.54, the outer end of the pads.**
 
 At rotation 90, local +x points to −y. So J3's origin is 2.54 mm inside the top
-edge: y = 100.00 + 2.54 = **102.54**. Pad 1 runs y 100.00 → 105.08. The GND pads
+edge: y = 100.00 + 2.54 = **102.54**. Pad 1 runs y 100.00 → 105.08. As built, J3 sits at 102.56, 0.02 mm inboard (§3), because a pad that touches the edge fails DRC. The GND pads
 are at x 107.13 and 115.63.
 
 The courtyard reaches 14.47 mm past the origin, to y 88.07, off the board. This
@@ -296,85 +294,84 @@ for **1.6 mm finished**. The legs grip a board that is 1.57–1.65 mm thick.
    about 0.2 pF. In2 stays solid GND under J3. This cut is at the connector. It
    is not under the chip or the match, so it does not break TI rule 7.
 
-## 6. Zone plan
+## 6. Zone plan (as built)
+
+The zones were written before placement. This page does not change them.
 
 | Layer | Net | Area | Notes |
 |---|---|---|---|
-| F.Cu | GND | whole board, 0.3 mm from edge (J3 pads excepted) | 0.25 mm to RF nets, 0.2 mm elsewhere. Shunt ground pads in the RF band connect **solid**, not with thermal spokes, as on TI's layout |
-| In1.Cu | GND | whole board, **solid** | the only cut is §5.3.2. No trace on In1 anywhere (TI rule 7) |
-| In2.Cu | VDD_CC1101 | island 105.5 → 118.0, 114.0 → 123.5, priority 1 | holds a via from C29 and one via from each decap VDD pad (TI rule 5) |
-| In2.Cu | GND | whole board, priority 0 | GND under the whole RF chain and J3 |
-| B.Cu | GND | whole board | J3 B.Cu leg pads join it |
+| F.Cu | GND | 100.5,100.5 → 124.5,129.5 | thermal-relief pads (gap 0.5, spoke 0.5). The shunt pads are made solid by a short track to their own via |
+| In1.Cu | GND | same rectangle, notch x 110.38 → 112.38, y 100.5 → 105.33 under J3 pad 1 | no track on In1 |
+| In2.Cu | GND | whole rectangle | **no VDD island** |
+| B.Cu | GND | whole rectangle | holds the VDD jumpers (see §7) and the breakout stubs |
 
-**No keepout and no void under the match.** TI says to keep the ground plane
-under the chip and the balun/match unbroken (SWRS061I §7.8), so In1 stays solid
-there.
+**Changed from the draft:** there is no In2 VDD island. SWRR046 carries VDD on
+top-layer copper, with short bottom-layer jumpers where a signal crosses. This
+board does the same.
 
-**Risk: the pads now sit 0.10 mm above ground, not TI's 0.8 mm.** One 0402 pad is
-0.35 mm², about 0.14 pF to In1. On TI's board it is about 0.02 pF. Each match
-node has three pads, so it gains about 0.4 pF. For comparison, that is about 7 %
-of C34 (5.6 pF) and 10 % of C30 and C31 (3.9 pF).
+## 7. Routing as built
 
-- **Default: follow TI and keep In1 solid.** Measure conducted TX power and
-  harmonics at J3 on the first build.
-- **Option B:** cut In1 under each match pad, pad plus 0.2 mm, so the pads
-  reference In2 GND. Record it as an ADR before you use it. It works against TI
-  rule 7. **C20 and C21 are never re-tuned**, and no match value changes without
-  a measurement.
-
-## 7. Other routing rules
-
-- **U4 exposed pad:** 5 vias, 0.3 mm drill with 0.6 mm pad, at the centre and at
-  (±0.81, ±0.81), which is TI's pattern. The via pads end at 1.11 mm, inside the
-  1.2 mm half-width of the EP. **Tent them on F.Cu.** See defect D1: the
-  library footprint cannot do this.
-- **GND pins 16 and 19** each get their own via, just outside the pad row.
-- **XOSC_Q1:** U4.8 (112.89, 117.50) → C20.1 (116.84, 118.39) → Y2.3 (118.71,
-  118.40). Below C24, not under it.
-- **XOSC_Q2:** U4.10 (112.89, 116.50) → C21.1 (116.84, 115.55) → along
-  y ≈ 115.3 → Y2.1 (120.91, 116.70).
-- **GDO0 (pin 6) and CSn (pin 7) leave the right column at y 118.5 and 118.0,
-  just below XOSC_Q1.** Take them straight down at x ≈ 113.2 and 113.6. That
-  channel lies between C23 (edge 112.71) and C29 (edge 114.30). Keep 0.3 mm from
-  the Q1 track, and do not run them in parallel with it (SWRS061I §7.8).
-- **SCLK, SO, GDO2 (pins 1–3)** go down on the left of C22. C22's pad starts at
-  x 110.99, so GDO2 (x 111.00) must jog left before it descends.
-- **SI (pin 20)** leaves the left column at y 118.5 and goes down past C28.
-- **Supply:** FB1.2 → C29.2 on F.Cu, then a via to the In2 island. From each
-  decap VDD pad, a via to In2 and a short F.Cu trace to its pin. Do not run one
-  trace from pin to pin.
+- **U4 exposed pad:** 5 GND vias, 0.6 pad / 0.3 drill, at the centre and at
+  (±0.81, ±0.81). The vias have no per-via mask override, so the board default
+  applies: `tenting (front yes) (back yes)`. **They sit inside the EP's 2.4 mm
+  F.Mask opening, and the four corner vias are inside the 0.97 mm paste windows at
+  (±0.6, ±0.6).** The pad aperture exposes them on F.Cu whatever the via tenting
+  says. D1 is still open: the footprint needs a split mask and paste round the
+  vias, or the fab must fill and cap them.
+- **GND pins:** pin 16 has its own via at (108.45, 116.35). Pin 19 is joined on
+  F.Cu to the EP corner via at (110.19, 118.31). There is no space for a separate
+  via between the pin 18 and pin 20 tracks.
+- **VDD (Power_1).** F.Cu tracks, 0.3048 mm, and 0.2 mm at the QFN pads.
+  FB1.2 → C29.2 → feed via (116.95, 123.35). Four crossings are unavoidable on
+  F.Cu. Pins 8 and 10 (the XOSC tracks) enclose pin 9. The SPI fan-out and the RF
+  chain split the left caps from the source. So a 0.3048 mm **B.Cu jumper tree**
+  joins five VDD vias, the way SWRR046 uses L2:
+  - (116.95, 123.35) feed at C29 → (113.95, 116.75) C24/pin 9 → (114.12, 114.35) C25/pin 11
+  - branch → (111.50, 120.40) C22/pin 4 → (107.78, 118.95) C28/pin 18 and the left ring
+  - The left ring is F.Cu: (107.78, 118.95) → x 104.9 → y 113.9 → C26.2 → C27.2.
+    Pin 14 → C26 and pin 15 → C27 are separate tracks. Pin 18 → C28.
+  - No two supply pins are joined pin to pin. The pin 9 and pin 4 vias sit on the
+    short track between pin and cap, because there is no other room.
+  - The B.Cu jumpers stay out from under the chip and the match. They pass under
+    XOSC_Q1, which has In1 and In2 GND between.
+- **XOSC_Q1:** U4.8 → (114.10, 117.50) → 45° → C20.1 (116.84, 118.39) → Y2.3. It
+  runs straight, with no digital track parallel to it. CSn drops at x 113.75,
+  0.40 mm from the Q1 diagonal.
+- **XOSC_Q2:** U4.10 → up to y 116.0 → C21.1 → over Y2 at **y 114.7** → Y2.1.
+  With the track at 115.3, as first routed, the 0.5 mm thermal gap left Y2 pad 2
+  with one spoke (DRC `starved_thermal`). At 114.7 it gets two.
+- **Digital lines:** MOSI leaves pin 20 and runs down x 108.7. SCLK, SO and GDO2
+  fan out at 1:2 slopes to x 109.4, 109.9 and 110.4. GDO0 runs down x 113.1 and
+  CSn down x 113.75. None passes under the match chain or the crystal.
+- **Stitching:** 5 fence vias along the chain (110.3/112.45 at y 106.1, 109.3 at
+  108.2, 112.6 at 110.3, 109.3 at 112.2), with 4 shunt vias (C31, C33, C34, C36),
+  one per GND pad and each on its own track. 3 vias in each J3 GND pad. A
+  perimeter ring on 3 mm pitch. One via for each decap GND pad and each Y2 GND pad.
 
 ## 8. The breakout row
 
-Eleven vias on the bottom edge at **y = 128.5**. Each signal via carries a 1.0 mm
-stub on the opposite layer, ending at y 129.5. A host board lands on the stub.
+Eleven vias on the bottom edge at **y = 127.5** (2.5 mm inside the edge). The
+signal vias arrive on F.Cu. Each carries a 1.0 mm B.Cu stub to y 128.5. The F.Fab
+labels are at y 126.3, rotation 90, size 0.7.
 
-Via 0.6 mm pad on 0.3 mm drill.
-
-| x | Net | Direction | Source pin |
+| x | Net | Direction | Source |
 |---|---|---|---|
-| 101.50 | `GND` | stitch | pour |
-| 104.50 | `GND` | stitch | pour |
-| 106.40 | `CC1101_MOSI` | in | U4.20, left column |
-| 108.00 | `CC1101_SCK` | in | U4.1 |
-| 109.60 | `CC1101_MISO` | out | U4.2 |
-| 111.20 | `CC1101_GDO2_RX` | out | U4.3 |
-| 112.80 | `CC1101_GDO0_TX` | in | U4.6, right column |
-| 114.40 | `CC1101_CS` | in | U4.7 |
-| 116.00 | `+3V3_RF` | in | FB1.1 (119.59, 122.10) |
-| 119.00 | `GND` | stitch | pour |
-| 122.00 | `GND` | stitch | pour |
+| 101.5 | `GND` | stitch | pour |
+| 104.5 | `GND` | stitch | pour |
+| 105.6 | `/CC1101_MOSI` | in | U4.20 |
+| 107.2 | `/CC1101_SCK` | in | U4.1 |
+| 108.8 | `/CC1101_MISO` | out | U4.2 |
+| 110.4 | `/CC1101_GDO2_RX` | out | U4.3 |
+| 112.0 | `/CC1101_GDO0_TX` | in | U4.6 |
+| 113.6 | `/CC1101_CS` | in | U4.7 |
+| 115.2 | `/+3V3_RF` | in | FB1.1 via y 124.6 |
+| 118.5 | `GND` | stitch | pour |
+| 121.5 | `GND` | stitch | pour |
 
-GND pitch is 3.00 mm. Signal pitch is 1.60 mm.
-
-The signal order follows the pin order around U4 from left to right. SI leaves the
-left column. SCLK, SO and GDO2 leave the bottom row. GDO0 leaves the right column
-below CSn, so GDO0 turns down first and lands to the left of CSn. As a result, no
-signal track crosses another.
-
-+3V3_RF is at the right end. FB1 is on that side, and the supply stays clear of
-the crystal. It runs from FB1.1 down to y ≈ 124.5, then left to x 116.0, then
-down. The track stays above the GND via at 119.0.
+**Changed from the draft:** the row is at y 127.5, not 128.5. The procedure puts it
+2.5 mm inside the edge. The signal vias moved 0.8 mm left, onto 1.6 mm pitch from
+105.6, so GDO2 lands straight below its fan-out column and +3V3_RF clears C29's
+GND via. No signal track crosses another.
 
 ## 9. The reference board, for comparison
 
@@ -443,3 +440,27 @@ schematic in the scratchpad. The block file was not touched.
 3. Run `check_courtyards.py` on the real board.
 4. Check ANT_433 w/s in the KiCad Calculator and against PCBWay's stackup.
 5. Count arrivals at the breakout: 7 signal vias and 4 GND vias.
+
+## 12. Closing state (2026-09-24)
+
+`kicad-cli pcb drc --severity-all --schematic-parity --refill-zones`:
+
+| Item | Count |
+|---|---|
+| Errors | 0 |
+| Unconnected | 0 |
+| Schematic parity | 0 |
+| `track_dangling` | 7, one per signal stub (the interface) |
+| `lib_footprint_mismatch` | 1, U4, from `rotate_component`; the GUI pass restores it |
+| `silk_overlap` / `silk_over_copper` | 97 / 44, left for the GUI silk pass |
+
+- Copper: 110 segments, 67 vias (5 VDD, 55 GND, 7 signal breakout).
+- Canary (`check_import.py`): PASS, DRC 149 → 661 with the 3 mm rule.
+- Every interface net has segments and reaches its breakout via: MOSI 5, SCK 6,
+  MISO 6, GDO2 4, GDO0 5, CS 5 and +3V3_RF 4 segments, 1 via each.
+- Rendered F.Cu, B.Cu and F.Fab from a zone-refilled scratch copy, and looked at
+  them. The chain is one straight column. The B.Cu VDD tree is the only B.Cu copper
+  apart from the stubs.
+- Open: D1 (EP vias under the paste windows). The value text on F.Fab overlaps
+  everywhere (GUI pass). ANT_433 impedance is still unconfirmed against PCBWay's
+  stackup (§4.2).
