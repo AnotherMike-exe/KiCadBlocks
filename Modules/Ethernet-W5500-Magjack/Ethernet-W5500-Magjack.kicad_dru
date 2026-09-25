@@ -133,47 +133,17 @@
 # board that happened silently, to 23 pads.  Relaxing to 0.10 mm INSIDE U3's
 # courtyard alone lets a 0.45 mm via fit and keeps the module on STANDARD fab.
 # General routing keeps the full Default clearance.
+#
+# ZONES ARE EXCLUDED (review 2026-09-25, R1-1).  Without the Type clauses any
+# zone that overlaps U3's courtyard matches, and the 0.10 mm then applies to the
+# whole pour, everywhere on the board.  The pour keeps its netclass clearance.
 (rule "Fine-pitch fanout clearance"
 (constraint clearance (min 0.1mm))
 # hole_clearance too.  A 0.3 mm drill in the gap between two pads leaves less
 # copper to hole than the board's 0.254 mm min_hole_clearance allows.  0.20 mm
 # is the figure this file already accepts for copper around a hole.
 (constraint hole_clearance (min 0.20mm))
-(condition "A.insideCourtyard('U3')"))
-
-# --- J2 line side -----------------------------------------------------------
-# !! THESE PADS CARRY 48 V WHEN THE CABLE COMES FROM A PoE SWITCH. !!
-#
-# This board has no PoE converter, so it is tempting to read J2's VC1 and VC2
-# taps as dead copper.  They are not.  They are LINE SIDE conductors of the
-# magjack, and a PSE puts its voltage on them whether or not this board uses
-# it.  The Abracon jack's own 1500 Vrms construction protects the CHIP side.
-# It does not protect the board from what sits beside the VC pads.
-#
-# So the VC nets keep their own net class and their own clearance.  0.4 mm is
-# not the 2.5 mm isolation barrier of the PoE module, and it does not claim to
-# be: nothing on this board is an isolated domain, and there is no second cable
-# to hipot against.  It is a working-voltage figure for 48 V on an inner
-# creepage path, and it exists so a router cannot place a 3V3 track 0.15 mm
-# from a 48 V pad.
-#
-# IF YOU ADD A PoE CONVERTER TO THIS BOARD, THIS RULE IS NOT ENOUGH.
-# Use PoE-Ethernet-Si3402-W5500 instead.  It carries the full 2.5 mm barrier,
-# the slot, the inner plane void and the four bridge components.
-#
-# The J2 self exception is the same one the PoE module needs, and for the same
-# reason.  Abracon interleaves the line side and chip side pins in one pad
-# field, and the tightest pair is about 1.3 mm copper to copper.  Layout cannot
-# improve it.
-#
-# So the rule stops at J2's courtyard, as the PoE barrier stops at J1's.  The
-# carried-over MDI_RDP escape passes pad 7 (/POE_VC1P) at 0.26 mm inside the
-# pad field, measured 2026-09-24.  IPC-2221 B4 (external, under solder mask)
-# asks 0.13 mm for 31-150 V, so 0.26 mm holds.  Outside the courtyard the full
-# 0.4 mm applies.
-(rule "J2 line side clearance"
-(constraint clearance (min 0.4mm))
-(condition "A.NetClass == 'Line_Side' && B.NetClass != 'Line_Side' && (A.Type != 'Pad' || B.Type != 'Pad' || A.Reference != B.Reference) && !A.insideCourtyard('J2') && !B.insideCourtyard('J2')"))
+(condition "A.insideCourtyard('U3') && A.Type != 'Zone' && B.Type != 'Zone'"))
 
 # --- MDI pairs --------------------------------------------------------------
 # NO SKEW RULE.  A skew constraint compares every net its condition selects.
@@ -201,3 +171,33 @@
 (rule "Hole to hole - fine-pitch fanout under U3 only"
 (constraint hole_to_hole (min 0.35mm))
 (condition "A.insideCourtyard('U3') && B.insideCourtyard('U3')"))
+
+# --- J2 line side -----------------------------------------------------------
+# !! THESE PADS CARRY 48 V WHEN THE CABLE COMES FROM A PoE SWITCH. !!
+#
+# This board has no PoE converter, but J2's VC1 and VC2 taps are LINE SIDE
+# conductors of the magjack.  A PSE puts its voltage on them whether or not
+# this board uses it.  The jack's own 1500 Vrms construction protects the CHIP
+# side.  It does not protect the board from what sits beside the VC pads.
+#
+# 1.0 mm, and NO COURTYARD EXCEPTION (review 2026-09-25, R1-2).  The previous
+# version stopped at J2's courtyard.  That hid MDI_RDP at 0.26 mm from J2.7 and
+# LED_LINK_K at 0.51 mm from J2.1 and J2.7.  The jack's own pad field is
+# 1.04 mm or more, so 1.0 mm is the figure board copper must not undercut.
+#
+# ONE EXCEPTION: J2's OWN PADS.  Abracon interleaves line side and chip side
+# pins in one pad field.  A VC lane must leave its own pad, and /POE_VC1P
+# leaves J2.7 between J2.6 and J2.8, 0.42 mm from J2.8.  The jack's own chip
+# side pads are excused against line-side copper.  No other chip-side item is.
+#
+# This rule sits LAST.  When two rules match, the later one wins, so a
+# line-side item against /CGND gets 1.0 mm here, not the 0.4 mm above.
+#
+# IF YOU ADD A PoE CONVERTER TO THIS BOARD, THIS RULE IS NOT ENOUGH.
+# Use PoE-Ethernet-Si3402-W5500 instead.  It carries the full 2.5 mm barrier.
+#
+# !! A bare `.Reference` on a track or zone disables the whole condition.
+# Keep the `B.Type != 'Pad' ||` guard in front of it.
+(rule "J2 line side clearance"
+(constraint clearance (min 1.0mm))
+(condition "A.NetClass == 'Line_Side' && B.NetClass != 'Line_Side' && (B.Type != 'Pad' || B.Reference != 'J2')"))

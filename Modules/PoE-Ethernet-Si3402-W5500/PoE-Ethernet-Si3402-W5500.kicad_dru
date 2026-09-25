@@ -150,6 +150,10 @@
 #
 # This rule sits BEFORE the isolation barrier so the barrier still wins inside
 # U1, which is entirely on the primary side.
+#
+# ZONES ARE EXCLUDED (review 2026-09-25, R1-1).  Without the Type clauses any
+# zone that overlaps a courtyard matches, and the 0.10 mm then applies to the
+# whole pour, everywhere on the board.  The pour keeps its netclass clearance.
 (rule "Fine-pitch fanout clearance"
 (constraint clearance (min 0.1mm))
 # hole_clearance too.  A 0.3mm drill in the 0.750mm gap between two pads leaves
@@ -158,7 +162,7 @@
 # with copper around" above.  Without this the 0.45mm via still fails, on the
 # DRILL.
 (constraint hole_clearance (min 0.20mm))
-(condition "A.insideCourtyard('U1') || A.insideCourtyard('U4')"))
+(condition "(A.insideCourtyard('U1') || A.insideCourtyard('U4')) && A.Type != 'Zone' && B.Type != 'Zone'"))
 
 # --- PoE isolation barrier --------------------------------------------------
 # 2.5mm primary to secondary.  Practice-derived and explicitly NOT
@@ -313,3 +317,25 @@
 (rule "Hole to hole - fine-pitch fanout under U4 only"
     (constraint hole_to_hole (min 0.35mm))
     (condition "A.insideCourtyard('U4') && B.insideCourtyard('U4')"))
+
+# --- J1 line-side pads, 1.0 mm ----------------------------------------------
+# Review 2026-09-25, R1-2.  The barrier above stops at J1's courtyard, and that
+# exception is still required for the pad field itself.  But it also hid
+# chip-side TRACKS inside the courtyard: MDI_RDP at 0.26 mm from J1.7,
+# LED_LINK_K at 0.51 mm from J1.1 and J1.7, MDI_RDN at 0.76 mm and RCT at
+# 0.95 mm.  The jack's own pad field is 1.04 mm or more.  No board copper may
+# sit closer to a line-side VC pad than the jack's own pins do.
+#
+# Scope: J1's primary pads, which are exactly the four VC taps, pins 1, 2, 6
+# and 7.  Against every item that is not primary and is not a J1 pad.  J1's
+# own chip-side pads are the manufacturer's spacing and stay excused.
+#
+# Sits LAST so it wins over the netclass-level rules above it.  It never
+# overlaps the barrier: the barrier excludes everything that touches J1's
+# courtyard, and this rule only matches a J1 pad.
+#
+# !! Every `.Reference` sits behind a `Type == 'Pad'` guard.  See the barrier
+# rule for the trap.
+(rule "J1 line-side pads"
+(constraint clearance (min 1.0mm))
+(condition "A.Type == 'Pad' && A.Reference == 'J1' && A.NetClass == 'PoE_Primary' && B.NetClass != 'PoE_Primary' && B.NetClass != 'GND_PRI' && (B.Type != 'Pad' || B.Reference != 'J1')"))
