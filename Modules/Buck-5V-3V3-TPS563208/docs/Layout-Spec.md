@@ -1,8 +1,10 @@
 # Layout Spec — Buck-5V-3V3-TPS563208
 
 The geometry of the module reference board. Every number is a decision, and each
-one carries its reason. **Draft.** No board exists yet. Nothing here is checked
-by DRC.
+one carries its reason. The board is placed and routed. §3.2 and §11 hold the
+state that DRC checked. §12 lists every change from the draft and why.
+Sections 4 to 9 keep the draft reasoning. Where they disagree with §3.2 or §11,
+§3.2 and §11 are right.
 
 Board: 18 x 20 mm, 4 layers, 1.6 mm. Written 2026-09-24.
 
@@ -44,7 +46,7 @@ The brief listed C100 to C104 as 22 µF 1206. BLK says otherwise:
 
 | Ref | Value | Role | DS check |
 |---|---|---|---|
-| C100 | 10 µF 25 V X7R 0805 | input | DS §7.2.2.4 asks for "over 10 µF". At 5 V bias an 0805 keeps about 70 %. **Marginal. Consider 22 µF 1206.** |
+| C100 | 22 µF 1206 (was 10 µF 25 V X7R 0805 in the draft) | input | DS §7.2.2.4 asks for "over 10 µF". The 0805 was marginal after bias derating. The board now carries 22 µF 1206. |
 | C101 | 100 nF 0603 | input HF | DS §7.2.2.4, optional C3 |
 | C102 | 100 nF 0603 | VBST to SW | DS §7.2.2.5, 0.1 µF required |
 | C103, C104 | 22 µF 16 V X5R 1206 | output | DS Table 7-2, 20 to 68 µF. 44 µF nominal passes after bias derating. |
@@ -122,30 +124,26 @@ C101 is the one good placement. Its pad 1 lines up with VIN.
 
 ### 3.2 The module
 
-A new placement that follows DS Figure 7-18.
+The placement on the board, read back from the saved file. It follows DS
+Figure 7-18. Every part is on F.Cu.
 
-| Ref | X | Y | Rot | Side | Reason |
-|---|---|---|---|---|---|
-| U8 | 111.000 | 106.000 | 0 | F | — |
-| L30 | 104.950 | 106.000 | 180 | F | pad 1 (SW) at 107.70, 0.8 mm from U8.2 |
-| C102 | 111.000 | 102.800 | 0 | F | pad 2 above U8.6 (VBST) |
-| C101 | 109.860 | 109.300 | 270 | F | pad 1 under U8.3 (VIN) |
-| C100 | 112.200 | 109.500 | 270 | F | beside C101, via lane between them |
-| C103 | 102.200 | 112.000 | 270 | F | pad 1 under L30 pad 2 |
-| C104 | 104.600 | 112.000 | 270 | F | beside C103 |
-| R61 | 115.500 | 107.400 | 0 | F | pad 1 near U8.4 (VFB) |
-| R60 | 115.500 | 109.200 | 180 | F | pad 2 on the VFB node |
-| TP3 | 114.700 | 111.200 | 0 | F | VFB, beside R60 pad 2 |
-| TP2 | 116.900 | 111.200 | 0 | F | +3V3 at the sense end |
-| R62 | 107.400 | 111.300 | 0 | F | pad 1 on +3V3 |
-| D22 | 109.300 | 113.600 | 90 | F | anode up, to R62 pad 2 |
+| Ref | X | Y | Rot | Reason |
+|---|---|---|---|---|
+| U8 | 111.000 | 106.000 | 0 | — |
+| L30 | 104.950 | 106.000 | 180 | pad 1 (SW) at 107.70, 0.79 mm pad gap to U8.2 |
+| C102 | 111.000 | 102.900 | 0 | pad 2 (VBST) above U8.6; pad 1 (SW) reaches L30.1 over the top |
+| C101 | 109.8625 | 109.400 | 270 | pad 1 straight under U8.3 (VIN) on the same x |
+| C100 | 111.900 | 110.100 | 270 | 22 µF 1206; pad 1 level with C101.1 at y 108.625 |
+| C103 | 103.675 | 110.800 | 0 | pad 1 (+3V3) on the x 102.2 trunk under L30.2; pad 2 (GND) east |
+| C104 | 103.675 | 113.400 | 0 | stacked under C103, same trunk |
+| R61 | 115.600 | 106.950 | 0 | pad 1 (VFB) level with U8.4 |
+| R60 | 115.600 | 108.800 | 180 | pad 2 (VFB) under R61.1 |
+| TP3 | 114.775 | 105.100 | 0 | VFB, north end of the VFB column |
+| TP2 | 116.425 | 110.600 | 0 | +3V3 on the sense line, under R60.1 |
+| R62 | 103.025 | 101.500 | 0 | pad 1 (+3V3) above L30.2 |
+| D22 | 106.100 | 101.500 | 180 | anode west to R62.2, cathode to a GND via |
 
-The L30 courtyard is 7.43 x 6.86 mm (footprint `L_Coilcraft_XAL6030`). At this
-position it spans x 101.24 to 108.67. U8's courtyard starts at 108.95.
-
-The tightest courtyard pairs by hand arithmetic are C101 against U8 (0.07 mm)
-and L30 against U8 (0.28 mm). Run `Modules/analysis/check_courtyards.py` to
-confirm. Render the board and look at it.
+`check_courtyards.py`: no overlap, no gap under 0.05 mm, nothing off the board.
 
 ## 4. Copper on the parent board
 
@@ -266,3 +264,82 @@ under the input capacitors. Neither crosses the other.
    the count explodes, restore, diff.
 4. Count segments on every interface net to its breakout via.
 5. Render the board and look at it. Check that no SW copper runs east of U8.
+
+## 11. Closing state
+
+Measured 2026-09-24 with `kicad-cli pcb drc --severity-all --schematic-parity
+--refill-zones`.
+
+| Item | Count |
+|---|---|
+| Errors | 0 |
+| Unconnected | 0 |
+| Schematic parity | 0 |
+| `track_dangling` | 6, the six power stubs |
+| Silkscreen warnings | 29, left for the GUI silk pass: 16 `silk_overlap`, 12 `silk_over_copper`, 1 `silk_edge_clearance` (R62 reference at the top edge) |
+| Canary (`check_import.py`) | 35 to 182, PASS |
+
+Copper: 42 segments, 24 vias, all vias 0.6/0.3.
+
+| Net | F.Cu segments | B.Cu segments | Vias |
+|---|---|---|---|
+| `/SW_NODE` | 3 (0.6 mm strip U8.2 to L30.1; 0.3 mm C102.1 to L30.1) | 0 | 0 |
+| `/VBST` | 2 (0.3 mm) | 0 | 0 |
+| `/V5_SYS` | 8 (U8.3 to C101.1 to C100.1, 0.8 mm; column x 113.4 to the row, 0.6 mm; row link; EN) | 3 (stubs) | 6 |
+| `+3V3` | 9 (trunk x 102.2 L30.2 to the row, 0.8 mm; row link; R62 feed; sense R60.1 to TP2 to via) | 4 (3 stubs; sense line y 112.1, 0.2 mm) | 5 |
+| `/VFB_33` | 3 (0.2 mm) | 0 | 0 |
+| `/LED_PWR_A` | 1 | 0 | 0 |
+| `GND` | 9 (pad to via) | 0 | 13 |
+
+Interface arrival, counted by segment:
+
+- `+3V3`: L30.2 to the via at 102.2, 117.5 in 4 trunk segments, then 1 row
+  segment each to 101.2 and 103.2.
+- `/V5_SYS`: C100.1 to the via at 113.4, 117.5 in 3 segments, then 1 row
+  segment each to 112.4 and 114.4. The In2.Cu plane joins all six V5_SYS vias
+  as a second path.
+- `GND`: the four row vias join the F.Cu, In1.Cu and B.Cu pours.
+
+Breakout row, y 117.5. F.Fab labels at y 116.3, size 0.7, rotation 90.
+
+| x | Net | Arrives on | Stub | Stub end |
+|---|---|---|---|---|
+| 101.2 | `+3V3` | F.Cu row link | B.Cu, 1.0 mm | 101.2, 118.5 |
+| 102.2 | `+3V3` | F.Cu trunk | B.Cu, 1.0 mm | 102.2, 118.5 |
+| 103.2 | `+3V3` | F.Cu row link | B.Cu, 1.0 mm | 103.2, 118.5 |
+| 104.8 | `GND` | pours, In1 | — | — |
+| 107.8 | `GND` | pours, In1 | — | — |
+| 110.8 | `GND` | pours, In1 | — | — |
+| 112.4 | `/V5_SYS` | F.Cu row link, In2.Cu plane | B.Cu, 1.0 mm | 112.4, 118.5 |
+| 113.4 | `/V5_SYS` | F.Cu column, In2.Cu plane | B.Cu, 1.0 mm | 113.4, 118.5 |
+| 114.4 | `/V5_SYS` | F.Cu row link, In2.Cu plane | B.Cu, 1.0 mm | 114.4, 118.5 |
+| 116.0 | `GND` | pours, In1 | — | — |
+
+Open:
+
+1. Silkscreen pass in the GUI.
+2. The V5_SYS labels are 2.2 mm long and centred 1.2 mm inboard, so they reach
+   over their vias. F.Fab only.
+3. Kelvin return (DS item 7): R61.2 returns through its own via at 116.425,
+   105.9 to In1. There is no dedicated trace to U8.1.
+4. Heat (§8) is not yet measured on the filled zone.
+
+## 12. Changes from the draft
+
+| Item | Draft | Board | Why |
+|---|---|---|---|
+| C100 | 10 µF 0805 at 112.2, 109.5 | 22 µF 1206 at 111.9, 110.1 | The part changed. The 1206 courtyard (2.3 x 4.6 mm rotated) must clear U8's courtyard (y 107.7). Pad 1 now sits level with C101.1. |
+| C101 | 109.86, 109.3 | 109.8625, 109.4 | Pad 1 on the exact x of U8.3; 0.1 mm down for courtyard margin. |
+| C102 | y 102.8 | y 102.9 | Clears the U8.1 GND via. C102.1 joins SW at the top of L30.1, not in the gap beside U8.1, which is too narrow for a track at 0.2 mm pad clearance. |
+| C103, C104 | rot 270, side by side at y 112.0 | rot 0, stacked at x 103.675, y 110.8 and 113.4 | Both +3V3 pads sit on one straight 0.8 mm trunk from L30.2 to the breakout. Both GND pads face east with two vias each. |
+| R60, R61 | 115.5, 109.2 and 115.5, 107.4 | 115.6, 108.8 and 115.6, 106.95 | R61.1 level with U8.4, so the VFB node is straight. 0.1 mm east to clear the V5_SYS vias at x 113.4. |
+| TP3 | 114.7, 111.2 | 114.775, 105.1 | North end of the VFB column. The draft spot is on the V5_SYS column and the sense line. |
+| TP2 | 116.9, 111.2 | 116.425, 110.6 | On the straight sense line under R60.1. |
+| R62, D22 | 107.4, 111.3 and 109.3, 113.6 rot 90 | 103.025, 101.5 and 106.1, 101.5 rot 180 | The top strip above L30 is free. R62.1 feeds straight from L30.2. The south area stays clear for the V5_SYS column and the sense line. |
+| Priority polygons (§6) | SW strip, input, output, output feed | none | Not on the board. Short wide tracks replace them: SW 0.6 mm x 2.2 mm, V5_SYS and +3V3 0.8 mm. |
+| V5_SYS input vias | 3 at x 110.9 | 2 at 113.4, 108.625 and 109.625, plus a direct F.Cu column to the row | No room for a via lane between C101 and the larger C100. The column carries the current to the row on F.Cu; In2 is the second path. |
+| EN via | 113.7, 106.0 | 113.4, 106.0 | Clearance to TP3 and R61.1. |
+| U8.1 GND via | 109.86, 104.0 | 109.8625, 104.1 | Clearance to the C102.1 SW track at y 102.9. |
+| +3V3 path | B.Cu output feed, arrives B.Cu | F.Cu trunk, arrives F.Cu, stubs on B.Cu | One straight trunk. No output polygon exists. |
+| V5_SYS arrival | In2.Cu, stubs on F.Cu | F.Cu column and In2.Cu, stubs on B.Cu | The F.Cu column exists, so the stubs go to the opposite layer. |
+| Sense line | B.Cu from R60.1 | R60.1 to TP2 to via on F.Cu, B.Cu 0.2 mm at y 112.1 to a via on the trunk between C103.1 and C104.1 | DS item 6: a separate VOUT path from the output capacitors. |
