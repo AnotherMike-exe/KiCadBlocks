@@ -41,20 +41,32 @@ barrier. Do not add a PoE converter to that board. Use the combined module.
 | `*.kicad_pro` | 4-layer stackup, net classes, net class patterns |
 | `*.kicad_dru` | PCBWay rules and the module rules, each one commented |
 | `*.kicad_sch` | The design block, as the root sheet |
-| `fp-lib-table`, `sym-lib-table` | Project rows for `PlumRFBridge` |
+| `docs/Host-Setup.md` | What a host must set before it places the fragment |
+| `fp-lib-table`, `sym-lib-table` | Empty. Every library resolves through the global table |
 | `docs/Board-Setup.md` | The GUI values, and why the GUI |
 | `docs/Layout-Spec.md` | Outline, regions, zones, via arrays, clearances |
 
-Each module also carries its own `fp-lib-table` and `sym-lib-table`.
+**Global library rows only**, decided 2026-09-24. A duplicate nickname
+behaves differently in the GUI and in `kicad-cli`, so no module carries a
+project row. The global `PlumRFBridge` and `PoEEthModule` rows point at
+`${PLUM_SOLUTIONS}`. Mount the Plum volume before you open a module.
 
-**A project row does NOT shadow a global row of the same nickname.** Measured
-2026-09-22: the module carried a correct project row for `PlumRFBridge`, the
-global row pointed at a path that no longer existed, and KiCad used the global
-one. Four footprints failed to load, J1, T1, U1 and L1. The global row wins.
+## The module set, 2026-09-25
 
-So the global tables must be right. Both now point at `${PLUM_SOLUTIONS}`. The
-project rows stay, because they help on a machine whose global table has no
-`PlumRFBridge` row at all.
+| Module | Board | Parts |
+|---|---|---|
+| `PoE-Ethernet-Si3402-W5500` | 56 x 84 mm | 82 |
+| `Ethernet-W5500-Magjack` | 42 x 55 mm | 37 |
+| `RF-CC1101-433` | 25 x 30 mm | 25 |
+| `MCU-ESP32S3-MINI` | 27 x 24 mm | 11 |
+| `PowerMux-TPS2121` | 15 x 20 mm | 14 |
+| `Buck-5V-3V3-TPS563208` | 18 x 20 mm | 13 |
+| `USBC-Device-ESD` | 20 x 21 mm | 4 |
+| `LED-Status-x3` | 14 x 11 mm | 6 |
+| `LDO-RF-3V3-AP2112K` | 10 x 12 mm | 3 |
+
+Each has a fragment in `PlumBlocks.kicad_blocks` and a `docs/Host-Setup.md`.
+Read the Host-Setup page before you place a block.
 
 ## Net class patterns use a bare net name
 
