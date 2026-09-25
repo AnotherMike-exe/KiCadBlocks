@@ -21,9 +21,7 @@ fired and every interface stub counted.
 Still open for these blocks:
 1. Placement test in `BlockBuilder` for seven fragments.
 2. `Host-Setup.md` for each block, and an independent review of each board.
-3. `docs/Power-Architecture.md` gives a 1.19 V PR1 reference. SLVSEA3F gives
-   1.06 V, so OV trips at 5.98 V, not 6.7 V.
-4. Fab questions: plugged vias for the RF exposed pad, the 0.10 mm prepreg
+3. Fab questions: plugged vias for the RF exposed pad, the 0.10 mm prepreg
    (the RF_50 and USB widths depend on it), break-away rails.
 
 ## Open on the PoE block
