@@ -1,11 +1,12 @@
 # Layout Spec — MCU-ESP32S3-MINI
 
-DRAFT. The geometry of the module reference board. Every number is a decision,
+The geometry of the module reference board. Every number is a decision,
 and each one carries its reason and its source.
 
 Board: 27 x 24 mm, 4 layers, 1.6 mm, PCBWay. In1 GND, In2 PWR. Vias 0.6 / 0.3.
-Written 2026-09-24. Nothing here is placed yet. Every position is a proposal.
-Confirm each one with DRC and a render before you believe it.
+Written 2026-09-24 as a draft. Laid out 2026-09-24. Section 6 holds the real
+placement, section 6.1 the changes from the draft, and section 11 the closing
+state. Two DRC error groups stay open (section 11.2).
 
 ---
 
@@ -214,41 +215,60 @@ Why 24 mm tall: 15.4 body + 4.5 fanout + two rows + 2.5 to the edge.
 
 ## 6. Placement table
 
-Local = the offset in U1's footprint frame. Global = board position. Rotation
-follows KiCad. Pad 1 of an 0603 at rot 0 is at −x. At rot 90 it is at +y. At
-rot 270 it is at −y.
+As placed and saved, read back from the board file. Rotation follows KiCad.
+Pad positions are from `pads.py` on the saved board. An 0603 resistor pad sits
+at ±0.825, an 0603 capacitor pad at ±0.775.
 
-| Ref | Local (x, y) | Global X | Global Y | Rot | Reason |
-|---|---|---|---|---|---|
-| U1 | (0, 0) | 109.7 | 107.7 | 0 | Section 5 |
-| C3 100 nF | (−8.85, −5.025) | 100.85 | 102.675 | 90 | Pad 1 (+3V3) is level with pin 3 at y 103.45. Pad 2 (GND) is level with pin 1 at 101.75. Copper to edge 0.375 mm. HDG §3.1.1 "0.1 µF close to the pin". Same offset as the reference board |
-| R7 10 k | (−8.85, +1.2) | 100.85 | 108.9 | 270 | Pad 1 (IO3) on top, 1.05 mm below pin 7 |
-| C1 1 µF | (+9.65, −5.95) | 119.35 | 101.75 | 0 | Pad 1 (EN) faces pin 45. HDG §3.2 says keep CHIP_PU short. Reference offset (+9.55, −5.64) |
-| R3 10 k | (+9.65, −3.9) | 119.35 | 103.8 | 180 | Pad 2 (EN) inboard, pad 1 (+3V3) outboard to an In2 via. Reference (+9.56, −3.88) |
-| R9 220 | (+9.65, −1.85) | 119.35 | 105.85 | 180 | Pad 2 (EN) inboard, pad 1 to SW2.1 at (123.8, 105.775) |
-| SW2 RESET | — | 124.7 | 107.0 | 90 | Actuator faces the right edge. Tip at 126.74, same 0.26 mm inset as the reference (162.7 vs edge 165) |
-| SW1 BOOT | — | 124.7 | 113.0 | 90 | Courtyard 110.17 → 115.83. 0.34 mm gap to SW2 |
-| R8 220 | — | 121.2 | 111.5 | 90 | At the button end. Pad 1 at 112.275 feeds SW1.1 at (123.8, 111.775) |
-| C2 22 µF 0805 | — | 122.0 | 118.2 | 0 | Bulk at the +3V3 entry. HDG §4.3.2: "10 µF on its way before entering the chip" |
-| C4 100 nF | — | 125.0 | 118.2 | 90 | HF partner to C2 at the entry |
+| Ref | X | Y | Rot | Pad 1 | Pad 2 | Reason |
+|---|---|---|---|---|---|---|
+| U1 | 109.7 | 107.7 | 0 | — | — | Section 5. Antenna keepout at y 94.9 → 100.0, fully off board |
+| C3 100 nF | 100.96 | 102.675 | 90 | (100.96, 103.45) +3V3 | (100.96, 101.9) GND | Level with pin 3. Courtyard 0.01 mm clear of U1 |
+| R7 10 k | 100.96 | 108.9 | 270 | (100.96, 108.075) IO3 | (100.96, 109.725) GND | Below pin 7 |
+| C1 1 µF | 119.35 | 101.75 | 0 | (118.575, 101.75) EN | (120.125, 101.75) GND | Faces pin 45 |
+| R3 10 k | 119.35 | 103.8 | 180 | (120.175, 103.8) +3V3 | (118.525, 103.8) EN | EN inboard, +3V3 to an In2 via at (121.2, 103.8) |
+| R9 220 | 119.35 | 105.775 | 180 | (120.175, 105.775) → SW2.1 | (118.525, 105.775) EN | Level with SW2.1, straight track |
+| SW2 RESET | 124.7 | 107.0 | 90 | (123.8, 105.775) and (123.8, 108.225) | (123.8, 107.0) GND | Actuator to the right edge |
+| SW1 BOOT | 124.7 | 113.0 | 90 | (123.8, 111.775) and (123.8, 114.225) | (123.8, 113.0) GND | Actuator to the right edge |
+| R8 220 | 121.15 | 111.775 | 180 | (121.975, 111.775) → SW1.1 | (120.325, 111.775) IO0 | Level with SW1.1, straight track |
+| C2 22 µF 0805 | 122.0 | 118.2 | 0 | (121.05, 118.2) +3V3 | (122.95, 118.2) GND | Bulk at the +3V3 entry |
+| C4 100 nF | 125.0 | 118.2 | 90 | (125.0, 118.975) +3V3 | (125.0, 117.425) GND | HF partner to C2, own In2 via at (125.0, 120.0) |
+
+Rotated through Konnect (each loses its `(units)` block until a GUI pass
+restores it): C3 90, R7 270, R3 180, R9 180, R8 180, C4 90, SW1 90, SW2 90.
+
+### 6.1 Changes from the draft
+
+| Item | Draft | Placed | Why |
+|---|---|---|---|
+| C3, R7 X | 100.85 | 100.96 | Board setup copper-to-edge is 0.5 mm for pads. At 100.85 the pad edge is 0.375 mm. At 100.96 the courtyard clears U1 by 0.01 mm and the pad edge is 0.485 mm. The 2.0 mm strip cannot meet both limits (section 11.2) |
+| R9 Y | 105.85 | 105.775 | Level with SW2.1, so the track is straight |
+| R8 | (121.2, 111.5) rot 90 | (121.15, 111.775) rot 180 | Pad 1 level with SW1.1 (straight track). 0.05 mm left to clear the SW1 courtyard (0.03 mm overlap at 121.2) |
+| Strip +3V3 vias | (101.0, 104.8), (101.0, 105.9) | (100.96, 104.6), (100.96, 105.5) | On the C3.1 column, one straight 0.3 mm track |
+| IO0 far via | about (121.2, 109.4) | (120.325, 110.7) | Directly above R8.2. B.Cu path (104.4, 104.3) → (119.6, 104.3) → (119.6, 109.975) → via |
+| R7.2 GND via | (101.0, 110.85) | (100.96, 110.85) | Same column as R7 |
+| Switch pad 1 pairs | not stated | Loop tracks at x 121.9 (SW2) and x 121.975 (SW1) | The two pad 1s of each switch are separate copper. DRC needs both joined. Pad 2 (GND) sits between them, so the loop goes round it on the inboard side |
+| Switch GND | pour only | Tracks + vias at (122.75, 107.0), (122.75, 113.0), (125.75, 103.5), (125.75, 110.0), (125.75, 116.3) | The pour gave 1 spoke to each switch GND pad (starved_thermal) |
+| U1 pads 63, 64 | pour only | 45° track to an inboard via at (104.0, 113.4) and (115.4, 113.4) | The fanout walls in both corner pads. They were unconnected islands |
+| Extra GND | — | C1.2 via (121.2, 101.75), C2.2 via (122.95, 119.7) | Short return for the EN cap and the bulk cap |
+| Perimeter GND stitch at 3.0 mm | proposed | Not added | Only the breakout-row GND vias. Left for a later pass |
 
 **Why R8 sits at the button end.** The feed-side strip is 2.0 mm. After C3 and
 R7 there is no room for R8 and its via. The pins 4 to 6 pad gaps are 0.45 mm,
 which is less than 0.2 track + 2 x 0.2 clearance. So IO0 leaves pin 4 inboard to
 a tented via at about (104.4, 104.3) under the module. It then runs on B.Cu
-(HDG §4.1 allows a few signals on layer 4) to a via near (121.2, 109.4), and on
+(HDG §4.1 allows a few signals on layer 4) to a via at (120.325, 110.7), and on
 to R8.2. This is the only long net in the block.
 
 **Why C4 is not beside pin 3.** A second 100 nF next to C3 has no GND via
 anywhere in a 2 mm strip. At the entry it has one. Pin 3 gets C3 on the pin and
 the In2 plane behind it.
 
-**+3V3 to pin 3.** C3.1 → two In2 vias in the strip at (101.0, 104.8) and
-(101.0, 105.9). HDG §4.3.1 asks for at least two vias where main power changes
-layer. The pin 3 stub is 0.4 mm, which is the pad width. The 25 mil (0.635 mm)
+**+3V3 to pin 3.** C3.1 → two In2 vias in the strip at (100.96, 104.6) and
+(100.96, 105.5). HDG §4.3.1 asks for at least two vias where main power changes
+layer. The pin 3 track is 0.3 mm (Power_1 class). The 25 mil (0.635 mm)
 main power width of HDG §4.3.2 applies to the plane feed, not to the stub.
 
-**GND for R7.2.** Use a via at (101.0, 110.85), above the pin 13 exit.
+**GND for R7.2.** A via at (100.96, 110.85), above the pin 13 exit.
 
 **The reference placement, for comparison.** Reference U1 is at
 (151.9, 100, rot −90). Designators and nets match the block.
@@ -397,3 +417,78 @@ C2 22 µF (HDG §4.3.2 asks ≥ 10 µF), and switch SH pins go to GND.
    count.
 4. Confirm the feed-point side (§1.1) against Espressif's land-pattern source
    before you freeze the outline.
+
+## 11. Closing state
+
+Measured 2026-09-24 on the saved board with
+`kicad-cli pcb drc --severity-all --schematic-parity --refill-zones`.
+
+### 11.1 Counts
+
+| Item | Count |
+|---|---|
+| Segments | 110 (17 of them are the 1.0 mm B.Cu breakout stubs) |
+| Vias | 52, all 0.6 / 0.3 |
+| EPAD thermal vias | 12, at the section 3.1 positions |
+| Unconnected | 0 |
+| Schematic parity | 0 |
+| `track_dangling` | 17, one per signal stub, as intended |
+| `copper_edge_clearance` (error) | 21. Open, see 11.2 |
+| `hole_clearance` (error) | 8. Open, see 11.2 |
+| `lib_footprint_mismatch` | 3: U1, SW1, SW2 |
+| Silkscreen warnings | 27 (silk_overlap 15, silk_over_copper 6, silk_edge_clearance 6). Left for the GUI pass |
+| Canary `check_import.py` | PASS. DRC 76 → 567 with the 3 mm rule |
+
+Every signal breakout via has exactly one F.Cu arrival and one B.Cu stub,
+counted by segment end points.
+
+### 11.2 Open errors. They need a rule decision, not layout
+
+1. **copper_edge_clearance, 21.** Board setup sets 0.5 mm copper-to-edge for
+   every item. The `.kicad_dru` "Trace to Outline" rule (0.3 mm) covers tracks
+   only. Espressif puts the board edge on footprint y −7.7, so U1's top-row
+   GND pads 46 to 60 and corner pads 62 and 65 sit 0.3 mm from the edge (17
+   errors). C3 and R7 sit 0.485 mm from the left edge (4 errors), because the
+   2.0 mm feed-side strip (HDG Fig. 4 maximum) cannot also clear U1's
+   courtyard at 0.5 mm. Section 3 assumed the 0.3 mm rule covers pads. It does
+   not. The fix is one `.kicad_dru` rule for pad edge clearance at this board's
+   feed-side and top edges, or a decision to accept these as exclusions.
+2. **hole_clearance, 8.** Inside `SW_Alps_SKRTLAE010`: its pad 1 and SH pads
+   are 0.099 and 0.150 mm from its own NPTH locating holes. The rule "NPTH with
+   copper around" asks for 0.20 mm. Placement cannot change this. Fix the
+   footprint or scope the rule.
+
+### 11.3 Breakout table
+
+Row A at y 121.5 (2.5 mm inside the bottom edge), row B at y 119.9. F.Fab labels
+at 1.2 mm inboard (y 120.3 and 118.7), size 0.7, rotation 90.
+
+| X | Row | Net | From U1 pin |
+|---|---|---|---|
+| 100.9 | A | GND | — |
+| 103.0 | A | ETH_RST | 13 |
+| 103.8 | B | ETH_CS | 14 |
+| 104.6 | A | ETH_MOSI | 15 |
+| 105.4 | B | ETH_CLK | 16 |
+| 106.2 | A | ETH_MISO | 17 |
+| 107.0 | B | ETH_INT | 18 |
+| 107.8 | A | CC1101_GDO0_TX | 19 |
+| 108.6 | B | CC1101_GDO2_RX | 20 |
+| 109.4 | A | GND | USB guard |
+| 110.2 | B | USB_DM | 23 |
+| 111.0 | A | USB_DP | 24 |
+| 111.8 | B | GND | USB guard |
+| 112.6 | A | LED_RF_TX | 25 |
+| 113.4 | B | LED_LEARN | 27 |
+| 114.2 | A | LED_FAULT | 30 |
+| 115.0 | B | CC1101_SCK | 34 |
+| 115.8 | A | CC1101_MOSI | 35 |
+| 116.6 | B | CC1101_MISO | 36 |
+| 117.4 | A | CC1101_CS | 37 |
+| 119.0 | A | +3V3 | In2, tied to C2.1 |
+| 119.8 | B | +3V3 | In2, tied to C2.1 |
+| 121.0 | A | GND | — |
+| 124.0 | A | GND | — |
+
+The order follows section 7 exactly and is planar. The render shows no
+crossing. The 20 unconnected U1 GPIO nets are not routed.
