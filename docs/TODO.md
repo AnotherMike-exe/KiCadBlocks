@@ -1,34 +1,28 @@
 # TODO
 
-## Eight layout blocks: laid out, fragments written
+## Eight layout blocks: done
 
-Status 2026-09-24. Detail in `_resources/Notes/LayoutJobs/STATE.md` (not in git).
+Finished 2026-09-25. Each block has a module board, a fragment on the Plum
+volume and a `Host-Setup.md`. Every board: DRC 0 errors, 0 unconnected, 0
+parity, a canary that fires, every interface stub counted. Every fragment
+passed the BlockBuilder placement test, copper equal by net. Two independent
+reviews ran. `docs/Review-2026-09-25.md` holds the findings and dispositions.
 
-| Block | Board | Fragment | Placement test | Host-Setup.md |
-|---|---|---|---|---|
-| `Ethernet-W5500-Magjack` | done | done | open | open |
-| `RF-CC1101-433` | done | done | open | open |
-| `MCU-ESP32S3-MINI` | done | done | open | open |
-| `PowerMux-TPS2121` | done | done | open | open |
-| `Buck-5V-3V3-TPS563208` | done | done | open | open |
-| `LDO-RF-3V3-AP2112K` | done | done | open | open |
-| `USBC-Device-ESD` | done | done | open | open |
-| `LED-Status-x3` | done | done | passed | open |
+Known limits, by scope decision (review R1-4, R1-5, R1-6): on the Ethernet and
+PoE boards the W5500 decoupling caps sit 7 to 12 mm from their pins, the TX
+MDI pairs have no In2 copper under them, and the crystal loop is long.
 
-"Board done" means DRC 0 errors, 0 unconnected, 0 parity, with a canary that
-fired and every interface stub counted.
+## Fab questions
 
-Still open for these blocks:
-1. Placement test in `BlockBuilder` for seven fragments.
-2. `Host-Setup.md` for each block, and an independent review of each board.
-3. Fab questions: plugged vias for the RF exposed pad, the 0.10 mm prepreg
-   (the RF_50 and USB widths depend on it), break-away rails.
+1. Plugged, capped vias for the RF exposed pad (review R1-7).
+2. Confirm the 0.10 mm F.Cu to In1 prepreg. The RF_50 and USB widths depend
+   on it.
+3. Break-away rails for boards with copper within 3.5 mm of an edge.
+4. Hole-to-hole 0.35 mm under U3 and U4, and surface finish (ENIG).
 
 ## Open on the PoE block
 
-1. `Modules/PoE-Ethernet-Si3402-W5500/libraries/PoEEthModule.pretty` duplicates
-   the global copy on the Plum volume. Keep it for offline opening, or delete it
-   and rely on the global row. Decide once, apply to every block.
+1. Done 2026-09-24: global library rows only. The vendored copy is gone.
 2. `README-FAB.md` is not written. Phase 3 work, not needed to reuse the block.
 3. The slot corners are drawn sharp. A 1.0 mm router bit rounds them. Confirm
    with the fab before ordering.
@@ -36,5 +30,4 @@ Still open for these blocks:
 ## Repository
 
 1. No CI. Nothing checks that a board still passes DRC after an edit.
-2. `Modules/analysis/` has no tests. `check_plan.py` modelled a via at the wrong
-   size for most of the first block.
+2. Done 2026-09-24: `Modules/analysis/tests/` holds 16 pytest cases.

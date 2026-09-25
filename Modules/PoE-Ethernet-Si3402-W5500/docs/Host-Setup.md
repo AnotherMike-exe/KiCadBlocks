@@ -91,14 +91,17 @@ unbound class makes the isolation rule pass with zero hits.
 ## 4. Custom rules
 
 Copy `PoE-Ethernet-Si3402-W5500.kicad_dru` into the host project and merge it.
-It holds 25 rules. Three matter most.
+It holds 26 rules. Four matter most.
 
 1. **The 2.5 mm isolation barrier.** Primary copper to secondary copper. The
    rule excludes anything inside J1's courtyard, because the jack interleaves
    line-side and chip-side pins in one pad field at 1.27 mm pitch. No layout
    reaches 2.5 mm inside that field.
 2. **`Chassis clearance` 0.4 mm.** `/CGND` reaches GND only through C39.
-3. **Hole to hole 0.35 mm, scoped to `U4.insideCourtyard`.** The SPI fanout runs
+3. **"J1 line-side pads", 1.0 mm.** Added 2026-09-25 (review R1-2). Chip-side
+   copper keeps 1.0 mm from J1's VC pads. The barrier's J1 exception no longer
+   hides chip-side tracks inside the jack courtyard.
+4. **Hole to hole 0.35 mm, scoped to `U4.insideCourtyard`.** The SPI fanout runs
    0.50 mm vias on 0.30 mm drills at 0.70 mm pitch. It applies nowhere else.
 
 **Confirm the file loaded.** Open Board Setup → Custom Rules. A syntax error

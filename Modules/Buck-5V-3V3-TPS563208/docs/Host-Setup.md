@@ -131,6 +131,17 @@ tick `keep_annotations` in the design block chooser.
 Read the net names, not the designators, when you check the placed block against
 `Layout-Spec.md`.
 
+## 5.2 Set the power pads to solid after placement
+
+The module board connects U8, L30 and C100 to C104 to the pours with **solid** pads, not thermal
+spokes (review R2-3, 2026-09-25). **The fragment does not carry this.** The
+placement takes each footprint from the library, and the per-footprint zone
+connection is lost. Measured 2026-09-25: 0 of the solid overrides arrived.
+
+1. In the host board, select the listed footprints.
+2. Open **Properties**. Set **Zone connection** to **Solid**.
+3. Refill the zones (B).
+
 ## 6. The interface
 
 Ten vias on the block's bottom edge, y 117.5 on the reference board. Each power
