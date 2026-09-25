@@ -879,3 +879,27 @@ The third is the one to watch on the other eight blocks. **A module schematic
 assembled from blocks keeps their group definitions.** Strip them before you
 copy the schematic into a fragment. Net membership proves the strip is safe:
 81 nets and 253 nodes, sets identical before and after.
+
+## 17. Review fixes, 2026-09-25
+
+The independent review of 2026-09-25 found two blockers on this board. Both
+also held on `Ethernet-W5500-Magjack`, which replays this copper.
+`docs/Review-2026-09-25.md` holds the detail.
+
+1. **The fanout rule leaked to the pours (R1-1).** `A.insideCourtyard('U4')`
+   matched every zone that overlapped U4, so all pours filled at 0.10 mm. The
+   rule now excludes zones.
+2. **Chip-side copper near the line-side pads (R1-2).** MDI_RDP passed J1.7 at
+   0.26 mm. MDI_RDP, MDI_RDN, RCT and LED_LINK_K are rerouted, and the new
+   "J1 line-side pads" rule keeps 1.0 mm. The VC1P lane still passes J1.8 at
+   0.42 mm inside the jack pad field. No route avoids it.
+3. **GND vias (R1-3).** 11 to 55. The zone fix alone left 5 starved thermals.
+   A /VPOS track from U1.20 to C6.1 closes a VPOS split the fix exposed.
+
+Closing state: 415 segments, 147 vias, 7 zones. DRC 0 errors, 0 unconnected,
+0 parity, `track_dangling` 8 (the stubs), canary 591. The fragment was rebuilt
+and passed the placement test with copper equal by net.
+
+The MDI lengths in section 13 and in the `.kicad_dru` comments predate the
+reroute. RX skew is now about 0.01 mm. Measure again before quoting them.
+

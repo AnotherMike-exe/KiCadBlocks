@@ -46,9 +46,12 @@ artefact cannot do the job, so a block ships as three.
 | Fragment | footprints, tracks, vias, zones, graphics | the shared Plum volume |
 | Host setup document | stackup, net classes, minimums, custom rules | `Modules/<Block>/docs/` |
 
-Measured on 2026-09-24: a fragment placed into an empty project brought 82
-footprints with their placement, 401 segments, 103 vias, 7 zones, 12 `F.Fab`
-labels and 16 `Edge.Cuts` lines. See `adr/0003-ship-three-artefacts.md`.
+Measured on 2026-09-25: every one of the nine fragments, placed into an empty
+project, brought its footprints, segments, vias, zones and `F.Fab` labels, and
+the copper matched its module board net by net. The PoE fragment brought 82
+footprints, 415 segments, 147 vias, 7 zones, 12 labels and its 16 `Edge.Cuts`
+slot lines. Two things do not travel: the board outline (it arrives on
+`Dwgs.User`) and per-footprint zone-connection overrides. See `adr/0003-ship-three-artefacts.md`.
 
 ## Where the shared assets live
 
