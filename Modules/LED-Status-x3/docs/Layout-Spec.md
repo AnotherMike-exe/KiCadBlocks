@@ -1,11 +1,14 @@
 # Layout Spec — LED-Status-x3
 
-DRAFT. The geometry of the module reference board, written before the board
-exists. Every number is a decision, and each one carries its reason.
+The geometry of the module reference board. Every number is a decision, and
+each one carries its reason.
 
-Board: 14 x 11 mm, 2 layers, 1.6 mm, PCBWay. Written 2026-09-24.
+Board: 14 x 11 mm, **4 layers** (the family stackup), 1.6 mm, PCBWay. Written
+2026-09-24, and checked against the board on 2026-09-25.
 
-Nothing here is measured yet. Re-derive every figure from the files after
+Sections 2 and 7 below come from the draft. The board is 4 layers with GND on
+all four, not 2 layers. Section 11 holds the measured closing state. Re-derive
+every other figure from the files after
 placement.
 
 ---
@@ -145,3 +148,18 @@ labels. A design block pasted into a host sheet joins them by name, so that
 works. The same block placed as a hierarchical sheet exposes no pins. The
 Ethernet block uses hierarchical labels for its interface. Decide one rule for
 the family.
+
+## 11. Closing state, 2026-09-25
+
+| Item | Value |
+|---|---|
+| Board | 14 x 11 mm, 4 layers, GND zones on F.Cu, In1.Cu, In2.Cu and B.Cu |
+| Placement | as section 5, measured pads identical |
+| Copper | 11 segments, 7 vias (0.6 / 0.3) |
+| DRC | 0 errors, 0 unconnected, 0 parity |
+| `track_dangling` | 3, the three breakout stubs, expected |
+| Silkscreen | 0 after the references moved to F.Fab |
+| Canary | 3 → 70 |
+| Fragment test | placed in BlockBuilder 2026-09-24: 6 footprints, 11 segments, 7 vias, 4 zones, 5 labels. Copper equal by net |
+
+Section 10 is closed. The three LED nets are hierarchical labels now.

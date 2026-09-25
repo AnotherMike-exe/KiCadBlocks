@@ -361,7 +361,7 @@ Checked 2026-09-24 on the saved board, `kicad-cli pcb drc --severity-all
 |---|---|
 | Track segments | 57 |
 | Vias | 30 (13 signal and VBUS, 17 GND) |
-| DRC errors | 4, all `hole_clearance`, see below |
+| DRC errors | 0. The 4 `hole_clearance` inside J1's own land pattern are closed by the scoped rule "J1 own pads to own pegs" (0.15 mm), added 2026-09-24. Canary 8 → 252 |
 | Unconnected | 0 |
 | Schematic parity | 0 |
 | `track_dangling` | 4, the four breakout stubs, expected |

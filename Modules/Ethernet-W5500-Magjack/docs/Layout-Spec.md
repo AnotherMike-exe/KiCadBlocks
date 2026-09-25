@@ -1,6 +1,6 @@
 # Layout Spec — Ethernet-W5500-Magjack
 
-DRAFT. The geometry of the module reference board, carried over from the
+The geometry of the module reference board, carried over from the
 finished `PoE-Ethernet-Si3402-W5500` module. Every number is a decision, and
 each one carries its reason.
 
@@ -345,3 +345,26 @@ one to watch.
    DRC hides single-pad nets from `unconnected`, and the four VC nets are
    single-pad nets.
 6. Render and look at the line-side strip.
+
+## 11. Closing state, 2026-09-25
+
+| Item | Value |
+|---|---|
+| Board | 42 x 55 mm, outline 114,50 to 156,105 |
+| Copper | 242 segments, 72 vias. 207 segments and 57 vias replayed from the PoE module, then 35 segments and 15 vias for the line-side lanes, the SPI jog and the breakout row |
+| Zones | 5, as section 8, less the keepout |
+| DRC | 0 errors, 0 unconnected, 0 parity |
+| `track_dangling` | 11, the 11 signal stubs, expected |
+| Canary | 20 → 543 |
+
+Changes from the draft:
+
+1. **No inner keepout.** Konnect cannot write a rule area, so the In1/In2
+   keepout of sections 6 and 8 is not on the board. The strip west of x 129.5
+   still carries no pour, because every zone starts at x 129.5. A host that
+   needs the 2.5 mm barrier draws the keepout itself. `Host-Setup.md` says so.
+2. **`/POE_VC2N` via at x 119.285**, on J2 pin 1's own line, not 119.3.
+3. **Rules.** The MDI skew rule is gone: it compared unlike segments across
+   series parts and could never pass. The line-side rule stops at J2's
+   courtyard, where the carried-over MDI_RDP escape passes pad 7 at 0.26 mm.
+   A 0.35 mm hole-to-hole rule covers the SPI fanout under U3.
