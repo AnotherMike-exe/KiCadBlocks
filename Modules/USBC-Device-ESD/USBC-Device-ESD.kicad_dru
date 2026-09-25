@@ -4,7 +4,7 @@
 #  FAB: PCBWay, 4-layer 1.6mm.  The fab section is shared with every Plum
 #  module board and comes from Ethernet-W5500-Magjack.kicad_dru.
 #
-#  No module rule.
+#  Module rule: an exception for J1's own pads and pegs.  It is at the end.
 #
 #  !! A SYNTAX ERROR ANYWHERE HERE SILENTLY DISABLES THE WHOLE FILE !!
 #  KiCad reports no error.  It falls back to built-in defaults and DRC returns

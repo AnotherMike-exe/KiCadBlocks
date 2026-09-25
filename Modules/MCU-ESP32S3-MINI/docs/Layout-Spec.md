@@ -442,21 +442,24 @@ Measured 2026-09-24 on the saved board with
 Every signal breakout via has exactly one F.Cu arrival and one B.Cu stub,
 counted by segment end points.
 
-### 11.2 Open errors. They need a rule decision, not layout
+### 11.2 Errors closed by two scoped rules, 2026-09-24
 
-1. **copper_edge_clearance, 21.** Board setup sets 0.5 mm copper-to-edge for
-   every item. The `.kicad_dru` "Trace to Outline" rule (0.3 mm) covers tracks
-   only. Espressif puts the board edge on footprint y −7.7, so U1's top-row
-   GND pads 46 to 60 and corner pads 62 and 65 sit 0.3 mm from the edge (17
-   errors). C3 and R7 sit 0.485 mm from the left edge (4 errors), because the
-   2.0 mm feed-side strip (HDG Fig. 4 maximum) cannot also clear U1's
-   courtyard at 0.5 mm. Section 3 assumed the 0.3 mm rule covers pads. It does
-   not. The fix is one `.kicad_dru` rule for pad edge clearance at this board's
-   feed-side and top edges, or a decision to accept these as exclusions.
-2. **hole_clearance, 8.** Inside `SW_Alps_SKRTLAE010`: its pad 1 and SH pads
-   are 0.099 and 0.150 mm from its own NPTH locating holes. The rule "NPTH with
-   copper around" asks for 0.20 mm. Placement cannot change this. Fix the
-   footprint or scope the rule.
+The layout left 29 DRC errors that needed a rule decision. Two rules at the end
+of the `.kicad_dru` close them. DRC now shows 0 errors, and the canary rises
+from 47 to 535.
+
+1. **"Pad to Outline", 0.30 mm, closes 21 `copper_edge_clearance`.**
+   Espressif puts the board edge at footprint y −7.7, so U1 pads 46 to 60, 62
+   and 65 sit 0.30 mm from the top edge. C3 and R7 sit 0.485 mm from the left
+   edge. The board setup figure of 0.50 mm is a template value. 0.30 mm is the
+   PCBWay routed-edge limit, and "Trace to Outline" already uses it for tracks.
+2. **"SW own pads to own pegs", 0.09 mm, closes 8 `hole_clearance`.** The Alps
+   SKRTLAE010 land pattern puts pad 1 and the SH pads 0.099 and 0.150 mm from
+   the switch's own locating holes. The rule applies only when both items
+   belong to one switch.
+
+The GUI pass also restored U1, SW1 and SW2 from the library. Konnect IPC writes
+had dropped their `(units)` block, so DRC showed 3 `lib_footprint_mismatch`.
 
 ### 11.3 Breakout table
 

@@ -4,7 +4,8 @@
 #  FAB: PCBWay, 4-layer 1.6mm.  The fab section is shared with every Plum
 #  module board and comes from Ethernet-W5500-Magjack.kicad_dru.
 #
-#  No module rule.  The antenna keep-out is a board cut-out, not a rule.
+#  Module rules: pads 0.30 mm to the edge (Espressif puts U1 at the edge), and
+#  an exception for each switch's own pads and pegs.  Both are at the end.
 #
 #  !! A SYNTAX ERROR ANYWHERE HERE SILENTLY DISABLES THE WHOLE FILE !!
 #  KiCad reports no error.  It falls back to built-in defaults and DRC returns
