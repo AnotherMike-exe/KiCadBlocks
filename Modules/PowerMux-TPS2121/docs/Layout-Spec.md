@@ -1,8 +1,12 @@
 # Layout Spec — PowerMux-TPS2121
 
 The geometry of the module reference board. Every number is a decision, and each
-one carries its reason. **Draft.** No board exists yet. Nothing here is checked
-by DRC.
+one carries its reason. The board is placed and routed. §3.2 and §11 hold the
+state that DRC checked. §12 lists every change from the draft and why.
+Sections 4 to 9 keep the draft reasoning. Where they disagree with §3.2 or §11,
+§3.2 and §11 are right.
+
+R70 is now 169 k on the board (§0.1 recommendation applied in the schematic).
 
 Board: 15 x 20 mm, 4 layers, 1.6 mm. Written 2026-09-24.
 
@@ -133,28 +137,32 @@ IN2's row. C110 and C111 take one OUT pad each. Keep it.
 
 ### 3.2 The module
 
-The cluster moves as a rigid body. U10 goes to (107.5, 109.0). TP1 alone moves,
-from +9.16 to +6.0, because +9.16 lands on the breakout row.
+U10 stays at the draft point. The rest of the cluster is re-placed for a
+single-layer (F.Cu) route of every net; the parent geometry needed three
+vias on OV1 and crossed PR1 over OV1. See §12.
 
-| Ref | X | Y | Rot | Side |
-|---|---|---|---|---|
-| U10 | 107.500 | 109.000 | 180 | F |
-| C109 | 104.450 | 108.650 | 180 | F |
-| C108 | 110.075 | 107.700 | 90 | F |
-| C110 | 103.665 | 110.764 | 180 | F |
-| C111 | 110.167 | 111.975 | 270 | F |
-| C107 | 107.750 | 112.325 | 270 | F |
-| R70 | 106.750 | 104.400 | 270 | F |
-| R71 | 104.448 | 106.290 | 180 | F |
-| R72 | 108.263 | 105.615 | 270 | F |
-| R73 | 110.543 | 105.219 | 0 | F |
-| R74 | 105.467 | 112.781 | 180 | F |
-| R75 | 104.480 | 104.830 | 0 | F |
-| R76 | 105.280 | 102.030 | 0 | F |
-| TP1 | 107.500 | 115.000 | 0 | F |
+| Ref | X | Y | Rot | Side | Pads |
+|---|---|---|---|---|---|
+| U10 | 107.500 | 109.000 | 180 | F | 7 POE_5V and 8 V5_SYS exit west; 2 VBUS and 1 V5_SYS exit east |
+| C109 | 105.100 | 107.875 | 90 | F | 1 POE_5V on the U10.7 row (105.1, 108.65); 2 GND north |
+| C108 | 110.300 | 107.700 | 90 | F | 1 VBUS on the U10.2 row (110.3, 108.65); 2 GND north |
+| C110 | 104.600 | 111.750 | 270 | F | 1 V5_SYS (104.6, 110.275); 2 GND south |
+| C111 | 110.950 | 111.975 | 270 | F | 1 V5_SYS (110.95, 110.5); 2 GND south |
+| C107 | 108.300 | 111.700 | 0 | F | 1 SS west, 2 GND east |
+| R74 | 107.325 | 113.250 | 0 | F | 1 ILIM west, 2 GND east |
+| R71 | 103.250 | 104.175 | 90 | F | 1 PR1 south, 2 GND north |
+| R70 | 104.850 | 104.175 | 270 | F | 1 POE_5V north, 2 PR1 south |
+| R75 | 106.450 | 104.175 | 270 | F | 1 POE_5V north, 2 OV1 south |
+| R76 | 108.050 | 104.175 | 90 | F | 1 OV1 south, 2 GND north |
+| R73 | 109.650 | 104.175 | 90 | F | 1 OV2 south, 2 GND north |
+| R72 | 111.250 | 104.175 | 270 | F | 1 VBUS north, 2 OV2 south |
+| TP1 | 107.400 | 115.200 | 0 | F | V5_SYS, straight above the middle V5_SYS row via |
 
-Run `Modules/analysis/check_courtyards.py` after placement. Render the board
-and look at it.
+The six divider resistors stand in one row at 1.6 mm pitch. Each divider node
+is a pair of south pads joined by one track: PR1 (R71, R70), OV1 (R75, R76),
+OV2 (R73, R72). The node order matches the pin order, west to east, so no
+control track crosses another. `check_courtyards.py`: no overlaps; C107 to
+C111 is 0.02 mm, the closest pair.
 
 ## 4. Copper on the parent board
 
@@ -290,3 +298,94 @@ block.
 4. Count segments on every interface net to its breakout via. DRC hides a
    single-pad net.
 5. Render the board and look at it.
+
+## 11. Closing state
+
+Measured 2026-09-24 with `kicad-cli pcb drc --severity-all --schematic-parity
+--refill-zones`.
+
+| Item | Count |
+|---|---|
+| Errors | 0 |
+| Unconnected | 0 |
+| Schematic parity | 0 |
+| `track_dangling` | 9, the nine power stubs |
+| `lib_footprint_mismatch` | 1, U10 differs from `Package_DFN_QFN` in the library. Came with the footprint; not a layout change |
+| Silkscreen warnings | 47, left for the GUI silk pass: 25 `silk_overlap`, 22 `silk_over_copper` |
+| Canary (`check_import.py`) | 57 to 417, PASS |
+
+Copper: 72 segments (63 F.Cu, 9 B.Cu), 26 vias, all vias 0.6/0.3. No
+track is on In1.Cu or In2.Cu.
+
+| Net | F.Cu segments | B.Cu segments | Vias |
+|---|---|---|---|
+| `/POE_5V` | 10 (U10.7 neck 0.4, 0.6 to C109.1, 0.8 trunk y 108.65 and x 102.2 to the row; row link 0.6; 0.3 divider feed to R70.1 and R75.1 round the west and north edge) | 3 (stubs) | 3 |
+| `/VBUS` | 8 (U10.2 neck 0.4, 0.6 to C108.1, 0.8 trunk y 108.65 and x 113.6 to the row; row link 0.6; 0.3 divider feed to R72.1 up x 113.6) | 3 (stubs) | 3 |
+| `/V5_SYS` | 15 (U10.8 neck 0.4 to C110.1 and a 3-via column at x 103.2; U10.1 neck 0.4 to C111.1 and a 3-via column at x 112.4; all 0.6 past the necks; TP1 to the row, row link) | 3 (stubs) | 9 |
+| `/MUX_PR1`, `/MUX_OV1`, `/MUX_OV2` | 4, 3, 5 (0.2 mm) | 0 | 0 |
+| `/MUX_ILIM`, `/MUX_SS` | 3, 2 (0.2 mm) | 0 | 0 |
+| `GND` | 13 (pad to via) | 0 | 11 |
+
+Power widths: the 0.4 mm pads limit the neck to 0.4 mm for 0.7 to 0.8 mm. The
+track widens to 0.6 mm where the IN and OUT tracks on one side part, and to
+0.8 mm past the input capacitor.
+
+Interface arrival, counted by segment:
+
+- `/POE_5V`: U10.7 to the via at 102.2, 117.5 in 4 segments (0.4, 0.6, 0.8,
+  0.8), then 1 row segment each to 101.2 and 103.2.
+- `/VBUS`: U10.2 to the via at 113.6, 117.5 in 4 segments (0.4, 0.6, 0.8,
+  0.8), then 1 row segment each to 112.6 and 111.6.
+- `/V5_SYS`: the two OUT pads reach In2.Cu through 3 vias each (x 103.2 and
+  x 112.4). In2.Cu joins them to the three row vias. TP1 joins the row on F.Cu
+  in 1 segment, then 1 row segment each to 106.4 and 108.4. DRC reports 0
+  unconnected with the zones refilled, so the In2 path is complete.
+- `GND`: the two row vias join the F.Cu, In1.Cu and B.Cu pours.
+
+Breakout row, y 117.5. F.Fab labels at y 116.3, size 0.7, rotation 90.
+
+| x | Net | Arrives on | Stub | Stub end |
+|---|---|---|---|---|
+| 101.2 | `/POE_5V` | F.Cu row link | B.Cu, 1.0 mm | 101.2, 118.5 |
+| 102.2 | `/POE_5V` | F.Cu trunk | B.Cu, 1.0 mm | 102.2, 118.5 |
+| 103.2 | `/POE_5V` | F.Cu row link | B.Cu, 1.0 mm | 103.2, 118.5 |
+| 104.8 | `GND` | pours, In1 | — | — |
+| 106.4 | `/V5_SYS` | F.Cu row link, In2.Cu plane | B.Cu, 1.0 mm | 106.4, 118.5 |
+| 107.4 | `/V5_SYS` | F.Cu from TP1, In2.Cu plane | B.Cu, 1.0 mm | 107.4, 118.5 |
+| 108.4 | `/V5_SYS` | F.Cu row link, In2.Cu plane | B.Cu, 1.0 mm | 108.4, 118.5 |
+| 110.0 | `GND` | pours, In1 | — | — |
+| 111.6 | `/VBUS` | F.Cu row link | B.Cu, 1.0 mm | 111.6, 118.5 |
+| 112.6 | `/VBUS` | F.Cu row link | B.Cu, 1.0 mm | 112.6, 118.5 |
+| 113.6 | `/VBUS` | F.Cu trunk | B.Cu, 1.0 mm | 113.6, 118.5 |
+
+Open:
+
+1. Silkscreen pass in the GUI. The value texts on F.Fab also crowd the render.
+2. The F.Fab labels are centred 1.2 mm inboard and reach over their vias, as on
+   the Buck board. F.Fab only.
+3. U10.9 (ST) stays unconnected (§0.4).
+4. The `/V5_SYS` current from U10 to the row goes through In2.Cu only (3 vias
+   down on each side, 3 up at the row). There is no F.Cu path past C107 and
+   R74.
+5. The zones in the file are not refilled. DRC refills in memory. Refill in
+   the GUI before a fab export.
+
+## 12. Changes from the draft
+
+| Item | Draft | Board | Why |
+|---|---|---|---|
+| Divider row R70 to R76 | The parent cluster: mixed rotations from y 102.0 to 106.4 | One row of six vertical 0603 at y 104.175, x 103.25 to 111.25, 1.6 mm pitch | The parent order crosses OV1 over PR1 and needs vias. In the new order each divider node sits over its U10 pin, so PR1 goes west, OV1 straight north and OV2 east, all on F.Cu at 0.2 mm. |
+| C109 | 104.45, 108.65, rot 180 | 105.1, 107.875, rot 90 | At rot 180 its GND pad sits on the POE_5V line and blocks the trunk to the west. Rotated, pad 1 sits on the line and the trunk passes it. |
+| C108 | 110.075, 107.7 | 110.3, 107.7 | Clears the OV2 track at y 106.1. |
+| C110 | 103.665, 110.764, rot 180 | 104.6, 111.75, rot 270 | At rot 180 it lies across the POE_5V trunk at x 102.2. Vertical, it leaves the west strip to POE_5V. |
+| C111 | 110.167, 111.975 | 110.95, 111.975 | Clears the courtyard of C107. |
+| C107 | 107.75, 112.325, rot 270 | 108.3, 111.7, rot 0 | Pad 2 takes the U10.12 GND track, and the ILIM track passes west of pad 1. |
+| R74 | 105.467, 112.781, rot 180 | 107.325, 113.25, rot 0 | Under C107. The draft spot is inside C110's courtyard. ILIM goes straight down x 106.5 to pad 1. |
+| TP1 | 107.5, 115.0 | 107.4, 115.2 | Straight above the middle V5_SYS row via. |
+| Priority polygons and B.Cu feeds (§6) | 4 F.Cu and 2 B.Cu | none | Not on the board. Power_2 tracks replace them: 0.4 mm necks at the U10 pads, then 0.6 and 0.8 mm. |
+| POE_5V and VBUS arrival | B.Cu feeds, stubs on F.Cu | F.Cu trunks at x 102.2 and x 113.6, stubs on B.Cu | A straight F.Cu trunk with no layer change before the row. The 3 row vias are the only layer change. |
+| V5_SYS arrival | In2.Cu, stubs on F.Cu | In2.Cu plus a F.Cu row link from TP1, stubs on B.Cu | The row link is on F.Cu, so the stubs go to the opposite layer. |
+| U10 power vias | 3 per pad polygon, 12 in total | 3 per OUT pad, at x 103.2 and 112.4, beside C110.1 and C111.1 | The inputs have no layer change near U10. No via fits within 1.5 mm of a 0.4 mm pad without crowding the control pins. |
+| Divider feeds | from the parent board | 0.3 mm F.Cu from the input trunks | POE_5V round the west and north edges to R70.1 and R75.1; VBUS up x 113.6 to R72.1. No via. |
+| GND vias | at U10.12, U10.3 and each capacitor | 11: U10.3 (109.0, 107.3), U10.12 by C107.2 (109.2, 112.6), C108.2, C109.2, C110.2, C111.2, R71.2, R76.2, R73.2, 2 on the row | The U10.12 track ends at C107.2 and shares its via. |
+
