@@ -19,3 +19,6 @@ _exports/
 
 # Editor local history
 .history/
+
+# Board backups
+*.bak
