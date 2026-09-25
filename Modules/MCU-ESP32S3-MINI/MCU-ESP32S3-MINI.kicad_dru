@@ -120,3 +120,21 @@
 # ============================================================================
 
 # None.  The netclasses in the .kicad_pro govern this board.
+
+# --- Pads to the board edge --------------------------------------------------
+# Espressif places the module's antenna end at the board edge (HDG section
+# 4.2), so U1 pads 46-60, 62 and 65 sit 0.30 mm from the top edge.  The board
+# setup minimum of 0.50 mm is a template figure.  PCBWay's routed-edge limit is
+# 0.30 mm, the same figure "Trace to Outline" above uses for tracks.  Measured
+# 2026-09-24.
+(rule "Pad to Outline"
+(constraint edge_clearance (min 0.3mm))
+(condition "A.Type == 'Pad'"))
+
+# --- SW1, SW2: their own pads to their own pegs ------------------------------
+# The Alps SKRTLAE010 land pattern puts pad 1 and the SH pads 0.099 to
+# 0.150 mm from the switch's own locating holes.  That is the vendor pattern,
+# not layout.  The rule applies only when both items belong to one switch.
+(rule "SW own pads to own pegs"
+(constraint hole_clearance (min 0.09mm))
+(condition "A.Pad_Type == 'NPTH, mechanical' && ((A.Parent == 'SW1' && B.Parent == 'SW1') || (A.Parent == 'SW2' && B.Parent == 'SW2'))"))
