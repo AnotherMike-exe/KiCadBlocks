@@ -157,8 +157,8 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C106"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "b22b1393-4f30-4481-9002-9107ae2aea2a")
 			(effects
 				(font
@@ -168,7 +168,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "e92d6508-f388-4ab7-ba87-c90e31557418")
 			(effects
@@ -179,7 +179,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cfb911b6-b716-4c2c-94a2-3832c9332b67")
@@ -190,7 +190,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0d879855-f5db-4560-9342-6e70c2135e5b")
@@ -201,7 +201,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "81cbb2fb-6b7e-4294-ab04-e56c04a3db3d")
@@ -213,7 +213,7 @@
 			)
 		)
 		(property "MPN" "GRM188R71E105KA12D"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -226,7 +226,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -287,7 +287,7 @@
 			(uuid "337d8aef-4261-4a2f-9280-731aaa3524fa")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "c832bec0-1fb2-415d-a706-e2d05e2ab61c")
 			(effects
@@ -757,8 +757,8 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C105"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "f3b067dc-77f6-4cdf-b4cb-d28de2630ca6")
 			(effects
 				(font
@@ -768,7 +768,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "24160f2a-bfa0-4d44-804d-090e95b24a67")
 			(effects
@@ -779,7 +779,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ebc21315-dc2b-4989-aa43-71e1e3f92276")
@@ -790,7 +790,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "68d24fb4-4850-46f9-bc55-6d91dd0df088")
@@ -801,7 +801,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "b1729d3c-ff96-4bc3-8796-a67c3b8dc282")
@@ -813,7 +813,7 @@
 			)
 		)
 		(property "MPN" "GRM188R71E105KA12D"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -826,7 +826,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -887,7 +887,7 @@
 			(uuid "d7b18be8-1ce7-48a5-ac8c-6365ab966817")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "0fa5d03b-138a-4482-b630-4e438c809aa4")
 			(effects

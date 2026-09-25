@@ -157,8 +157,8 @@
 		(descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf)")
 		(tags "LED")
 		(property "Reference" "D3"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "7d3717d4-9748-4ff5-b109-a361881a136f")
 			(effects
 				(font
@@ -168,7 +168,7 @@
 			)
 		)
 		(property "Value" "Red 625nm 0603"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "307bcdbe-f217-4090-afd7-6ab7269bf73a")
 			(effects
@@ -179,7 +179,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/150060RS75000.pdf"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2c5c99df-3e66-4d6a-ac1d-36b9c450ec30")
@@ -190,7 +190,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5262ddfe-a5c7-4125-9d7d-91999abed368")
@@ -201,7 +201,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "7e528c82-5b02-417d-b612-019a6bff3478")
@@ -213,7 +213,7 @@
 			)
 		)
 		(property "MPN" "150060RS75000"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -226,7 +226,7 @@
 			)
 		)
 		(property "Manufacturer" "Wurth Elektronik"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -239,7 +239,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -349,7 +349,7 @@
 			(uuid "cf09f70a-38c9-4214-a045-99074db2da8f")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "48bb5f31-867a-4093-ab90-16fe8cc550d1")
 			(effects
@@ -400,7 +400,7 @@
 		(tags "resistor")
 		(property "Reference" "R5"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "816ef541-0cbd-4621-a38b-0fb48830feb6")
 			(effects
 				(font
@@ -577,8 +577,8 @@
 		(descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf)")
 		(tags "LED")
 		(property "Reference" "D2"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "4e826045-af75-4dae-a9ed-251b52d0b247")
 			(effects
 				(font
@@ -588,7 +588,7 @@
 			)
 		)
 		(property "Value" "Amber 605nm 0603"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "85decac4-f608-4372-8b69-a43a8ce1cf45")
 			(effects
@@ -599,7 +599,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/150060AS75000.pdf"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4ec743c3-bcfe-4a12-8af9-6aca92ec4fca")
@@ -610,7 +610,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4d804ab9-5e35-4b01-a999-f1eacabda9a3")
@@ -621,7 +621,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "3b0b25a3-7d0d-41e5-b6c2-07082115232e")
@@ -633,7 +633,7 @@
 			)
 		)
 		(property "MPN" "150060AS75000"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -646,7 +646,7 @@
 			)
 		)
 		(property "Manufacturer" "Wurth Elektronik"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -659,7 +659,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -769,7 +769,7 @@
 			(uuid "65a73857-0854-4618-82bf-3f402a44ba07")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "8939707b-159a-45f3-a7f6-f61940714b3c")
 			(effects
@@ -820,7 +820,7 @@
 		(tags "resistor")
 		(property "Reference" "R4"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "87a2b03c-ca2e-40a6-9f93-ec1ddcd89c43")
 			(effects
 				(font
@@ -997,8 +997,8 @@
 		(descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf)")
 		(tags "LED")
 		(property "Reference" "D1"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "a7cbde99-f028-4dc9-b6ab-d34d4c570fef")
 			(effects
 				(font
@@ -1008,7 +1008,7 @@
 			)
 		)
 		(property "Value" "Green 570nm 0603"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "9652d77b-bdb1-4a7e-a62a-4ea4d614f6ea")
 			(effects
@@ -1019,7 +1019,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/150060VS75000.pdf"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6a64b1f4-a60e-4b50-b416-50642c30dea1")
@@ -1030,7 +1030,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8117ddc4-7f54-4fe8-af8c-f130e13b715c")
@@ -1041,7 +1041,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "53da7849-20c0-4bdc-a61d-431b4770d00f")
@@ -1053,7 +1053,7 @@
 			)
 		)
 		(property "MPN" "150060VS75000"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1066,7 +1066,7 @@
 			)
 		)
 		(property "Manufacturer" "Wurth Elektronik"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1079,7 +1079,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1189,7 +1189,7 @@
 			(uuid "f6627699-90e0-4a52-ac80-d1c1fba12e6e")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "6b9a17ed-fa2a-44e7-a135-b44fbf1e901b")
 			(effects
@@ -1240,7 +1240,7 @@
 		(tags "resistor")
 		(property "Reference" "R6"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "84178e52-4411-4665-91b7-c5fd0dae5036")
 			(effects
 				(font
