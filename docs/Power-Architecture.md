@@ -74,7 +74,7 @@ derived, and they depend on the comparator reference.
 
 | Pin | Divider | Ratio | From |
 |---|---|---|---|
-| PR1 | R70 118 k / R71 51.1 k | 0.3022 | POE_5V |
+| PR1 | R70 169 k / R71 51.1 k | 0.2322 | POE_5V |
 | OV1 | R75 46.4 k / R76 10 k | 0.1773 | POE_5V |
 | OV2 | R72 46.4 k / R73 10 k | 0.1773 | VBUS |
 | ILIM | R74 80.6 k | — | to GND |
@@ -84,11 +84,25 @@ derived, and they depend on the comparator reference.
 PoE reaches IN1 and USB reaches IN2. PR1 is driven from IN1, so **PoE has
 priority and USB-C is the fallback**.
 
-At a 1.19 V comparator reference the OV inputs trip at 6.71 V and the priority
-handover happens at 3.94 V on IN1.
+The comparator reference is **1.06 V rising (1.01 to 1.10 V) and 1.04 V
+falling**, the same for PR1, CP2, OV1 and OV2. Source: TPS2121 datasheet
+SLVSEA3F, section 7.5, held in `_resources/Research/TPS2121/`.
 
-**Check the 1.19 V figure against the TPS2121 datasheet before you rely on it.**
-We do not hold that document. The ratios above are certain. The volts are not.
+| Threshold | Typical | Range over the reference tolerance |
+|---|---|---|
+| OV1, OV2 trip | 5.98 V | 5.70 to 6.20 V |
+| PR1, PoE takes priority (rising) | 4.57 V | 4.35 to 4.74 V |
+| PR1, PoE hands over (falling) | 4.48 V | 4.26 to 4.69 V |
+| ILIM with 80.6 k | 1.49 A | 1.0 to 2.0 A (datasheet table) |
+
+**R70 changed from 118 k to 169 k on 2026-09-24.** With 118 k, as fitted on
+Plum RF Bridge, PoE kept priority down to 3.44 V. That is below the buck's
+4.5 V minimum input. The schematic note already gave 4.57 V, which matches
+169 k. At worst-case tolerance the rising threshold is 4.74 V, so PoE must hold
+4.75 V or more to take priority back.
+
+An earlier version of this section assumed a 1.19 V reference. That figure was
+wrong, and so were the 6.71 V and 3.94 V derived from it.
 
 ## 4. The decisions, taken 2026-09-22
 
@@ -117,7 +131,7 @@ V5_SYS at 5 V, and the buck below it makes 3.3 V.
 This is the one cross-block trap in the chain.
 
 A USB PD sink negotiates a voltage. The profiles are 5, 9, 12, 15 and 20 V. The
-OV2 divider above trips at about 6.7 V. **So a PD sink that requests 9 V or more
+OV2 divider above trips at about 6.0 V (5.98 V typical). **So a PD sink that requests 9 V or more
 shuts the mux input off.**
 
 **We take the first option. The sink requests 5 V, and the OV2 divider does not
