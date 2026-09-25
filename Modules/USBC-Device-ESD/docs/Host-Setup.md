@@ -145,6 +145,28 @@ connection is lost. Measured 2026-09-25: 0 of the solid overrides arrived.
 2. Open **Properties**. Set **Zone connection** to **Solid**.
 3. Refill the zones (B).
 
+## 5.3 Place as sheet: the net names change
+
+Two ways to place this block. Both bring the same layout.
+
+| Option in the Design Blocks panel | The schematic | The net names |
+|---|---|---|
+| "Place as sheet" **off** | The symbols land on the host's own page | `/VPOS`, as in the patterns above |
+| "Place as sheet" **on** | The block gets its own page and title block. It prints whole | `/USBC-Device-ESD/VPOS` |
+
+**With "Place as sheet" on, every `/NAME` pattern above binds to nothing.**
+Measured 2026-09-25 on the PoE block through the KiCad API: MDI bound 0 of 10
+nets, and Chassis, GND_PRI and PoE_Load bound none. An unbound net class makes
+every class rule pass with zero hits.
+
+Fix it once in the host, **Board Setup → Net Classes → Patterns**. Change each
+pattern from `/NAME` to `*/NAME`, for example `*/VPOS`. The `*` matches the root
+`/` and any sheet path. Power nets such as `GND` and `+3V3` keep no prefix.
+Measured on the same board: with `*/NAME` every class binds again, and on a
+flat placement `*/NAME` binds exactly the nets `/NAME` binds. Patterns that name
+a designator, such as `unconnected-(U1-*)`, need the section 5.1 fix as well.
+Then check the class column in the net inspector.
+
 ## 6. The interface
 
 Eight vias on the block's bottom edge, y 118.5 on the reference board. Each

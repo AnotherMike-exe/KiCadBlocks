@@ -661,13 +661,17 @@
         "uuid": "433f3dcb-8287-4d7b-98a0-77b3bca6fc50"
       }
     ],
-    "used_designators": "T1,L1-4,R1-24,U1-4,SW1-2,C1-39,FB1-5,#PWR1-32,D1-6,Y1,TP1-3,J1,#FLG1-8",
+    "used_designators": "T1,L1-4,R1-24,U1-4,SW1-2,C1-39,FB1-5,Y1,D1-6,#PWR1-32,TP1-3,J1,#FLG1-8",
     "variants": []
   },
   "sheets": [
     [
       "433f3dcb-8287-4d7b-98a0-77b3bca6fc50",
       "BlockBuilder"
+    ],
+    [
+      "9d593b91-fa84-43dc-bd35-53db33b43cb0",
+      "PoE-Ethernet-Si3402-W5500"
     ]
   ],
   "text_variables": {},
