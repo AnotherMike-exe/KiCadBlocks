@@ -120,3 +120,12 @@
 # ============================================================================
 
 # None.  The netclasses in the .kicad_pro govern this board.
+
+# --- J1 USB-C, its own pads to its own pegs ---------------------------------
+# The stock GCT USB4110 footprint puts pads A1/B12 and B1/A12 0.194 mm from its
+# own NPTH locating pegs, measured 2026-09-24.  That is the vendor land pattern,
+# not layout, and the rule above asks 0.20 mm.  This rule applies only when
+# both items belong to J1.  Routed copper near a peg keeps the full 0.20 mm.
+(rule "J1 own pads to own pegs"
+(constraint hole_clearance (min 0.15mm))
+(condition "A.Pad_Type == 'NPTH, mechanical' && A.Parent == 'J1' && B.Parent == 'J1'"))

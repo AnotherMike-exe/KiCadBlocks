@@ -1,12 +1,13 @@
 # Layout Spec — USBC-Device-ESD
 
-DRAFT. The geometry of the module reference board, written before the board
-exists. Every number is a decision, and each one carries its reason.
+The geometry of the module reference board, as laid out on 2026-09-24.
+Every number is a decision, and each one carries its reason. §11 lists every
+change from the draft, and §12 gives the closing state.
 
 Board: 20 x 21 mm, 4 layers, 1.6 mm, PCBWay. Written 2026-09-24.
 
-Nothing here is measured yet. Re-derive every figure from the files after
-placement. Run ERC, DRC with `--refill-zones`, and a canary first.
+Re-derive every figure from the files before you trust it. Run ERC, DRC with
+`--refill-zones`, and a canary first.
 
 ---
 
@@ -124,7 +125,8 @@ and the breakout row sits 2.5 mm above the bottom edge, as on the PoE module.
 
 ## 4. Placement table
 
-Carried over from `Plum-RFBridge`. J1 moves from (151.15, 54.25) to
+As placed, read back from the saved file. Carried over from `Plum-RFBridge`
+without change. J1 moves from (151.15, 54.25) to
 (110.0, 103.675). Every other part keeps its offset from J1, so the whole
 cluster translates by **(−41.15, +49.425)**.
 
@@ -159,35 +161,43 @@ The resulting pad positions, for checking:
 **CC1 goes right, CC2 goes left.** J1.A5 sits at x 111.25 and R1 is east of
 it. J1.B5 sits at 108.25 and R2 is west of it. Both are straight escapes.
 
-Courtyard gaps, computed: R2 to U2 0.47 mm, R1 to U2 0.22 mm. Confirm with
-`Modules/analysis/check_courtyards.py` after placement.
+Courtyard check after placement (`check_courtyards.py`): no overlap, no gap
+under 0.05 mm. J1's courtyard runs to y 99.495, past the mating edge, by
+design (§2.2). DRC reports no edge-clearance violation on J1.
 
 ## 5. Routing
 
 ### 5.1 The data pair bridge
 
-Translated from `Plum-RFBridge`, with two changes.
+As built. The draft's bridge (D− vias at y 108.60, D+ vias at 109.65, both
+straight under the pads) does not fit 0.6 mm vias: the D+ stub from A6 passes
+0.5 mm from the centre of each D− via, a 0.10 mm gap against the 0.20 mm
+netclass. See §11.
 
-| Step | Net | Geometry |
-|---|---|---|
-| 1 | D− | F.Cu stubs straight down from B7 and A7 to vias at y **108.60** |
-| 2 | D− | B.Cu bridge between the two D− vias at y 108.60 |
-| 3 | D+ | F.Cu stubs straight down from B6 and A6 to vias at y **109.65** |
-| 4 | D+ | B.Cu bridge between the two D+ vias at y 109.65, on to a via at (111.575, 110.90) |
-| 5 | D+ | F.Cu from (111.575, 110.90) to U2.1 |
-| 6 | D− | F.Cu from the B7 via down to U2.3 |
+Pad order left to right on the board: B6 D+ 109.25, A7 D− 109.75, A6 D+ 110.25,
+B7 D− 110.75.
 
-**Change 1: the vias are 0.6 / 0.3, not 0.52 / 0.3.** The house via is 0.6.
-The two via rows sit 1.05 mm apart in y and 0.5 mm apart in x, which leaves
-0.56 mm of copper between a D− via and a D+ via.
+| Step | Net | Layer | Geometry |
+|---|---|---|---|
+| 1 | D− | F.Cu | A7 down to y 108.50, 45° west to x 109.60, down to 109.70 |
+| 2 | D− | F.Cu | B7 down to y 108.50, 45° east to x 110.95, down to 109.70 |
+| 3 | D− | F.Cu | the two legs join at y 109.70; from (110.40, 109.70) straight down to U2.3 |
+| 4 | D+ | F.Cu | A6 straight down, inside the D− U, to via (110.25, 109.00) |
+| 5 | D+ | F.Cu | B6 down to y 108.05, 45° west to x 108.95, down to via (108.95, 109.00) |
+| 6 | D+ | B.Cu | (108.95, 109.00) → (110.25, 109.00) → (111.00, 109.00) → (112.30, 110.30) → via (112.30, 111.90) |
+| 7 | D+ | F.Cu | via (112.30, 111.90) straight down to U2.1 |
 
-**Change 2: the D− via row moves from 1.02 mm to 1.245 mm below the pad
-centres.** At RFBridge's offset a 0.6 mm via sits 0.15 mm from the corner of
-the neighbouring 0.30 mm pad of the other net. The netclass wants 0.20. At
-y 108.60 the gap is 0.37 mm. The D+ row moves by the same 0.225 mm.
+D− joins on F.Cu as a U. D+ jumps it on B.Cu. That swaps the pair order to
+match U2 (D− on pin 3 west, D+ on pin 1 east) with no second crossing.
+The neighbour escapes (B6 D+, CC1) turn at y 108.05, before the D− legs turn at
+108.50, so no two 45° runs sit side by side at 0.5 mm pitch (0.354 mm apart,
+a 0.154 mm gap).
 
-**Pad escapes are 0.20 mm, not RFBridge's 0.1016.** A 0.20 mm trace on a pad
-centre at 0.5 mm pitch clears the neighbouring 0.30 mm pad by 0.25 mm.
+Vias 0.6 / 0.3. Pad escapes 0.20 mm. Smallest designed gap in the bridge:
+0.25 mm (D− leg to D+ via, CC2 to VBUS via).
+
+Lengths, connector pad to U2: D− (A7) 6.79 mm, D+ (A6) 7.22 mm. The B7 and B6
+legs are the unmated-orientation stubs, 2.98 and 3.07 mm.
 
 ### 5.2 Differential pair, host side
 
@@ -227,9 +237,24 @@ Recompute with KiCad's calculator before any High Speed variant.
 | `/USB_DP`, `/USB_DM` | 0.20 / 0.20 | §5.2 |
 | `*_CONN` bridge | 0.20 mm | §5.1 |
 
-`/VBUS` leaves J1.A9/B4 and J1.A4/B9 on F.Cu, joins on B.Cu through two vias
-beside the connector, and runs B.Cu to the breakout. U2.5 takes a 0.20 mm
-tap. Pin 5 is a reference, not a supply path.
+As built. There is no VBUS polygon. Every VBUS track is 0.508 mm, and every
+layer change uses two vias:
+
+- J1.A9/B4 (107.60): F.Cu down to vias (107.60, 108.65) and (107.60, 109.45),
+  then B.Cu straight down x 107.60 to y 117.00.
+- J1.A4/B9 (112.40): F.Cu down to vias (112.40, 108.65) and (112.40, 109.45),
+  then B.Cu 45° to (113.30, 110.35), east to x 116.00, down to y 117.00.
+- A B.Cu bus at y 117.00 from x 107.60 to 116.00 joins both sides. It drops to
+  the two row vias at x 107.20 and 108.80.
+- U2.5: F.Cu 0.508 mm tap straight down to vias (111.35, 117.00) and
+  (111.35, 117.80), joined on both layers, onto the bus.
+
+The right-hand VBUS path goes round the east side because the D+ B.Cu jumper
+(§5.1) cuts across the direct line from the right vias to the row.
+
+GND ties: J1.B1/A12 and J1.A1/B12 each take a 0.3 mm track to a via at
+y 108.90. U2.2 has a via at (111.35, 112.30), 1 mm from the pad. R1.2 and R2.2
+each have a via beside the pad.
 
 ## 6. Zones
 
@@ -254,15 +279,18 @@ Via 0.6 mm pad on 0.3 mm drill. Row at **y = 118.5**. Each signal via carries a
 1.0 mm stub on the far layer, ending at y 119.5. GND pitch 3.0 mm, signal pitch
 1.6 mm, as on the PoE module.
 
-| x | Net | Direction | Arrives on | Stub layer |
-|---|---|---|---|---|
-| 102.2 | `GND` | stitch | pour | both |
-| 105.2 | `GND` | stitch | pour | both |
-| 108.8 | `/VBUS` | out | B.Cu | F.Cu |
-| 110.4 | `/USB_DM` | both | F.Cu | B.Cu |
-| 112.0 | `/USB_DP` | both | F.Cu | B.Cu |
-| 115.2 | `GND` | stitch | pour | both |
-| 118.2 | `GND` | stitch | pour | both |
+| x | Net | Direction | Arrives on | Stub layer | F.Fab label |
+|---|---|---|---|---|---|
+| 102.2 | `GND` | stitch | pour | none | GND |
+| 105.2 | `GND` | stitch | pour | none | GND |
+| 107.2 | `/VBUS` | out | B.Cu | F.Cu, 0.508 | VBUS |
+| 108.8 | `/VBUS` | out | B.Cu | F.Cu, 0.508 | VBUS |
+| 110.4 | `/USB_DM` | both | F.Cu | B.Cu, 0.20 | USB_DM |
+| 112.0 | `/USB_DP` | both | F.Cu | B.Cu, 0.20 | USB_DP |
+| 115.2 | `GND` | stitch | pour | none | GND |
+| 118.2 | `GND` | stitch | pour | none | GND |
+
+Labels are F.Fab, rotation 90, 0.7 mm, at y 117.3 (1.2 mm inboard).
 
 `/USB_DM` drops straight from U2.4 at x 110.4. `/USB_DP` jogs 0.3 mm west
 from U2.6 at x 112.3. The pair stays a pair to the row.
@@ -271,8 +299,9 @@ from U2.6 at x 112.3. The pair stays a pair to the row.
 PoE module. The host must continue the pair at 0.20 / 0.20 over GND to its
 MCU.
 
-**One `/VBUS` via is marginal.** A 0.3 mm plated via carries roughly 1 A.
-Add a second `/VBUS` via beside the first, off-grid, if the host draws more.
+**`/VBUS` breaks out on two vias**, 107.2 and 108.8, both on the row. One
+0.3 mm plated via carries roughly 1 A, so two give margin for the 1 A class
+load.
 
 `/USB_CC1` and `/USB_CC2` do not break out. The 5.1 k pull-downs stay inside.
 
@@ -308,3 +337,52 @@ leave a break-off nub on the receptacle face.
 3. Net membership: export the netlist and compare `(ref, pin)` sets with §1.
 4. Render F.Cu and look at the bridge.
 5. Count segments from each interface net to its breakout via.
+
+## 11. Changes from the draft
+
+| # | Draft | As built | Why |
+|---|---|---|---|
+| 1 | §5.1 bridge: D− joined on B.Cu, vias at y 108.60; D+ vias at 109.65 straight under the pads | D− joined on F.Cu as a U; D+ vias at (108.95, 109.00) and (110.25, 109.00), B.Cu jumper to (112.30, 111.90) | `check_plan.py`: the draft left 0.10 mm between each D+ pad stub and the D− vias at 0.5 mm pitch. The netclass needs 0.20 |
+| 2 | §5.1 escapes straight down | B6, D− legs and CC1 each take one 45° jog, staggered in y | parallel 45° runs at 0.5 mm pitch leave 0.154 mm |
+| 3 | §5.1 D+ via at (111.575, 110.90) | (112.30, 111.90), straight above U2.1 | clears the CC1 run and the VBUS vias |
+| 4 | §5.3 VBUS joins on B.Cu directly | right side goes round the east (x 116.0) to a bus at y 117.0 | the D+ B.Cu jumper blocks the direct path |
+| 5 | §5.3 U2.5 tap 0.20 mm | 0.508 mm, two vias to the bus | brief: all VBUS at `Power_2`, two vias per layer change |
+| 6 | §7 one VBUS via at 108.8 | two, 107.2 and 108.8, each with a 1.0 mm F.Cu stub and a label | brief; one via is marginal at 1 A |
+| 7 | §6 stitching unspecified | 17 GND vias: 4 row, 4 beside the `SH` pads (x 102.9 / 117.1), 2 at the J1 GND pads, U2.2, R1.2, R2.2, and 4 along the pair | §6 asks for stitching at 2.5 mm or less and one per `SH` pad |
+
+Placement, outline and zones are as drafted.
+
+## 12. Closing state
+
+Checked 2026-09-24 on the saved board, `kicad-cli pcb drc --severity-all
+--schematic-parity --refill-zones`.
+
+| Item | Count |
+|---|---|
+| Track segments | 57 |
+| Vias | 30 (13 signal and VBUS, 17 GND) |
+| DRC errors | 4, all `hole_clearance`, see below |
+| Unconnected | 0 |
+| Schematic parity | 0 |
+| `track_dangling` | 4, the four breakout stubs, expected |
+| Silkscreen warnings | 4 (`silk_overlap` 2, `silk_over_copper` 2): R2 and U2 reference text. Left for the GUI pass |
+| Canary (`check_import.py`) | DRC 12 → 269 with the 3 mm rule, PASS |
+
+**The 4 errors are inside the J1 footprint.** Rule `NPTH with copper around`
+wants 0.20 mm. The shipped `USB_C_Receptacle_GCT_USB4110` footprint puts pads
+A1/B12 (113.20, 107.355) 0.1944 mm from the NPTH peg at (112.89, 106.28), and
+B1/A12 (106.80, 107.355) 0.1944 mm from the peg at (107.11, 106.28). No
+routed copper is involved. Not fixed: the rule was not relaxed and the
+footprint was not edited. Decide whether to accept it as a footprint waiver
+(the drawing's land pattern) or scope the rule.
+
+No copper-to-edge violation is reported on J1, though its courtyard runs to
+y 99.495.
+
+Interface nets to breakout, by segment count: `/USB_DM` 1 segment from U2.4;
+`/USB_DP` 3 segments from U2.6; `/VBUS` reaches both row vias on B.Cu from the
+y 117.0 bus. Host-side lengths U2 to row: DM 2.94 mm, DP 3.06 mm.
+
+Not yet done: the zones in the saved file are unfilled (DRC refills them in
+memory only). The heat/area check on the filled zone, `Host-Setup.md`, and the
+fragment placement into `BlockBuilder/` remain.
