@@ -157,8 +157,8 @@
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C111"
-			(at 0 -1.85 -90)
-			(layer "F.SilkS")
+			(at 0 -1.85 270)
+			(layer "F.Fab")
 			(uuid "3ebddec6-543c-4756-858c-0a61c460faf9")
 			(effects
 				(font
@@ -168,7 +168,7 @@
 			)
 		)
 		(property "Value" "47uF X5R"
-			(at 0 1.85 -90)
+			(at 0 1.85 270)
 			(layer "F.Fab")
 			(uuid "0456bef6-0c34-4a36-beb5-e91c762352b4")
 			(effects
@@ -179,7 +179,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7a9cb8dc-ad2b-4f8c-a818-1e7d7925fcc3")
@@ -190,7 +190,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4b3052fa-3f06-48be-bac5-d094ba1c5716")
@@ -201,7 +201,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "dafc3aa3-f10f-4a4b-8b70-50cb1a993a30")
@@ -213,7 +213,7 @@
 			)
 		)
 		(property "MPN" "CGA1206X5R476M160NT"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -226,7 +226,7 @@
 			)
 		)
 		(property "Manufacturer" "TDK"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -287,7 +287,7 @@
 			(uuid "b9e813dc-97c3-401b-8120-3f215d481137")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "0d03aa7c-aa2f-41d0-810b-0f052e979790")
 			(effects
@@ -335,8 +335,8 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R70"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "064279ad-b239-43cb-a3c5-e4cb288c5192")
 			(effects
 				(font
@@ -346,7 +346,7 @@
 			)
 		)
 		(property "Value" "169k 1%"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "50c06ae5-16a2-429e-8ce4-47367970e9fb")
 			(effects
@@ -357,7 +357,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "450eedcb-977d-457d-ae63-eaf05b419891")
@@ -368,7 +368,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "23eef225-ceee-4000-9209-524e233f75d4")
@@ -379,7 +379,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "763b5277-0b58-4560-9646-4d209d1c4d94")
@@ -391,7 +391,7 @@
 			)
 		)
 		(property "MPN" "RC0603FR-07169KL"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -404,7 +404,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -465,7 +465,7 @@
 			(uuid "947d7055-40cb-43bf-9322-cc9aa1b8d83c")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "0e5a39a6-eaba-4577-b627-25907a04dd5d")
 			(effects
@@ -513,8 +513,8 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R75"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "98f9e1cf-2eba-47fe-abb5-9a0fcfaa7233")
 			(effects
 				(font
@@ -524,7 +524,7 @@
 			)
 		)
 		(property "Value" "46.4k 1%"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "bed3bb7e-0213-4c49-ac6b-7370d27cfcef")
 			(effects
@@ -535,7 +535,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d5b2c150-2926-4348-8ba6-68d9bf12cdbd")
@@ -546,7 +546,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e05d24ff-c7dc-4a41-a6d9-e7f7d18236bc")
@@ -557,7 +557,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "10552121-740e-4d69-9a94-00690b60613a")
@@ -569,7 +569,7 @@
 			)
 		)
 		(property "MPN" "RC0603FR-0746K4L"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -582,7 +582,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -643,7 +643,7 @@
 			(uuid "c4168359-d023-4311-b578-bcef8e32f496")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "f1aca1e6-6751-40f8-a332-731cba606c9f")
 			(effects
@@ -692,7 +692,7 @@
 		(tags "capacitor")
 		(property "Reference" "C107"
 			(at 0 -1.43 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "c3b8de9b-54a8-4273-9df4-f65596fe8ef6")
 			(effects
 				(font
@@ -870,7 +870,7 @@
 		(tags "resistor")
 		(property "Reference" "R76"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "9f5ba863-2fce-4a45-bfc8-97d463813ad3")
 			(effects
 				(font
@@ -1048,7 +1048,7 @@
 		(tags "capacitor")
 		(property "Reference" "C109"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "6b6cf505-8c83-4027-9a2f-37a56b54d7fd")
 			(effects
 				(font
@@ -1225,8 +1225,8 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R72"
-			(at 0 -1.43 -90)
-			(layer "F.SilkS")
+			(at 0 -1.43 270)
+			(layer "F.Fab")
 			(uuid "dd30303f-1958-46fa-ad90-50f9230a2d15")
 			(effects
 				(font
@@ -1236,7 +1236,7 @@
 			)
 		)
 		(property "Value" "46.4k 1%"
-			(at 0 1.43 -90)
+			(at 0 1.43 270)
 			(layer "F.Fab")
 			(uuid "505bfaa6-a099-4abe-b170-6389af357a0a")
 			(effects
@@ -1247,7 +1247,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9eeb45ed-8072-41dd-ac2d-8f9a7b828e8a")
@@ -1258,7 +1258,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bbe4a5ab-e784-4b93-a989-e5367b6a1c8e")
@@ -1269,7 +1269,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "0b25ad0c-daaa-41b5-8aeb-653a3f7955b3")
@@ -1281,7 +1281,7 @@
 			)
 		)
 		(property "MPN" "RC0603FR-0746K4L"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1294,7 +1294,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1355,7 +1355,7 @@
 			(uuid "8e24f956-6dec-4985-9e6d-8bb15aa0c13d")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "a3f1158c-b458-435d-a1ee-14db62fde582")
 			(effects
@@ -1404,7 +1404,7 @@
 		(tags "capacitor")
 		(property "Reference" "C108"
 			(at 0 -1.68 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "856b408c-9eb3-4dd3-9e80-f3bfd98bc7f0")
 			(effects
 				(font
@@ -1581,8 +1581,8 @@
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C110"
-			(at 0 -1.85 -90)
-			(layer "F.SilkS")
+			(at 0 -1.85 270)
+			(layer "F.Fab")
 			(uuid "04df43e2-fa08-45c5-b32e-e1b3972d69fd")
 			(effects
 				(font
@@ -1592,7 +1592,7 @@
 			)
 		)
 		(property "Value" "47uF X5R"
-			(at 0 1.85 -90)
+			(at 0 1.85 270)
 			(layer "F.Fab")
 			(uuid "14a460a2-05ab-40c1-8a60-0af27e3eac28")
 			(effects
@@ -1603,7 +1603,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "461e56c4-60f1-4a47-bf9d-40578fca8c3a")
@@ -1614,7 +1614,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "42eda5d0-be68-4a4a-bd68-373099b5d533")
@@ -1625,7 +1625,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "fe87d668-3917-48be-9ef4-b7ec77e08bbc")
@@ -1637,7 +1637,7 @@
 			)
 		)
 		(property "MPN" "CGA1206X5R476M160NT"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1650,7 +1650,7 @@
 			)
 		)
 		(property "Manufacturer" "TDK"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -1711,7 +1711,7 @@
 			(uuid "81905f62-064a-400c-a454-0c4ce1ed3f01")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "6541a908-f29c-4d0a-8984-bd8a0f9abb9d")
 			(effects
@@ -1869,7 +1869,7 @@
 		)
 		(fp_poly
 			(pts
-				(xy -1.11 -0.81) (xy -1.39 -0.81) (xy -1.11 -1.09)
+				(xy -1.11 -0.81) (xy -1.39 -0.81) (xy -1.11 -1.09) (xy -1.11 -0.81)
 			)
 			(stroke
 				(width 0.12)
@@ -1970,7 +1970,7 @@
 			(uuid "48e48854-184c-4ffd-a492-5b256b98e8f9")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "4b6d471e-7d59-425e-94a3-eb67356ac355")
 			(effects
@@ -2121,7 +2121,7 @@
 		(tags "test point SMD pad")
 		(property "Reference" "TP1"
 			(at 0 -1.448 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "47fd8ae4-74ea-46b4-935b-6295efe8c0fb")
 			(effects
 				(font
@@ -2225,7 +2225,7 @@
 		(tags "resistor")
 		(property "Reference" "R73"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "ab93b213-4acb-455d-8007-2c18bddb8d6f")
 			(effects
 				(font
@@ -2403,7 +2403,7 @@
 		(tags "resistor")
 		(property "Reference" "R74"
 			(at 0 -1.43 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "a009242e-8efb-4d30-bef2-ec53afe7a3fe")
 			(effects
 				(font
@@ -2581,7 +2581,7 @@
 		(tags "resistor")
 		(property "Reference" "R71"
 			(at 0 -1.43 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
 			(uuid "0dee07f1-b32c-4b00-8cd8-25519418106d")
 			(effects
 				(font
