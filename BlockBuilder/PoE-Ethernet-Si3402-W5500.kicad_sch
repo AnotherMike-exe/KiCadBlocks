@@ -8226,7 +8226,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "015701ca-434c-4468-af1d-540beac782d1")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR029"
 			(at 231.14 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -8283,6 +8283,12 @@
 			(uuid "b5956f4d-65b5-4480-90e5-435b2f61bfe4")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR029")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR04")
@@ -8308,7 +8314,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0185841c-12b0-452a-b630-4bb0d24db447")
-		(property "Reference" "R11"
+		(property "Reference" "R2"
 			(at 48.895 86.36 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8391,6 +8397,12 @@
 			(uuid "11c703c0-7c70-4d86-9eeb-af29d1106e46")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R2")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R11")
@@ -8479,6 +8491,12 @@
 			(uuid "ef46aabf-e179-4381-949a-33cbeb5abced")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG02")
@@ -8504,7 +8522,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "024db292-2936-4d97-b008-18bccbf59b61")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR05"
 			(at 62.23 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -8561,6 +8579,12 @@
 			(uuid "f050deab-5729-467a-a426-623042b02b5c")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR011")
@@ -8592,7 +8616,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "027d0ac2-b807-4cba-ba5c-2cb2c0f32bd4")
-		(property "Reference" "R5"
+		(property "Reference" "R18"
 			(at 174.625 274.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8675,6 +8699,12 @@
 			(uuid "a9d73bc3-7e5f-4ae8-80ec-07046e7a45ca")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R18")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R5")
@@ -8700,7 +8730,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "048afe60-fb4e-4fdb-b7e7-76598fa404f0")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR02"
 			(at 46.99 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -8757,6 +8787,12 @@
 			(uuid "520979a9-9494-46cb-8f72-506b774fc0c6")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR08")
@@ -8788,7 +8824,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "04bd2bc8-27c7-4312-8d1f-db1b442d12dd")
-		(property "Reference" "C7"
+		(property "Reference" "C8"
 			(at 64.135 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8871,6 +8907,12 @@
 			(uuid "7231ff1b-f41b-4d95-92f4-4bdf28338c31")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C8")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C7")
@@ -8896,7 +8938,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "078ef1f9-cddd-4018-8a62-58b38d8cc821")
-		(property "Reference" "C35"
+		(property "Reference" "C31"
 			(at 164.465 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8979,6 +9021,12 @@
 			(uuid "7e9751b6-5627-4a02-9bdd-79b6e83b3a99")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C31")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C35")
@@ -9010,7 +9058,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0988e277-ac5f-4758-bbad-dcd6537fee8e")
-		(property "Reference" "C15"
+		(property "Reference" "C24"
 			(at 130.175 309.88 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9093,6 +9141,12 @@
 			(uuid "4dc405be-564b-4433-bcdc-0b8df590183b")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C24")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C15")
@@ -9118,7 +9172,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0ac334ff-5446-4741-a46e-2b8d32c4d321")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR07"
 			(at 74.93 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -9175,6 +9229,12 @@
 			(uuid "7fd9b9dd-4912-4917-ac03-75a2aae7f6d1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR013")
@@ -9311,6 +9371,12 @@
 			(uuid "d7c87418-0e9a-4823-bc15-c1b43a94e1d5")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "D1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "D1")
@@ -9336,7 +9402,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "110a99e3-2c09-4d87-8780-c2c1ee32fe3c")
-		(property "Reference" "#FLG07"
+		(property "Reference" "#FLG08"
 			(at 252.73 227.33 0)
 			(hide yes)
 			(show_name no)
@@ -9393,6 +9459,12 @@
 			(uuid "8ad59e6a-2119-4162-a183-02a24f785449")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG08")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG07")
@@ -9418,7 +9490,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "120a226b-56b8-44e4-9468-78c9e10e1cbd")
-		(property "Reference" "R20"
+		(property "Reference" "R15"
 			(at 161.925 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9501,6 +9573,12 @@
 			(uuid "0dc8ba17-72a0-4d2e-b824-9489db6e0055")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R15")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R20")
@@ -9613,6 +9691,12 @@
 			(uuid "5f3ecfeb-8b32-4bf7-a8a9-db65e1a7c32f")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "L1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "L1")
@@ -9719,6 +9803,12 @@
 			(uuid "4af340e1-8691-498e-b789-76c8f094dbf6")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "FB2")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "FB2")
@@ -9800,6 +9890,12 @@
 			(uuid "215db656-936a-4ed9-b675-9574dac268e0")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "TP1")
@@ -9825,7 +9921,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2b4ba175-2e5f-4102-8c3d-aade9411efa0")
-		(property "Reference" "R17"
+		(property "Reference" "R11"
 			(at 130.175 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9908,6 +10004,12 @@
 			(uuid "20066405-8483-4817-8470-93b599976189")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R11")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R17")
@@ -9939,7 +10041,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2b6ac579-1cea-4651-a6ef-df6db5d28182")
-		(property "Reference" "C33"
+		(property "Reference" "C27"
 			(at 158.115 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10022,6 +10124,12 @@
 			(uuid "a98a680a-4029-438d-9a9c-586a00e6eee6")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C27")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C33")
@@ -10134,6 +10242,12 @@
 			(uuid "5aa4e25f-c692-4bc8-82cb-6e5815737764")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "FB3")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "FB3")
@@ -10240,6 +10354,12 @@
 			(uuid "edd250a0-edca-4aca-a8e5-ea398bfbaf22")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "FB5")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "FB5")
@@ -10271,7 +10391,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2fce5240-c3cd-4cf8-afa7-33e64ed5b825")
-		(property "Reference" "C22"
+		(property "Reference" "C4"
 			(at 43.815 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10354,6 +10474,12 @@
 			(uuid "acdc31cd-b0f0-475d-a83c-ac5ebbaa55c3")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C4")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C22")
@@ -10385,7 +10511,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "30f9cf65-5bd6-4f9e-922d-cff31b11520b")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR013"
 			(at 102.87 39.37 0)
 			(hide yes)
 			(show_name no)
@@ -10442,6 +10568,12 @@
 			(uuid "6e91c081-9f8c-46df-a5a9-4cbbf95597e5")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR019")
@@ -10473,7 +10605,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3b7ee646-8878-4926-9bb6-ea7e2e637e91")
-		(property "Reference" "R14"
+		(property "Reference" "R8"
 			(at 143.51 57.15 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10554,6 +10686,12 @@
 			(uuid "e7cf5298-bc5e-4a6f-a1cf-5d5341b0bdd6")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R8")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R14")
@@ -10585,7 +10723,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3fe22172-5ead-4a95-a212-74ae2e1e47ad")
-		(property "Reference" "C5"
+		(property "Reference" "C6"
 			(at 51.435 276.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10668,6 +10806,12 @@
 			(uuid "154d99b5-8b86-4dce-a046-9fdd757a7abc")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C6")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C5")
@@ -10693,7 +10837,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "4036a22b-a720-4880-9a2f-6b1a3b21ae52")
-		(property "Reference" "C37"
+		(property "Reference" "C33"
 			(at 174.625 115.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10776,6 +10920,12 @@
 			(uuid "30205066-21eb-473b-b70c-213e54cd4a74")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C33")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C37")
@@ -10807,7 +10957,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "44596c2e-a737-43a5-9634-95222d34092a")
-		(property "Reference" "#PWR02"
+		(property "Reference" "#PWR026"
 			(at 199.39 251.46 0)
 			(hide yes)
 			(show_name no)
@@ -10864,6 +11014,12 @@
 			(uuid "e3fd0fe8-d134-4b1d-ae9f-872f82b2e5d1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR026")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR02")
@@ -10889,7 +11045,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "488868c0-96ec-40a0-ba8f-88cf21d701cc")
-		(property "Reference" "C27"
+		(property "Reference" "C18"
 			(at 95.885 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10972,6 +11128,12 @@
 			(uuid "7d3d026b-0cab-41d6-8caa-85387ce5618c")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C18")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C27")
@@ -11003,7 +11165,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "4f96e7e2-9b1b-4859-b2b2-5281797cc0ab")
-		(property "Reference" "C17"
+		(property "Reference" "C30"
 			(at 158.75 288.29 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11084,6 +11246,12 @@
 			(uuid "24eb860d-0c91-428c-80ca-b85d54cc0811")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C30")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C17")
@@ -11109,7 +11277,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "50a303eb-590d-4ee1-9d29-f7672e017142")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR08"
 			(at 80.01 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -11166,6 +11334,12 @@
 			(uuid "89ca3833-e54a-4fa0-8270-00a45d760261")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR014")
@@ -11197,7 +11371,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "51e2150c-1d65-43bb-8e03-7005d3c577bd")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR024"
 			(at 171.45 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -11254,6 +11428,12 @@
 			(uuid "22bfee51-6e74-41b0-97e1-168c982077e9")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR024")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR029")
@@ -11285,7 +11465,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "53db3361-d417-4ad4-8a22-41435c431afa")
-		(property "Reference" "#PWR023"
+		(property "Reference" "#PWR017"
 			(at 133.35 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -11342,6 +11522,12 @@
 			(uuid "8e295032-55a1-40d8-a536-1ddc776e06ee")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR023")
@@ -11373,7 +11559,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "5762e8af-5ff8-406d-9ff2-fc8a79523ff7")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR020"
 			(at 156.21 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -11430,6 +11616,12 @@
 			(uuid "f4647088-e4ce-45b5-ba79-6a6f8d50522c")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR020")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR026")
@@ -11461,7 +11653,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "595bb382-af9e-4de4-9a75-3e7b37ffa2e8")
-		(property "Reference" "#FLG06"
+		(property "Reference" "#FLG07"
 			(at 198.12 227.33 0)
 			(hide yes)
 			(show_name no)
@@ -11518,6 +11710,12 @@
 			(uuid "2810f2ab-b27c-41c1-8aa2-4c494c2377e0")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG07")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG06")
@@ -11626,6 +11824,12 @@
 			(uuid "49f10864-c36f-4297-8f3b-9f42481c13ff")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C39")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C39")
@@ -11657,7 +11861,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "656c91c9-88a7-476a-8d9c-67d2b840247c")
-		(property "Reference" "C30"
+		(property "Reference" "C23"
 			(at 126.365 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11740,6 +11944,12 @@
 			(uuid "935cdf01-cb37-4639-a7d3-6f2fc75c62e1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C23")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C30")
@@ -11771,7 +11981,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "657e1842-9b97-4577-aa73-4a73e0d2f839")
-		(property "Reference" "#PWR020"
+		(property "Reference" "#PWR014"
 			(at 105.41 118.11 0)
 			(hide yes)
 			(show_name no)
@@ -11828,6 +12038,12 @@
 			(uuid "d03d6829-024a-459b-8d54-b1bb38008a0d")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR020")
@@ -11859,7 +12075,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "65955f9c-9fc6-4e49-b6f1-18bc12a67311")
-		(property "Reference" "#PWR022"
+		(property "Reference" "#PWR016"
 			(at 123.19 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -11916,6 +12132,12 @@
 			(uuid "9738d7e6-0094-4f35-bfd2-8875142f6e37")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR022")
@@ -11947,7 +12169,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "670af6c4-17f0-4dbe-8fe7-8ce15fb757c1")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR028"
 			(at 210.82 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -12004,6 +12226,12 @@
 			(uuid "aa996080-5c4a-4c73-963e-25f90b557308")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR028")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR031")
@@ -12035,7 +12263,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "68af18fa-0aea-467b-8340-1ff73fb8f952")
-		(property "Reference" "C10"
+		(property "Reference" "C13"
 			(at 76.835 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12118,6 +12346,12 @@
 			(uuid "24d2d8b6-2e13-4095-8901-f87c101f365f")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C13")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C10")
@@ -12143,7 +12377,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6968d2b4-ae7f-4a75-9dda-2bef741ddecf")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR027"
 			(at 203.2 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -12200,6 +12434,12 @@
 			(uuid "a63ddd07-37f3-441d-98d7-f6a58655a961")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR027")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR03")
@@ -12225,7 +12465,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6b05bd76-9d6b-42e6-8c5b-f0c1354515ea")
-		(property "Reference" "R24"
+		(property "Reference" "R20"
 			(at 194.31 77.47 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12306,6 +12546,12 @@
 			(uuid "cd15c992-ac8b-4c7d-9b3e-dfcc47fb0e84")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R20")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R24")
@@ -12394,6 +12640,12 @@
 			(uuid "733e5e3c-ddcd-4526-ad1c-a11dba0128ee")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG01")
@@ -12419,7 +12671,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6f17c91e-9e67-4b63-9080-3db669e97b43")
-		(property "Reference" "C25"
+		(property "Reference" "C15"
 			(at 78.105 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12502,6 +12754,12 @@
 			(uuid "e0de1be9-e7e1-4d8e-ac42-328ab7f135d1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C15")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C25")
@@ -12589,6 +12847,12 @@
 			(uuid "b1bc7f4f-52c9-4ade-aa4b-76ed80aae504")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "TP2")
@@ -12614,7 +12878,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7264d516-9a96-4fe0-a0d5-b3d8ef2ae473")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR031"
 			(at 246.38 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -12671,6 +12935,12 @@
 			(uuid "01181e9b-90ca-43ef-9d90-7aba1fc983b1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR031")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR06")
@@ -12696,7 +12966,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "77903df6-f7da-4e6a-8bd7-ae70866c25f4")
-		(property "Reference" "#PWR021"
+		(property "Reference" "#PWR015"
 			(at 113.03 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -12753,6 +13023,12 @@
 			(uuid "6b8b32f2-dd23-4045-87b2-ae55fdc3b656")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR021")
@@ -12784,7 +13060,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "78e2e08b-41cf-4f3e-b399-84f38ec06a67")
-		(property "Reference" "U3"
+		(property "Reference" "U4"
 			(at 245.11 287.02 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12868,6 +13144,12 @@
 			(uuid "aa817bc4-2c5f-4238-a3bb-3b0406a6c4c6")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "U4")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "U3")
@@ -12893,7 +13175,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7904d179-c147-46cd-8c6a-9aa31cd42947")
-		(property "Reference" "R19"
+		(property "Reference" "R14"
 			(at 145.415 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12976,6 +13258,12 @@
 			(uuid "e8b456a1-20da-4f65-92bb-94d749de939e")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R14")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R19")
@@ -13007,7 +13295,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7930050e-2cf4-46b0-9184-40cb6cb94eb6")
-		(property "Reference" "C28"
+		(property "Reference" "C21"
 			(at 106.045 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13090,6 +13378,12 @@
 			(uuid "90cabe39-64db-41c1-a746-6e1c330c73f3")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C21")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C28")
@@ -13204,6 +13498,12 @@
 			(uuid "7dc01a65-430b-4fb6-9246-85eb58f4a9cf")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "D2")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "D2")
@@ -13229,7 +13529,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7c4028a9-c0d0-479a-8b59-3a4137bae2d4")
-		(property "Reference" "C29"
+		(property "Reference" "C22"
 			(at 116.205 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13312,6 +13612,12 @@
 			(uuid "f9989486-54ee-43e1-a372-abccc322085d")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C22")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C29")
@@ -13343,7 +13649,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7d514e9c-347d-4130-b9bb-458979538778")
-		(property "Reference" "R16"
+		(property "Reference" "R10"
 			(at 143.51 77.47 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13424,6 +13730,12 @@
 			(uuid "1763719c-3735-4da6-a889-a59aa4225107")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R10")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R16")
@@ -13455,7 +13767,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7d7d5993-b3c6-4098-b2b3-a39bb2ee16e6")
-		(property "Reference" "C38"
+		(property "Reference" "C34"
 			(at 177.165 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13538,6 +13850,12 @@
 			(uuid "169cc2c0-2989-4496-a6dc-2a0799e72cf5")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C34")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C38")
@@ -13569,7 +13887,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7ee36719-4d88-4ed2-a290-bc5c61c533ba")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR021"
 			(at 161.29 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -13626,6 +13944,12 @@
 			(uuid "d5302bc7-99d0-46b4-a55d-63a90dc74747")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR027")
@@ -13657,7 +13981,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "80a6b27b-2bfb-4010-b43b-458b89a81f0c")
-		(property "Reference" "U1"
+		(property "Reference" "U2"
 			(at 111.76 294.64 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13795,6 +14119,12 @@
 			(uuid "c8e12477-915f-4167-aabd-5f8602cbdd8f")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "U2")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "U1")
@@ -13820,7 +14150,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "831f71ca-3336-41a9-92ff-4e57f76a7ad1")
-		(property "Reference" "C11"
+		(property "Reference" "C14"
 			(at 76.835 276.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13903,6 +14233,12 @@
 			(uuid "b7892bd7-079e-44d2-8889-ff6d47b09e86")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C14")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C11")
@@ -13928,7 +14264,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8aee8c0f-a522-402b-8bc3-76372a9279f6")
-		(property "Reference" "C16"
+		(property "Reference" "C29"
 			(at 158.75 270.51 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14009,6 +14345,12 @@
 			(uuid "cccd22f3-8c80-4058-9de2-f4ec590b410f")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C29")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C16")
@@ -14034,7 +14376,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8c6496c7-33e1-4410-be5e-406374495072")
-		(property "Reference" "#PWR024"
+		(property "Reference" "#PWR018"
 			(at 151.13 25.4 0)
 			(hide yes)
 			(show_name no)
@@ -14091,6 +14433,12 @@
 			(uuid "68e656f5-9e10-4a49-9196-33c976314212")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR024")
@@ -14122,7 +14470,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8d363297-a90d-4b32-bd79-84c16defd96e")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR03"
 			(at 52.07 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -14179,6 +14527,12 @@
 			(uuid "ef3d0493-ba23-44cf-8ed0-18823badbeb5")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR09")
@@ -14210,7 +14564,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8e966728-3117-4263-aa25-7a385d104802")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR025"
 			(at 173.99 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -14267,6 +14621,12 @@
 			(uuid "da0d54ec-42b8-4bc2-94ad-35ed61ae1dbd")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR025")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR030")
@@ -14298,7 +14658,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "93b8da12-81bd-4ea3-8632-77b8ab12cd77")
-		(property "Reference" "C13"
+		(property "Reference" "C19"
 			(at 99.695 297.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14381,6 +14741,12 @@
 			(uuid "bc7cc9ee-28ca-41a9-8afd-bce90f592f39")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C19")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C13")
@@ -14406,7 +14772,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "98d52a95-0bad-47ef-ab6b-59d167910f37")
-		(property "Reference" "#PWR017"
+		(property "Reference" "#PWR011"
 			(at 92.71 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -14463,6 +14829,12 @@
 			(uuid "6a369ae9-bb27-475b-ad46-837a08511ce4")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR017")
@@ -14494,7 +14866,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "9afcdf99-46ef-4dc6-bb6f-3873cfd2f6e4")
-		(property "Reference" "R9"
+		(property "Reference" "R24"
 			(at 219.71 218.44 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14575,6 +14947,12 @@
 			(uuid "99fa064d-00a6-4a0c-bbdf-31da4b405897")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R24")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R9")
@@ -14657,6 +15035,12 @@
 			(uuid "a9b6411b-71db-4db8-80ac-f230986cdade")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG03")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG03")
@@ -14739,6 +15123,12 @@
 			(uuid "24dc919b-9c06-42a5-b312-744f535cd7fe")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR032")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR032")
@@ -14770,7 +15160,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ac05bdb5-b44e-4007-9377-999e834a48f5")
-		(property "Reference" "C12"
+		(property "Reference" "C16"
 			(at 84.455 297.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14853,6 +15243,12 @@
 			(uuid "dd84648f-d2d1-4a9d-af2c-78448bc4df9e")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C16")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C12")
@@ -14878,7 +15274,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b3def124-4317-4635-8308-98d5dd41a4fb")
-		(property "Reference" "R4"
+		(property "Reference" "R12"
 			(at 142.875 309.88 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14961,6 +15357,12 @@
 			(uuid "be304efc-8c9c-497a-ba1d-1eb151ac6410")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R12")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R4")
@@ -14986,7 +15388,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b45f04be-3591-4222-91b9-9d6ba2394a1c")
-		(property "Reference" "C31"
+		(property "Reference" "C25"
 			(at 152.4 95.25 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15067,6 +15469,12 @@
 			(uuid "5a569871-cee9-4acb-8ff5-4c1229491ef3")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C25")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C31")
@@ -15181,6 +15589,12 @@
 			(uuid "ab37cb1f-c0b9-4d5a-8436-5aca53c7b7de")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C3")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C3")
@@ -15206,7 +15620,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b628b9d7-0c62-4965-b234-c39065794247")
-		(property "Reference" "U2"
+		(property "Reference" "U3"
 			(at 156.21 315.21 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15293,6 +15707,12 @@
 			(uuid "72d039f4-efab-4aa4-bbdd-1b9d88a35236")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "U3")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "U2")
@@ -15318,7 +15738,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b66893b3-3be0-4ba4-8a9a-b7c331c15410")
-		(property "Reference" "R15"
+		(property "Reference" "R9"
 			(at 130.81 77.47 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15399,6 +15819,12 @@
 			(uuid "5709c82c-68e1-44e2-9706-248497dc29bd")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R9")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R15")
@@ -15430,7 +15856,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b9ec36e3-a13d-4a58-879f-082be5463771")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR01"
 			(at 39.37 25.4 0)
 			(hide yes)
 			(show_name no)
@@ -15487,6 +15913,12 @@
 			(uuid "f2e96631-14de-4aa5-9c16-2645b104de87")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR07")
@@ -15518,7 +15950,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bb9e93c6-fbd7-4752-8533-63174c92a93c")
-		(property "Reference" "C23"
+		(property "Reference" "C10"
 			(at 65.405 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15601,6 +16033,12 @@
 			(uuid "f9509f20-167b-47b9-99eb-f421fff796d1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C10")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C23")
@@ -15632,7 +16070,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "be0fbc24-7e77-482e-8536-b1c011b28e5d")
-		(property "Reference" "#PWR016"
+		(property "Reference" "#PWR010"
 			(at 90.17 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -15689,6 +16127,12 @@
 			(uuid "225da735-f63f-4e31-890e-6b57750e6647")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR016")
@@ -15714,7 +16158,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "be78844f-c81e-4233-9627-12a707fa03ac")
-		(property "Reference" "C14"
+		(property "Reference" "C20"
 			(at 104.775 309.88 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15797,6 +16241,12 @@
 			(uuid "d2e3cb8d-574c-401c-85c3-34acfb9d2f4d")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C20")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C14")
@@ -15822,7 +16272,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bf4c46c4-bc7e-42b1-941e-b7231cc7e385")
-		(property "Reference" "#PWR025"
+		(property "Reference" "#PWR019"
 			(at 154.94 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -15879,6 +16329,12 @@
 			(uuid "05567e1e-5944-499b-bcb9-6087e2f089dd")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR019")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR025")
@@ -15910,7 +16366,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bfe57f26-f964-4fc7-bcbf-1f95a3f21dde")
-		(property "Reference" "C24"
+		(property "Reference" "C12"
 			(at 75.565 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15993,6 +16449,12 @@
 			(uuid "8fbfa3aa-dece-4880-8882-fb6ac6f19c83")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C12")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C24")
@@ -16024,7 +16486,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c3ef8e25-7d6a-4672-a86b-adeb5de4cf27")
-		(property "Reference" "R6"
+		(property "Reference" "R21"
 			(at 200.025 274.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16107,6 +16569,12 @@
 			(uuid "8f1ce6a1-beb9-456f-a8fd-26337d139a25")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R21")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R6")
@@ -16215,6 +16683,12 @@
 			(uuid "dfe4fa27-6d52-4b34-a7b8-94093b1daf6c")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C2")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C2")
@@ -16327,6 +16801,12 @@
 			(uuid "ad7ea11f-5d04-4ef4-84b4-c926d57976b6")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "Y1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "Y1")
@@ -16463,6 +16943,12 @@
 			(uuid "84dd70bb-9999-401e-b942-eb5228092b08")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "T1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "T1")
@@ -16488,7 +16974,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cb94397d-0ad5-4f64-bb5a-44b81f0e4120")
-		(property "Reference" "R2"
+		(property "Reference" "R4"
 			(at 78.74 261.62 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16569,6 +17055,12 @@
 			(uuid "73c6ccc5-1cbb-4569-b46c-caed7210c5d4")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R4")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R2")
@@ -16594,7 +17086,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cba38301-8d1b-48bf-94c3-af519e450e5b")
-		(property "Reference" "C21"
+		(property "Reference" "C38"
 			(at 243.205 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16677,6 +17169,12 @@
 			(uuid "b62c54c8-93cc-450f-8d92-5bdc1489f763")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C38")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C21")
@@ -16702,7 +17200,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cbc23e8f-b74e-441a-9aa3-f9ae23bef7bb")
-		(property "Reference" "C34"
+		(property "Reference" "C28"
 			(at 159.385 86.36 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16785,6 +17283,12 @@
 			(uuid "3ba9caf0-5fc1-41f1-840a-bccf6d427600")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C28")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C34")
@@ -16816,7 +17320,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cd6c2e88-f0b8-480b-9ccd-8af98ecf3f05")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR030"
 			(at 231.14 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -16873,6 +17377,12 @@
 			(uuid "a62a4b3f-2707-4b12-8dcb-6f8896e18f8a")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR030")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR05")
@@ -16898,7 +17408,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cec72c55-b393-4014-92c6-01c9a63f5fc4")
-		(property "Reference" "C36"
+		(property "Reference" "C32"
 			(at 174.625 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16981,6 +17491,12 @@
 			(uuid "4c7d33fb-f611-4f96-b1ac-defd524ccf7a")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C32")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C36")
@@ -17012,7 +17528,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d1944146-06cd-4b9e-8938-6b05b76f56b6")
-		(property "Reference" "C32"
+		(property "Reference" "C26"
 			(at 152.4 107.95 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17093,6 +17609,12 @@
 			(uuid "d7fedcbe-6936-42b8-940b-8d736f8ed54f")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C26")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C32")
@@ -17180,6 +17702,12 @@
 			(uuid "dfd76a21-6a95-43e0-b784-1818999ba4b4")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "TP3")
@@ -17205,7 +17733,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d418ff99-fd89-4466-a08e-20deaf02992d")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR09"
 			(at 82.55 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -17262,6 +17790,12 @@
 			(uuid "1c7e2e67-ff29-48f8-a93a-3ddb2795c649")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR015")
@@ -17293,7 +17827,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d6de6bd8-e46f-45cf-a549-f46e3024be21")
-		(property "Reference" "R13"
+		(property "Reference" "R7"
 			(at 130.81 57.15 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17374,6 +17908,12 @@
 			(uuid "50b5dcca-2700-4766-929e-c965bc4a3955")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R7")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R13")
@@ -17405,7 +17945,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d84d1218-b10a-4276-9143-a31f26568090")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR06"
 			(at 72.39 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -17462,6 +18002,12 @@
 			(uuid "91de23ed-4bc6-4af1-9cae-4f74b72acbfd")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR06")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR012")
@@ -17493,7 +18039,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d85c79a9-29ff-4789-86e3-fcda1ce76009")
-		(property "Reference" "C20"
+		(property "Reference" "C37"
 			(at 227.965 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17576,6 +18122,12 @@
 			(uuid "c50a53c9-6d9d-4d31-b84e-a0b97fa09434")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C37")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C20")
@@ -17682,6 +18234,12 @@
 			(uuid "b1f3553c-62e2-419d-8c7a-800f1fed7e9d")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "D3")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "D3")
@@ -17707,7 +18265,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "dbad6569-82c1-4bac-b2e1-9d4bd515dfa9")
-		(property "Reference" "R22"
+		(property "Reference" "R17"
 			(at 174.625 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17790,6 +18348,12 @@
 			(uuid "789668bb-4e86-40d1-8903-3445282d2dbb")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R17")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R22")
@@ -17944,6 +18508,12 @@
 			(uuid "b7e3156c-ee92-441a-a737-0c904cfe53f3")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "J1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "J1")
@@ -17975,7 +18545,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "dcb88ddf-7da7-469b-bf24-9eea10dc7ba7")
-		(property "Reference" "C18"
+		(property "Reference" "C35"
 			(at 203.2 311.15 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18056,6 +18626,12 @@
 			(uuid "64a3443c-a912-488e-b6d6-1f0510457357")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C35")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C18")
@@ -18081,7 +18657,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "dd8877bb-576a-42e6-b48b-e891fd2f3067")
-		(property "Reference" "U4"
+		(property "Reference" "U1"
 			(at 85.09 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18300,6 +18876,12 @@
 			(uuid "02729b81-94e2-4e8e-b686-c3f9235b9b07")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "U1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "U4")
@@ -18331,7 +18913,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "dd9bfc0f-07a7-45be-b037-c40239af4843")
-		(property "Reference" "R1"
+		(property "Reference" "R3"
 			(at 72.39 251.46 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18412,6 +18994,12 @@
 			(uuid "876c15dc-a651-45e0-986e-17aa69b85136")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R3")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R1")
@@ -18437,7 +19025,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "df4de9f6-d316-4bb2-8b25-defb17a96c71")
-		(property "Reference" "R8"
+		(property "Reference" "R23"
 			(at 218.44 311.15 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18518,6 +19106,12 @@
 			(uuid "40ea06d3-0cf5-48c1-963b-5062a2cd5323")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R23")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R8")
@@ -18600,6 +19194,12 @@
 			(uuid "0d3bc844-3d3c-4571-a970-5c08aac073fe")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG05")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG05")
@@ -18625,7 +19225,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e4c3be22-a69a-4323-a863-d7764f04ac58")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR022"
 			(at 170.18 281.94 0)
 			(hide yes)
 			(show_name no)
@@ -18682,6 +19282,12 @@
 			(uuid "1f3833bd-e74b-4371-8931-482163b8bf04")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR022")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR01")
@@ -18707,7 +19313,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e8ca7641-e245-410b-af03-517d2844a3ba")
-		(property "Reference" "R18"
+		(property "Reference" "R13"
 			(at 149.225 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18790,6 +19396,12 @@
 			(uuid "ab35d7c3-5bad-404b-9a17-3011b6b5d13a")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R13")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R18")
@@ -18902,6 +19514,12 @@
 			(uuid "f0be6da1-2251-4a49-83d0-152f7fce7333")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "FB1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "FB1")
@@ -18927,7 +19545,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ea0e367f-d386-49d2-909b-20eb1b695c6a")
-		(property "Reference" "C6"
+		(property "Reference" "C7"
 			(at 53.975 297.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19010,6 +19628,12 @@
 			(uuid "b1c5d586-de1d-4a6c-8693-c63e0154dac5")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C7")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C6")
@@ -19035,7 +19659,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ea8e3dc2-ab9e-4ce1-aa23-92d08a74b160")
-		(property "Reference" "#FLG08"
+		(property "Reference" "#FLG06"
 			(at 137.16 25.4 0)
 			(hide yes)
 			(show_name no)
@@ -19092,6 +19716,12 @@
 			(uuid "7d0305ee-a7d5-475d-8b2d-d9527660c93c")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG06")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG08")
@@ -19123,7 +19753,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "eb035d8e-aed4-4338-bd48-a886f44f84d1")
-		(property "Reference" "R10"
+		(property "Reference" "R1"
 			(at 42.545 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19206,6 +19836,12 @@
 			(uuid "31395027-1641-4a3c-9844-8968145f2caf")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R10")
@@ -19294,6 +19930,12 @@
 			(uuid "29fc23ea-52b2-4f91-9acc-805900487c89")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#FLG04")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#FLG04")
@@ -19319,7 +19961,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ec90667d-0865-4d57-a067-e826cd234ba4")
-		(property "Reference" "C4"
+		(property "Reference" "C5"
 			(at 51.435 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19402,6 +20044,12 @@
 			(uuid "cd08d9e5-9f2e-4d6a-a866-f27be17d11de")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C5")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C4")
@@ -19427,7 +20075,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "edb8678f-f8a0-4493-9ab5-8750c33a13a6")
-		(property "Reference" "#PWR018"
+		(property "Reference" "#PWR012"
 			(at 102.87 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -19484,6 +20132,12 @@
 			(uuid "3c339521-5326-4225-99b3-18465b2a4a3f")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR018")
@@ -19515,7 +20169,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "eece8214-ae72-4890-8f5b-c97637323886")
-		(property "Reference" "R3"
+		(property "Reference" "R6"
 			(at 117.475 309.88 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19598,6 +20252,12 @@
 			(uuid "02c7b3c4-a35a-4e22-ba5e-6deaf041d426")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R6")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R3")
@@ -19623,7 +20283,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f2d68de2-fbf9-41ff-a427-79b66e88e5a1")
-		(property "Reference" "C26"
+		(property "Reference" "C17"
 			(at 85.725 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19706,6 +20366,12 @@
 			(uuid "e182bfb0-6a14-4d74-8bf8-291aab064290")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C17")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C26")
@@ -19737,7 +20403,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f4238fae-f48e-4147-a1fd-3d4898f8de99")
-		(property "Reference" "C8"
+		(property "Reference" "C9"
 			(at 64.135 276.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19820,6 +20486,12 @@
 			(uuid "a2c2de8a-b1d3-4a54-9d79-52379d6953bc")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C9")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C8")
@@ -19845,7 +20517,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f423909a-0bf1-4044-bc0b-f2f3e7847259")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR023"
 			(at 171.45 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -19902,6 +20574,12 @@
 			(uuid "35a31f1a-6af3-4c45-86d2-6775af0a92d1")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR028")
@@ -19933,7 +20611,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f4e0899c-99e9-478a-b970-83fb93682e0e")
-		(property "Reference" "C19"
+		(property "Reference" "C36"
 			(at 208.28 218.44 270)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20014,6 +20692,12 @@
 			(uuid "08119f67-e534-466e-be68-3c501778dbcd")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C36")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C19")
@@ -20039,7 +20723,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f77c24bb-7217-4e60-8083-1ae973725d70")
-		(property "Reference" "R12"
+		(property "Reference" "R5"
 			(at 88.265 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20122,6 +20806,12 @@
 			(uuid "56d2a162-6a33-44ef-b99e-15b166a62a4e")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R5")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R12")
@@ -20153,7 +20843,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f98bf17a-644e-4f6c-8233-2c4b72895769")
-		(property "Reference" "C9"
+		(property "Reference" "C11"
 			(at 69.215 297.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20236,6 +20926,12 @@
 			(uuid "860c8254-5daa-4c51-bbad-290309fd84aa")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C11")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C9")
@@ -20261,7 +20957,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "fa5e1fe2-0aa7-4948-972b-f625a909919a")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR04"
 			(at 59.69 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -20318,6 +21014,12 @@
 			(uuid "ab8ab734-e92e-409e-b763-cc274a82d844")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "#PWR010")
@@ -20349,7 +21051,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "fb6802fa-1b32-481f-8404-3f4d5dba9790")
-		(property "Reference" "R21"
+		(property "Reference" "R16"
 			(at 160.655 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20432,6 +21134,12 @@
 			(uuid "7fa5d16a-b3d2-46af-9b81-824e88c4fffe")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R16")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R21")
@@ -20463,7 +21171,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "fb9b3a91-19bd-4914-8ad4-fcb746406888")
-		(property "Reference" "R23"
+		(property "Reference" "R19"
 			(at 194.31 64.77 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20544,6 +21252,12 @@
 			(uuid "53976802-4784-45bd-8962-6bc260347bbc")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R19")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R23")
@@ -20575,7 +21289,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "fcf81f91-6616-4dc5-bbca-36cca64e1cde")
-		(property "Reference" "R7"
+		(property "Reference" "R22"
 			(at 200.025 297.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20658,6 +21372,12 @@
 			(uuid "228f878b-fea1-4487-9280-0236eccbbc55")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "R22")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "R7")
@@ -20764,6 +21484,12 @@
 			(uuid "13f424f5-626d-4f02-80d9-07657a2b9cde")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "FB4")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "FB4")
@@ -20872,6 +21598,12 @@
 			(uuid "48452fbc-1590-41ca-bc94-ca9f4004b1de")
 		)
 		(instances
+			(project "BlockBuilder"
+				(path "/433f3dcb-8287-4d7b-98a0-77b3bca6fc50/9d593b91-fa84-43dc-bd35-53db33b43cb0"
+					(reference "C1")
+					(unit 1)
+				)
+			)
 			(project "PoE-Ethernet-Si3402-W5500"
 				(path "/8c848a88-1c7f-4307-a364-a83031b6b8ad"
 					(reference "C1")
@@ -20886,10 +21618,4 @@
 			)
 		)
 	)
-	(sheet_instances
-		(path "/"
-			(page "1")
-		)
-	)
-	(embedded_fonts no)
 )

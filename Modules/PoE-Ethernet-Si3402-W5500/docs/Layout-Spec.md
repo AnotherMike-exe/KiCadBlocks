@@ -903,3 +903,19 @@ and passed the placement test with copper equal by net.
 The MDI lengths in section 13 and in the `.kicad_dru` comments predate the
 reroute. RX skew is now about 0.01 mm. Measure again before quoting them.
 
+## 18. The schematic is one A3 page, 2026-09-25
+
+The block schematic spanned 296 mm top to bottom on an A4 landscape page. The
+Ethernet half sat above the frame, so a print lost 37 of the 82 parts.
+
+1. **Two sheets inside one block do not work.** KiCad 10.0.6 refuses to save a
+   design block from a sheet with a subsheet: "Design blocks with nested sheets
+   are not supported." Tested on a scratch project.
+2. **One A3 portrait page does.** The whole sheet moved as one group into an A3
+   portrait frame, with the title block filled. Net membership is identical to
+   the netlist before the move. ERC is unchanged. DRC and parity are unchanged.
+3. **Placed with "Place as sheet"**, the block lands as page 2 of the host on
+   its own A3 page. All 82 footprints, 415 segments, 147 vias, 7 zones and 12
+   labels arrived, with copper equal net by net after the sheet prefix.
+   `Host-Setup.md` section 5.3 gives the pattern change the prefix needs.
+
